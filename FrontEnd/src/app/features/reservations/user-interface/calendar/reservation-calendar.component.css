@@ -1,0 +1,8 @@
+.day.has-schedule {
+    transition: all var(--delay) !important;
+}
+
+.day.has-schedule:hover {
+    cursor: pointer !important;
+    transform: scaleY(1.03);
+}

@@ -1,0 +1,113 @@
+button {
+    align-items: center;
+    border: none;
+    box-shadow: none !important;
+    cursor: default !important;
+    font-family: var(--font-family-asty) !important;
+    font-size: var(--font-size-button) !important;
+    font-weight: 300 !important;
+    min-width: 0 !important;
+    outline: 0 !important;
+    padding-top: 0.0625rem !important;
+}
+
+button.primary {
+    background-color: var(--color-button-primary) !important;
+    color: var(--color-button-text) !important;
+}
+
+button.secondary {
+    background-color: var(--color-button-secondary);
+    color: var(--color-button-text) !important;
+}
+
+button.delete {
+    background-color: var(--color-button-delete) !important;
+    color: var(--color-button-text) !important;
+}
+
+button .pi.with-text {
+    margin-right: 0.5rem !important;
+}
+
+button.bold {
+    font-weight: 700 !important;
+}
+
+button.transparent {
+    background-color: transparent;
+    color: var(--color-text) !important;
+}
+
+button.transparent:hover {
+    background-color: var(--color-hover) !important;
+}
+
+button.tab {
+    padding-bottom: 0.3125rem;
+}
+
+button.tab:first-child {
+    margin-right: 1rem;
+}
+
+button .mat-button-wrapper .material-icons-outlined {
+    font-size: 1.25rem !important;
+    padding: 0.625rem 0 !important;
+}
+
+button .mat-button-wrapper .emoji {
+    margin-right: 0.2rem;
+}
+
+button.mat-mini-fab .mat-button-wrapper .material-icons.reverse {
+    color: var(--color-text);
+}
+
+button.mat-mini-fab:hover {
+    background-color: var(--color-hover) !important;
+}
+
+button:disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+}
+
+button:not(:disabled) {
+    cursor: pointer !important;
+}
+
+button.mat-button-toggle-label-content {
+    line-height: 2.5rem !important;
+}
+
+.button-group-right {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.checkbox-with-lock-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+@media (width < 800px) {
+    .button-text {
+        font-size: 13px;
+    }
+}
+
+@media (width >= 800px) {
+    .button-text {
+        font-size: 14px;
+        margin-top: 0;
+    }
+}
+
+.material-icons {
+    align-items: center;
+    color: var(--color-button-text);
+    display: flex;
+}

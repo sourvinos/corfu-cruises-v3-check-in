@@ -1,0 +1,13 @@
+2023-06-06 07:06:02.786 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.ICheckInEmailSender' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:06:56.620 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.ICheckInEmailSender' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:06:58.484 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.ICheckInEmailSender' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:06:59.723 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.ICheckInEmailSender' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:09:04.251 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.IScheduleRepository' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:09:44.878 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.IScheduleRepository' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:09:46.986 +03:00 [ERR] MESSAGE Unable to resolve service for type 'API.Interfaces.IScheduleRepository' while attempting to activate 'API.Controllers.CheckInController'.
+2023-06-06 07:10:02.267 +03:00 [ERR] MESSAGE Unable to determine the relationship represented by navigation 'Customer.User' of type 'UserExtended'. Either manually configure the relationship, or ignore this property using the '[NotMapped]' attribute or by using 'EntityTypeBuilder.Ignore' in 'OnModelCreating'.
+2023-06-06 07:20:34.817 +03:00 [ERR] MESSAGE Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Reservation -> ReservationReadDto
+API.Models.Reservation -> API.Dtos.ReservationReadDto

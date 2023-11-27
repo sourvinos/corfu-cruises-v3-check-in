@@ -1,0 +1,12 @@
+﻿{
+    "profiles": {
+        "environments": {
+            "applicationUrl": "https://localhost:6001",
+            "commandName": "Project",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
+            },
+            "launchBrowser": false
+        }
+    }
+}

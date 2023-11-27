@@ -1,0 +1,51 @@
+#logo {
+    align-items: center;
+    display: flex;
+    outline: 0;
+}
+
+#logo-image {
+    position: absolute;
+    width: 3.5rem;
+}
+
+#logo-text {
+    color: var(--color-text) !important;
+    font-family: var(--font-family-logo);
+    font-size: var(--font-size-logo-text) !important;
+    font-weight: var(--font-weight-logo);
+    line-height: 2.25rem;
+}
+
+#title-top, #title-bottom {
+    font-family: var(--font-family-asty);
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+#title-top {
+    margin-bottom: -0.625rem;
+}
+
+#title-bottom {
+    margin-top: -0.75rem;
+}
+
+@media (width < 800px) {
+    #logo-image {
+        display: none;
+    }
+    #logo-text {
+        margin-left: 0;
+    }
+}
+
+@media (width >= 800px) {
+    #logo-image {
+        display: flex;
+    }
+    #logo-text {
+        margin-left: 4rem;
+    }
+}

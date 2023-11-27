@@ -1,0 +1,42 @@
+* {
+    /* Lists and tables */
+    --color-scrollbar-thumb: #d94040;
+    --color-table-active: #4caf50;
+    --color-table-inactive: #f44336;
+    --color-table-delete-icon: #ff7a7a;
+    /*  Buttons */
+    --color-button-text: #ffffff;
+    --color-button-primary: #0096c7;
+    --color-button-secondary: #ff9800;
+    --color-button-delete: #e45142;
+    /* Criteria & Totals */
+    --color-criteria-a: #5f80a7;
+    --color-criteria-b: #cf6755;
+    --color-criteria-c: #698984;
+    --color-criteria-d: #ca874c;
+    /* Date picker */
+    --color-range-between: #ffeb3b;
+    --color-day-selected: #ffc107;
+    --color-range: #000000;
+    /* Custom calendar */
+    --color-background-saturday: #f29c6b;
+    --color-background-sunday: #f26513;
+    --color-background-today: #8dbf8f;
+    /* Theme menu */
+    --color-sun: #f6ff00;
+    --color-moon: #607d8b;
+    /* Input */
+    --color-input-background: #d3cdcd1a;
+    --color-input-error: #e57b7b;
+    --color-input-focus: #65b4ef;
+    /* Dialog headers */
+    --color-dialog-header: #ff7a7a;
+    /* Common */
+    --color-blue: #2980b9;
+    --color-green: #379fb6;
+    --color-red: #d94040;
+    --color-yellow: #dfa618;
+    /* Check-in */
+    --reservation-item-label: #efba24;
+    --reservation-item-title: #65bfa2;
+}

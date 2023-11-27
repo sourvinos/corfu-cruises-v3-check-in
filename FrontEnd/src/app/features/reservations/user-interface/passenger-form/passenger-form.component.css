@@ -1,0 +1,15 @@
+#dialog-header {
+    margin: 0 0 1.1rem 1rem;
+}
+
+#dialog-content {
+    overflow-y: hidden;
+}
+
+#dialog-footer {
+    margin: 2rem 1rem 0 0;
+}
+
+.group-field:last-child {
+    margin: 18px 0 0 18px;
+}
