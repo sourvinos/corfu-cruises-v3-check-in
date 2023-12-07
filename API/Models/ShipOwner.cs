@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
-    public class ShipOwner {
+    public class ShipOwner : IBaseEntity, IMetadata {
 
         // PK
         public int Id { get; set; }
@@ -15,10 +16,14 @@ namespace API.Models {
         public string Phones { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
-        public string LastUpdate { get; set; }
-        // FKs
-        public string UserId { get; set; }
-  
+        // Metadata
+        public string PostAt { get; set; }
+        public string PostUser { get; set; }
+        public string PutAt { get; set; }
+        public string PutUser { get; set; }
+        // Navigation
+        public List<Ship> Ships { get; set; }
+
     }
 
 }

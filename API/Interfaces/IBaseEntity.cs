@@ -1,4 +1,4 @@
-namespace API.Infrastructure.Interfaces {
+namespace API.Interfaces {
 
     public interface IBaseEntity {
 

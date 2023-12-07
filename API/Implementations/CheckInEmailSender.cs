@@ -14,7 +14,7 @@ namespace API.Implementations {
             this.settings = settings.Value;
         }
 
-        public SendEmailResponse SendEmail(CheckInReservationVM reservation) {
+        public SendEmailResponse SendEmail(ReservationVM reservation) {
 
             var message = new MimeMessage();
             var htmlContent = "";

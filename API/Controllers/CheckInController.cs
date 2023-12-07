@@ -87,12 +87,10 @@ namespace API.Controllers {
         public async Task<Response> Put([FromBody] ReservationWriteDto reservation) {
             var x = await checkInReadRepo.GetByIdAsync(reservation.ReservationId.ToString(), false);
             if (x != null) {
-                var z = checkInValidReservation.IsValid(reservation, scheduleRepo);
+                var z = checkInValidReservation.IsValid(x, scheduleRepo);
                 if (z == 200) {
-                    reservation.UserId = x.UserId;
-                    AttachPortIdToDto(reservation);
-                    UpdateDriverIdWithNull(reservation);
-                    UpdateShipIdWithNull(reservation);
+                    reservation.DriverId = x.DriverId;
+                    reservation.ShipId = x.ShipId;
                     checkInUpdateRepo.Update(reservation.ReservationId, mapper.Map<ReservationWriteDto, Reservation>(reservation));
                     return new Response {
                         Code = 200,
@@ -113,13 +111,8 @@ namespace API.Controllers {
         }
 
         [HttpPost("[action]")]
-        public SendEmailResponse SendCheckInReservation([FromBody] CheckInReservationVM reservation) {
+        public SendEmailResponse SendCheckInReservation([FromBody] ReservationVM reservation) {
             return checkInEmailSender.SendEmail(reservation);
-        }
-
-        private ReservationWriteDto AttachPortIdToDto(ReservationWriteDto reservation) {
-            reservation.PortId = checkInValidReservation.GetPortIdFromPickupPointId(reservation.PickupPointId);
-            return reservation;
         }
 
         private static ReservationWriteDto UpdateDriverIdWithNull(ReservationWriteDto reservation) {

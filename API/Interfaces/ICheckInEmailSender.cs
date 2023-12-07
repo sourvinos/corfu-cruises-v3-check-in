@@ -4,7 +4,7 @@ namespace API.Interfaces {
 
     public interface ICheckInEmailSender {
 
-        SendEmailResponse SendEmail(CheckInReservationVM email);
+        SendEmailResponse SendEmail(ReservationVM email);
 
     }
 

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
-    public class Ship {
+    public class Ship : IBaseEntity, IMetadata {
 
         // PK
         public int Id { get; set; }
@@ -10,6 +11,7 @@ namespace API.Models {
         public int ShipOwnerId { get; set; }
         // Fields
         public string Description { get; set; }
+        public string Abbreviation { get; set; }
         public string IMO { get; set; }
         public string Flag { get; set; }
         public string RegistryNo { get; set; }
@@ -17,10 +19,17 @@ namespace API.Models {
         public string ManagerInGreece { get; set; }
         public string Agent { get; set; }
         public bool IsActive { get; set; }
-        public string LastUpdate { get; set; }
-        // FKs
-        public string UserId { get; set; }
- 
+        // Metadata
+        public string PostAt { get; set; }
+        public string PostUser { get; set; }
+        public string PutAt { get; set; }
+        public string PutUser { get; set; }
+        // Navigation
+        public ShipOwner ShipOwner { get; set; }
+        public List<ShipCrew> ShipCrews { get; set; }
+        public List<Registrar> Registrars { get; set; }
+        public List<Reservation> Reservations { get; set; }
+
     }
 
 }

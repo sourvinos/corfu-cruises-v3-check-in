@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using API.Dtos;
 using API.Infrastructure.Classes;
 
 namespace API.ViewModels {
 
-    public class CheckInReservationVM {
+    public class ReservationVM {
 
         public string ReservationId { get; set; }
 
@@ -17,7 +18,6 @@ namespace API.ViewModels {
         public string Email { get; set; }
         public string Phones { get; set; }
         public string Remarks { get; set; }
-        public string UserId { get; set; }
 
         public SimpleEntity Customer { get; set; }
         public SimpleEntity Destination { get; set; }

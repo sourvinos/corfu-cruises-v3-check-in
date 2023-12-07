@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
-    public class Reservation {
+    public class Reservation : IMetadata {
 
         // PK
         public Guid ReservationId { get; set; }
@@ -25,9 +26,11 @@ namespace API.Models {
         public string Email { get; set; }
         public string Phones { get; set; }
         public string Remarks { get; set; }
-        public string LastUpdate { get; set; }
-        // FKs
-        public string UserId { get; set; }
+        // Metadata
+        public string PostAt { get; set; }
+        public string PostUser { get; set; }
+        public string PutAt { get; set; }
+        public string PutUser { get; set; }
         // Navigation
         public Customer Customer { get; set; }
         public Destination Destination { get; set; }
