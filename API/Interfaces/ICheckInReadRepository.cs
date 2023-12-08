@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
-using API.Infrastructure.Interfaces;
 using API.Models;
 
 namespace API.Interfaces {
 
-    public interface ICheckInReadRepository : IRepository<Reservation> {
+    public interface ICheckInReadRepository  {
 
         Task<Reservation> GetByRefNoAsync(string refNo);
         Task<Reservation> GetByDateAsync(string date, int destinationId, string lastname, string firstname);

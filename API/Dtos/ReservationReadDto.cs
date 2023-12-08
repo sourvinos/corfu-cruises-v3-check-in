@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using API.Infrastructure.Classes;
-using API.Infrastructure.Interfaces;
-using API.ViewModels;
 
 namespace API.Dtos {
 
-    public class ReservationReadDto : IMetadata {
+    public class ReservationReadDto {
 
         // PK
         public string ReservationId { get; set; }
@@ -20,11 +18,6 @@ namespace API.Dtos {
         public string Email { get; set; }
         public string Phones { get; set; }
         public string Remarks { get; set; }
-        // Metadata
-        public string PostAt { get; set; }
-        public string PostUser { get; set; }
-        public string PutAt { get; set; }
-        public string PutUser { get; set; }
         //  Navigation
         public SimpleEntity Customer { get; set; }
         public SimpleEntity Destination { get; set; }

@@ -1,10 +1,9 @@
 using System;
-using API.Infrastructure.Interfaces;
 using API.Models;
 
 namespace API.Interfaces {
 
-    public interface ICheckInUpdateRepository : IRepository<Reservation> {
+    public interface ICheckInUpdateRepository  {
 
         void Update(Guid reservationId, Reservation reservation);
 

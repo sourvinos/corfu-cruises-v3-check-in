@@ -2,21 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using API.Infrastructure.Classes;
-using API.Infrastructure.Implementations;
 using API.Interfaces;
 using API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace API.Implementations {
 
-    public class CheckInUpdateRepository : Repository<Reservation>, ICheckInUpdateRepository {
+    public class CheckInUpdateRepository : ICheckInUpdateRepository {
 
-        private readonly TestingEnvironment testingEnvironment;
+        protected readonly AppDbContext context;
 
-        public CheckInUpdateRepository(AppDbContext context, IHttpContextAccessor httpContext, IOptions<TestingEnvironment> testingEnvironment) : base(context, httpContext, testingEnvironment) {
-            this.testingEnvironment = testingEnvironment.Value;
+        public CheckInUpdateRepository(AppDbContext context) {
+            this.context = context;
         }
 
         public void Update(Guid reservationId, Reservation reservation) {
@@ -25,11 +22,7 @@ namespace API.Implementations {
             UpdatePassengers(reservation.Passengers);
             DeletePassengers(reservationId, reservation.Passengers);
             context.SaveChanges();
-            if (testingEnvironment.IsTesting) {
-                transaction.Dispose();
-            } else {
-                transaction.Commit();
-            }
+            transaction.Commit();
         }
 
         private void AddPassengers(List<Passenger> passengers) {

@@ -3,7 +3,7 @@ using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
-    public class Schedule : IBaseEntity, IMetadata {
+    public class Schedule : IBaseEntity {
 
         // PK
         public int Id { get; set; }
@@ -12,17 +12,8 @@ namespace API.Models {
         public int PortId { get; set; }
         // Fields
         public DateTime Date { get; set; }
-        public int MaxPax { get; set; }
+
         public string Time { get; set; }
-        public bool IsActive { get; set; }
-        // Metadata
-        public string PostAt { get; set; }
-        public string PostUser { get; set; }
-        public string PutAt { get; set; }
-        public string PutUser { get; set; }
-        // Navigation
-        public Destination Destination { get; set; }
-        public Port Port { get; set; }
 
     }
 

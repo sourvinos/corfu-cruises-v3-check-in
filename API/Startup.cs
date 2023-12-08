@@ -9,12 +9,11 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-// dotnet watch run --environment LocalDevelopment | LocalTesting | ProductionLive | ProductionDemo
+// dotnet watch run --environment LocalDevelopment | ProductionLive | ProductionDemo
 // dotnet publish /p:Configuration=Release /p:EnvironmentName=ProductionDemo | ProductionLive
 
 namespace API {
@@ -37,14 +36,6 @@ namespace API {
             ConfigureServices(services);
         }
 
-        public void ConfigureLocalTestingServices(IServiceCollection services) {
-            services.AddDbContextFactory<AppDbContext>(options => {
-                options.UseMySql(Configuration.GetConnectionString("LocalTesting"), new MySqlServerVersion(new Version(8, 0, 19)), builder => builder.EnableStringComparisonTranslations());
-                options.EnableSensitiveDataLogging();
-            });
-            ConfigureServices(services);
-        }
-
         public void ConfigureProductionLiveServices(IServiceCollection services) {
             services.AddDbContextFactory<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("ProductionLive"), new MySqlServerVersion(new Version(8, 0, 19)), builder =>
                 builder.EnableStringComparisonTranslations()));
@@ -60,13 +51,12 @@ namespace API {
 
         public void ConfigureServices(IServiceCollection services) {
             Cors.AddCors(services);
-            services.AddTransient<IScheduleRepository, ScheduleRepository>();
+            // services.AddTransient<IScheduleRepository, ScheduleRepository>();
             services.AddTransient<ICheckInReadRepository, CheckInReadRepository>();
             services.AddTransient<ICheckInReservationValidation, CheckInReservationValidation>();
             services.AddTransient<ICheckInUpdateRepository, CheckInUpdateRepository>();
             services.AddTransient<ICheckInEmailSender, CheckInEmailSender>();
             services.AddTransient<ResponseMiddleware>();
-            services.Configure<RazorViewEngineOptions>(options => options.ViewLocationExpanders.Add(new ViewLocationExpander()));
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<AppDbContext>();
@@ -80,7 +70,6 @@ namespace API {
             ModelValidations.AddModelValidation(services);
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = _ => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
             services.Configure<EmailSettings>(options => Configuration.GetSection("EmailSettings").Bind(options));
-            services.Configure<TestingEnvironment>(options => Configuration.GetSection("TestingEnvironment").Bind(options));
             services.Configure<DirectoryLocations>(options => Configuration.GetSection("DirectoryLocations").Bind(options));
         }
 
@@ -90,12 +79,6 @@ namespace API {
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
-        }
-
-        public void ConfigureLocalTesting(IApplicationBuilder app) {
-            app.UseDeveloperExceptionPage();
-            Configure(app);
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
         public void ConfigureProductionLive(IApplicationBuilder app) {

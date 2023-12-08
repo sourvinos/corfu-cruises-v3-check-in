@@ -4,7 +4,6 @@ using API.Infrastructure.Interfaces;
 
 namespace API.Dtos {
 
-
     public class PassengerReadDto : IBaseEntity {
 
         // PK
@@ -17,7 +16,6 @@ namespace API.Dtos {
         public string Birthdate { get; set; }
         public string Remarks { get; set; }
         public string SpecialCare { get; set; }
-        public bool IsBoarded { get; set; }
         // Navigation
         public NationalityDto Nationality { get; set; }
         public SimpleEntity Gender { get; set; }

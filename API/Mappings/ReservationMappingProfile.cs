@@ -3,7 +3,6 @@ using API.Dtos;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Helpers;
 using API.Models;
-using API.ViewModels;
 using AutoMapper;
 
 namespace API.Mappings {
@@ -16,10 +15,8 @@ namespace API.Mappings {
                 .ForMember(x => x.Date, x => x.MapFrom(x => DateHelpers.DateToISOString(x.Date)))
                 .ForMember(x => x.Customer, x => x.MapFrom(x => new SimpleEntity { Id = x.Customer.Id, Description = x.Customer.Description }))
                 .ForMember(x => x.Destination, x => x.MapFrom(x => new SimpleEntity { Id = x.Destination.Id, Description = x.Destination.Description }))
-                .ForMember(x => x.Driver, x => x.MapFrom(x => x.Driver == null ? new SimpleEntity { Id = 0, Description = "(EMPTY)" } : new SimpleEntity { Id = x.Driver.Id, Description = x.Driver.Description }))
                 .ForMember(x => x.Destination, x => x.MapFrom(x => new SimpleEntity { Id = x.Destination.Id, Description = x.Destination.Description }))
                 .ForMember(x => x.PickupPoint, x => x.MapFrom(x => new SimpleEntity { Id = x.PickupPoint.Id, Description = x.PickupPoint.Description }))
-                .ForMember(x => x.Ship, x => x.MapFrom(x => x.Ship == null ? new SimpleEntity { Id = 0, Description = "(EMPTY)" } : new SimpleEntity { Id = x.Ship.Id, Description = x.Ship.Description }))
                 .ForMember(x => x.Passengers, x => x.MapFrom(x => x.Passengers.Select(passenger => new PassengerReadDto {
                     Id = passenger.Id,
                     ReservationId = passenger.ReservationId,
@@ -28,7 +25,6 @@ namespace API.Mappings {
                     Birthdate = DateHelpers.DateToISOString(passenger.Birthdate),
                     Remarks = passenger.Remarks,
                     SpecialCare = passenger.SpecialCare,
-                    IsBoarded = passenger.IsBoarded,
                     Nationality = new NationalityDto {
                         Id = passenger.Nationality.Id,
                         Code = passenger.Nationality.Code,

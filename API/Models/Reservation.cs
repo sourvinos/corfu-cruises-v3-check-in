@@ -4,7 +4,7 @@ using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
-    public class Reservation : IMetadata {
+    public class Reservation  {
 
         // PK
         public Guid ReservationId { get; set; }
@@ -34,10 +34,8 @@ namespace API.Models {
         // Navigation
         public Customer Customer { get; set; }
         public Destination Destination { get; set; }
-        public Driver Driver { get; set; }
         public PickupPoint PickupPoint { get; set; }
         public Port Port { get; set; }
-        public Ship Ship { get; set; }
         public List<Passenger> Passengers { get; set; }
 
     }

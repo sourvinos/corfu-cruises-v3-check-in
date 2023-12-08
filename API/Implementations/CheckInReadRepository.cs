@@ -2,18 +2,19 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Infrastructure.Classes;
-using API.Infrastructure.Implementations;
 using API.Interfaces;
 using API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace API.Implementations {
 
-    public class CheckInReadRepository : Repository<Reservation>, ICheckInReadRepository {
+    public class CheckInReadRepository : ICheckInReadRepository {
 
-        public CheckInReadRepository(AppDbContext context, IHttpContextAccessor httpContext, IOptions<TestingEnvironment> testingEnvironment) : base(context, httpContext, testingEnvironment) { }
+        protected readonly AppDbContext context;
+
+        public CheckInReadRepository(AppDbContext context) {
+            this.context = context;
+        }
 
         public async Task<Reservation> GetByRefNoAsync(string refNo) {
             var reservation = context.Reservations
@@ -53,8 +54,6 @@ namespace API.Implementations {
                     .Include(x => x.Customer)
                     .Include(x => x.PickupPoint)
                     .Include(x => x.Destination)
-                    .Include(x => x.Driver)
-                    .Include(x => x.Ship)
                     .Include(x => x.Passengers).ThenInclude(x => x.Nationality)
                     .Include(x => x.Passengers).ThenInclude(x => x.Occupant)
                     .Include(x => x.Passengers).ThenInclude(x => x.Gender)

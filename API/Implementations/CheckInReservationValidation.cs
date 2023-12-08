@@ -1,22 +1,22 @@
 using System;
 using System.Linq;
-using API.Dtos;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Helpers;
-using API.Infrastructure.Implementations;
 using API.Interfaces;
 using API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace API.Implementations {
 
-    public class CheckInReservationValidation : Repository<Reservation>, ICheckInReservationValidation {
+    public class CheckInReservationValidation : ICheckInReservationValidation {
 
-        public CheckInReservationValidation(AppDbContext context, IHttpContextAccessor httpContext, IOptions<TestingEnvironment> testingEnvironment) : base(context, httpContext, testingEnvironment) { }
+        protected readonly AppDbContext context;
 
-        public int IsValid(Reservation reservation, IScheduleRepository scheduleRepo) {
+        public CheckInReservationValidation(AppDbContext context) {
+            this.context = context;
+        }
+
+        public int IsValid(Reservation reservation) {
             return true switch {
                 var x when x == CheckInNotAllowedAfterDeparture(reservation) => 402,
                 _ => 200,
