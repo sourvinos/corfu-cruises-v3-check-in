@@ -92,8 +92,7 @@ export class CheckInPassengerListComponent {
                 firstname: passenger.firstname,
                 birthdate: passenger.birthdate,
                 remarks: passenger.remarks,
-                specialCare: passenger.specialCare,
-                isCheckedIn: passenger.isCheckedIn,
+                specialCare: passenger.specialCare
             }
         })
         dialog.afterClosed().subscribe((result: any) => {
@@ -106,7 +105,6 @@ export class CheckInPassengerListComponent {
                 passenger.gender = result.gender
                 passenger.specialCare = result.specialCare
                 passenger.remarks = result.remarks
-                passenger.isCheckedIn = result.isCheckedIn
                 this.interactionService.updateReservation()
             }
         })
@@ -125,8 +123,7 @@ export class CheckInPassengerListComponent {
                 gender: { 'id': 1, 'description': '' },
                 birthdate: '',
                 specialCare: '',
-                remarks: '',
-                isCheckedIn: false
+                remarks: ''
             }
         })
         dialog.afterClosed().subscribe((newPassenger: any) => {

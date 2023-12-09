@@ -1062,10 +1062,6 @@
                 "description": "Xώρα"
             },
             {
-                "id": "headerIsCheckedIn",
-                "description": "Έχει επιβιβαστεί"
-            },
-            {
                 "id": "newPassengerButton",
                 "description": "Νέος επιβάτης"
             }
@@ -1105,10 +1101,6 @@
             {
                 "id": "remarks",
                 "description": "Σχόλια"
-            },
-            {
-                "id": "isCheckedIn",
-                "description": "Έχει επιβιβαστεί"
             },
             {
                 "id": "cancelButton",

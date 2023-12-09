@@ -51,7 +51,7 @@ export class AppComponent {
     }
 
     private setBackgroundImage(): void {
-        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
+        // document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
     }
 
     private setUserSelect(): void {

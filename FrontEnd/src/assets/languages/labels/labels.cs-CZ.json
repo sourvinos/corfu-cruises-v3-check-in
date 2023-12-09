@@ -1058,10 +1058,6 @@
                 "description": "Národnost"
             },
             {
-                "id": "headerIsCheckedIn",
-                "description": "Odbavený"
-            },
-            {
                 "id": "newPassengerButton",
                 "description": "Nový cestující"
             }
@@ -1101,10 +1097,6 @@
             {
                 "id": "remarks",
                 "description": "Komentáře"
-            },
-            {
-                "id": "isCheckedIn",
-                "description": "Odbavený"
             },
             {
                 "id": "cancelButton",

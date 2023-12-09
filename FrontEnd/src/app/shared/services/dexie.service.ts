@@ -9,23 +9,15 @@ export class DexieService extends Dexie {
         super('DexieDB')
         this.delete()
         this.version(1).stores({
-            coachRoutes: 'id, description',
-            customers: 'id, description',
             destinations: 'id, description',
-            drivers: 'id, description',
             genders: 'id, description',
-            nationalities: 'id, code, description',
-            pickupPoints: 'id, description, exactPoint, time',
-            ports: 'id, description',
-            shipOwners: 'id, description',
-            shipRoutes: 'id, description',
-            ships: 'id, description'
+            nationalities: 'id, code, description'
         })
         this.open()
     }
 
     public populateTable(table: string, httpService: any): void {
-        httpService.getActive().subscribe((records: any) => {
+        httpService.getAutoComplete().subscribe((records: any) => {
             this.table(table).bulkAdd(records)
         })
     }

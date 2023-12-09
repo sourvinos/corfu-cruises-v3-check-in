@@ -18,6 +18,7 @@ import { NationalityDropdownVM } from 'src/app/features/nationalities/classes/vi
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 import { ValidationService } from 'src/app/shared/services/validation.service'
+import { DexieService } from 'src/app/shared/services/dexie.service'
 
 @Component({
     selector: 'check-in-passenger-form',
@@ -49,7 +50,20 @@ export class CheckInPassengerFormComponent {
 
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto, private dateAdapter: DateAdapter<any>, private dateHelperService: DateHelperService, private dialogRef: MatDialogRef<CheckInPassengerFormComponent>, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private ngZone: NgZone, private sessionStorageService: SessionStorageService) {
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto,
+        private dateAdapter: DateAdapter<any>,
+        private dateHelperService: DateHelperService,
+        private dexieService: DexieService,
+        private dialogRef: MatDialogRef<CheckInPassengerFormComponent>,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private localStorageService: LocalStorageService,
+        private messageHintService: MessageInputHintService,
+        private messageLabelService: MessageLabelService,
+        private ngZone: NgZone,
+        private sessionStorageService: SessionStorageService
+    ) {
         this.record = data
     }
 
@@ -59,7 +73,6 @@ export class CheckInPassengerFormComponent {
         this.initForm()
         this.populateDropdowns()
         this.populateFields()
-        this.getNationalityFromStorage()
         this.setLocale()
     }
 
@@ -162,30 +175,12 @@ export class CheckInPassengerFormComponent {
             'nationality': this.form.value.nationality,
             'gender': this.form.value.gender,
             'specialCare': this.form.value.specialCare,
-            'remarks': this.form.value.remarks,
-            'isCheckedIn': this.form.value.isCheckedIn
+            'remarks': this.form.value.remarks
         }
     }
 
     private focusOnField(): void {
         this.helperService.focusOnField()
-    }
-
-    private getNationalityFromStorage(): void {
-        if (this.form.value.id == 0) {
-            try {
-                const x = JSON.parse(this.sessionStorageService.getItem('nationality'))
-                this.form.patchValue({
-                    nationality: {
-                        'id': x.id,
-                        'description': x.description,
-                        'code': x.code
-                    }
-                })
-            } catch {
-                //
-            }
-        }
     }
 
     private initForm(): void {
@@ -198,19 +193,20 @@ export class CheckInPassengerFormComponent {
             firstname: ['', [Validators.required, Validators.maxLength(128)]],
             birthdate: ['', [Validators.required]],
             specialCare: ['', Validators.maxLength(128)],
-            remarks: ['', Validators.maxLength(128)],
-            isCheckedIn: [{ value: false, disabled: !this.isAdmin }],
+            remarks: ['', Validators.maxLength(128)]
         })
     }
 
-    private populateDropdownFromLocalStorage(table: string, filteredTable: string, formField: string, modelProperty: string): void {
-        this[table] = JSON.parse(this.sessionStorageService.getItem(table))
-        this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(table, modelProperty, value)))
+    private populateDropdownFromDexieDB(dexieTable: string, filteredTable: string, formField: string, modelProperty: string, orderBy: string): void {
+        this.dexieService.table(dexieTable).orderBy(orderBy).toArray().then((response) => {
+            this[dexieTable] = this.record.reservationId.toString() == '' ? response.filter(x => x.isActive) : response
+            this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(dexieTable, modelProperty, value)))
+        })
     }
 
     private populateDropdowns(): void {
-        this.populateDropdownFromLocalStorage('genders', 'dropdownGenders', 'gender', 'description')
-        this.populateDropdownFromLocalStorage('nationalities', 'dropdownNationalities', 'nationality', 'description')
+        this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
+        this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
     }
 
     private populateFields(): void {
@@ -224,8 +220,7 @@ export class CheckInPassengerFormComponent {
                 firstname: this.record.firstname,
                 birthdate: this.record.birthdate,
                 specialCare: this.record.specialCare,
-                remarks: this.record.remarks,
-                isCheckedIn: this.record.isCheckedIn
+                remarks: this.record.remarks
             })
         }
     }
@@ -268,10 +263,6 @@ export class CheckInPassengerFormComponent {
 
     get remarks(): AbstractControl {
         return this.form.get('remarks')
-    }
-
-    get isCheckedIn(): AbstractControl {
-        return this.form.get('isCheckedIn')
     }
 
     //#endregion

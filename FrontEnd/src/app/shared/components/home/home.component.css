@@ -1,8 +1,27 @@
-#content {
-    background-color: transparent !important;
-    justify-content: flex-end;
+:host {
+    display: flex;
+    height: 100%;
 }
 
-#fake-footer {
-    padding: 2rem 0 2rem 0;
+#content {
+    background-color: #e9c2c2;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto 0 auto;
+    min-width: 347px;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#tip {
+    text-align: center;
+}
+
+#footer {
+    margin: auto auto 0 auto;
 }

@@ -1058,10 +1058,6 @@
                 "description": "Nationality"
             },
             {
-                "id": "headerIsCheckedIn",
-                "description": "Has Checked In"
-            },
-            {
                 "id": "newPassengerButton",
                 "description": "New passenger"
             }
@@ -1101,10 +1097,6 @@
             {
                 "id": "remarks",
                 "description": "Comments"
-            },
-            {
-                "id": "isCheckedIn",
-                "description": "Checked In"
             },
             {
                 "id": "cancelButton",

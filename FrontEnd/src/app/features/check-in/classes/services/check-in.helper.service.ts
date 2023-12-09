@@ -15,22 +15,9 @@ export class CheckInHelperService {
     public flattenForm(form: any): CheckInReservationWriteDto {
         return {
             reservationId: form.reservationId != '' ? form.reservationId : null,
-            customerId: form.customer.id,
-            destinationId: form.destination.id,
-            driverId: form.driver ? form.driver.id : null,
-            pickupPointId: form.pickupPoint.id,
-            portId: form.port.id,
-            shipId: form.ship ? form.ship.id : null,
-            date: this.dateHelperService.formatDateToIso(new Date(form.date)),
             refNo: form.refNo,
-            ticketNo: form.ticketNo,
             email: form.email,
-            phones: form.phones,
-            adults: form.adults,
-            kids: form.kids,
-            free: form.free,
             remarks: form.remarks,
-            putAt: form.putAt,
             passengers: this.mapPassengers(form)
         }
     }
@@ -51,8 +38,7 @@ export class CheckInHelperService {
                 firstname: passenger.firstname,
                 birthdate: this.dateHelperService.formatDateToIso(new Date(passenger.birthdate)),
                 specialCare: passenger.specialCare,
-                remarks: passenger.remarks,
-                isBoarded: passenger.isBoarded
+                remarks: passenger.remarks
             }
             passengers.push(x)
         })

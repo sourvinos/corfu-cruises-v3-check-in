@@ -5,6 +5,5 @@ export interface CheckInPassengerVM {
     firstname: string,
     nationalityCode: string,
     nationalityDescription: string,
-    isCheckedIn: boolean
 
 }

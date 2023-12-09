@@ -1058,10 +1058,6 @@
                 "description": "Nationalite"
             },
             {
-                "id": "headerIsCheckedIn",
-                "description": "Embarque"
-            },
-            {
                 "id": "newPassengerButton",
                 "description": "Nouveau passager"
             }
@@ -1101,10 +1097,6 @@
             {
                 "id": "remarks",
                 "description": "Remarques"
-            },
-            {
-                "id": "isCheckedIn",
-                "description": "Embarque"
             },
             {
                 "id": "cancelButton",

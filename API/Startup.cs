@@ -1,4 +1,5 @@
 using System;
+using API.Features.Nationalities;
 using API.Implementations;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Extensions;
@@ -51,7 +52,9 @@ namespace API {
 
         public void ConfigureServices(IServiceCollection services) {
             Cors.AddCors(services);
-            // services.AddTransient<IScheduleRepository, ScheduleRepository>();
+            services.AddTransient<IDestinationRepository, DestinationRepository>();
+            services.AddTransient<IGenderRepository, GenderRepository>();
+            services.AddTransient<INationalityRepository, NationalityRepository>();
             services.AddTransient<ICheckInReadRepository, CheckInReadRepository>();
             services.AddTransient<ICheckInReservationValidation, CheckInReservationValidation>();
             services.AddTransient<ICheckInUpdateRepository, CheckInUpdateRepository>();

@@ -5,7 +5,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker'
 import { MatStepper } from '@angular/material/stepper'
 import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
-import { takeUntil } from 'rxjs/operators'
+import { map, startWith, takeUntil } from 'rxjs/operators'
 // Custom
 import { CheckInHelperService } from '../../classes/services/check-in.helper.service'
 import { CheckInReservationWriteDto } from '../../classes/dtos/check-in-reservation-write-dto'
@@ -21,6 +21,7 @@ import { MessageInputHintService } from 'src/app/shared/services/message-input-h
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
+import { DexieService } from 'src/app/shared/services/dexie.service'
 
 @Component({
     selector: 'check-in-criteria',
@@ -39,6 +40,7 @@ export class CheckInCriteriaComponent {
     public reservationForm: FormGroup
     public icon = 'home'
     public parentUrl = '/home'
+    public form: FormGroup
 
     public isLoading = new Subject<boolean>()
     public selected: Date | null
@@ -52,6 +54,7 @@ export class CheckInCriteriaComponent {
     //#endregion
 
     constructor(
+        private dexieService: DexieService,
         private checkInService: CheckInHttpService,
         private dateAdapter: DateAdapter<any>,
         private dateHelperService: DateHelperService,
@@ -202,6 +205,14 @@ export class CheckInCriteriaComponent {
         this.unsubscribe.unsubscribe()
     }
 
+    private filterAutocomplete(array: string, field: string, value: any): any[] {
+        if (typeof value !== 'object') {
+            const filtervalue = value.toLowerCase()
+            return this[array].filter((element: { [x: string]: string }) =>
+                element[field].toLowerCase().startsWith(filtervalue))
+        }
+    }
+
     private flattenForm(): CheckInReservationWriteDto {
         return this.checkInHelperService.flattenForm(this.reservationForm.value)
     }
@@ -254,8 +265,15 @@ export class CheckInCriteriaComponent {
         this[table] = JSON.parse(this.sessionStorageService.getItem(table))
     }
 
+    private populateDropdownFromDexieDB(dexieTable: string, filteredTable: string, formField: string, modelProperty: string, orderBy: string): void {
+        this.dexieService.table(dexieTable).orderBy(orderBy).toArray().then((response) => {
+            this[dexieTable] = response.filter(x => x.isActive)
+            this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(dexieTable, modelProperty, value)))
+        })
+    }
+
     private populateDropdowns(): void {
-        this.populateDropdownFromLocalStorage('destinations')
+        this.populateDropdownFromDexieDB('destinations', 'dropdownDestinations', 'destination', 'description', 'description')
     }
 
     private setLocale(): void {

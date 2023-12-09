@@ -1,8 +1,8 @@
 // ng build
 
 export const environment = {
-    apiUrl: 'https://localhost:5001/api',
-    url: 'https://localhost:5001',
+    apiUrl: 'https://localhost:6001/api',
+    url: 'https://localhost:6001',
     appName: 'Corfu Cruises',
     clientUrl: 'https://localhost:4200',
     defaultLanguage: 'en-GB',

@@ -17,6 +17,7 @@ namespace API.Models {
         public DateTime Birthdate { get; set; }
         public string Remarks { get; set; }
         public string SpecialCare { get; set; }
+        public bool IsBoarded { get; set; }
         // Navigation
         public Gender Gender { get; set; }
         public Nationality Nationality { get; set; }
