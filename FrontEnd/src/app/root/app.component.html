@@ -1,17 +1,23 @@
 <div id="wrapper">
 
-    <div id="main">
+    <div id="topbar">
+    </div>
 
-        <top-bar></top-bar>
-
-        <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
-            <router-outlet #o="outlet"></router-outlet>
+    <div id="center">
+        <div id="leftbar">
+            <language-menu></language-menu>
         </div>
-
+        <div id="main">
+            <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
+                <router-outlet #o="outlet"></router-outlet>
+            </div>
+        </div>
+        <div id="rightbar">
+        </div>
     </div>
 
-    <div *ngIf="isLoading">
-        <loading-spinner></loading-spinner>
-    </div>
+</div>
 
+<div *ngIf="isLoading">
+    <loading-spinner></loading-spinner>
 </div>

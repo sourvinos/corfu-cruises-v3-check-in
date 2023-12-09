@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 // Custom
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
@@ -8,19 +9,20 @@ import { SessionStorageService } from 'src/app/shared/services/session-storage.s
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['../../../../assets/styles/custom/forms.css', './home.component.css']
 })
 
 export class HomeComponent {
 
     //#region variables
 
+    public form: FormGroup
     public companyLogo: any
     public ngVersion: any
 
     //#endregion
 
-    constructor(private dateHelperService: DateHelperService, private helperService: HelperService, private sessionStorageService: SessionStorageService, private titleService: Title) { }
+    constructor(private formBuilder: FormBuilder, private dateHelperService: DateHelperService, private helperService: HelperService, private sessionStorageService: SessionStorageService, private titleService: Title) { }
 
     //#region lifecyle hooks
 
@@ -28,6 +30,7 @@ export class HomeComponent {
         this.getAppName()
         this.setWindowTitle()
         this.getNgVersion()
+        this.initForm()
     }
 
     //#endregion
@@ -40,6 +43,12 @@ export class HomeComponent {
 
     private getNgVersion(): any {
         this.ngVersion = VERSION.full
+    }
+
+    private initForm(): void {
+        this.form = this.formBuilder.group({
+            date: ['', Validators.required]
+        })
     }
 
     private setWindowTitle(): void {

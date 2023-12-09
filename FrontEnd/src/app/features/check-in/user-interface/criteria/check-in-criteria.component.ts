@@ -7,9 +7,11 @@ import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 // Custom
-import { CheckInService } from '../../classes/services/check-in.service'
+import { CheckInHelperService } from '../../classes/services/check-in.helper.service'
+import { CheckInReservationWriteDto } from '../../classes/dtos/check-in-reservation-write-dto'
+import { CheckInHttpService } from '../../classes/services/check-in.http.service'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
-import { DestinationActiveVM } from 'src/app/features/destinations/classes/view-models/destination-active-vm'
+import { DestinationAutoCompleteVM } from 'src/app/features/destinations/classes/view-models/destination-autocomplete-vm'
 import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { HelperService, indicate } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
@@ -18,8 +20,6 @@ import { MessageDialogService } from 'src/app/shared/services/message-dialog.ser
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
-import { ReservationHelperService } from 'src/app/features/reservations/classes/services/reservation.helper.service'
-import { ReservationWriteDto } from 'src/app/features/reservations/classes/dtos/form/reservation-write-dto'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 
 @Component({
@@ -42,7 +42,7 @@ export class CheckInCriteriaComponent {
 
     public isLoading = new Subject<boolean>()
     public selected: Date | null
-    public destinations: DestinationActiveVM[] = []
+    public destinations: DestinationAutoCompleteVM[] = []
     public options: any[] = [
         { 'id': 1, 'description': this.getLabel('step-1-yes') },
         { 'id': 2, 'description': this.getLabel('step-1-no') }
@@ -52,7 +52,7 @@ export class CheckInCriteriaComponent {
     //#endregion
 
     constructor(
-        private checkInService: CheckInService,
+        private checkInService: CheckInHttpService,
         private dateAdapter: DateAdapter<any>,
         private dateHelperService: DateHelperService,
         private dialogService: ModalDialogService,
@@ -64,7 +64,7 @@ export class CheckInCriteriaComponent {
         private messageHintService: MessageInputHintService,
         private messageLabelService: MessageLabelService,
         private messageSnackbarService: MessageDialogService,
-        private reservationHelperService: ReservationHelperService,
+        private checkInHelperService: CheckInHelperService,
         private router: Router,
         private sessionStorageService: SessionStorageService
     ) { }
@@ -202,8 +202,8 @@ export class CheckInCriteriaComponent {
         this.unsubscribe.unsubscribe()
     }
 
-    private flattenForm(): ReservationWriteDto {
-        return this.reservationHelperService.flattenForm(this.reservationForm.value)
+    private flattenForm(): CheckInReservationWriteDto {
+        return this.checkInHelperService.flattenForm(this.reservationForm.value)
     }
 
     private getToday(): string {
@@ -304,7 +304,7 @@ export class CheckInCriteriaComponent {
         })
     }
 
-    private saveReservation(reservation: ReservationWriteDto): void {
+    private saveReservation(reservation: CheckInReservationWriteDto): void {
         this.checkInService.save(reservation).pipe(indicate(this.isLoading)).subscribe({
             next: () => {
                 console.log('Saved')

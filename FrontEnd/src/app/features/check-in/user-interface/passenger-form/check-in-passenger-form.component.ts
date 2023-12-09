@@ -14,7 +14,7 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { NationalityVM } from 'src/app/features/reservations/classes/view-models/passenger/nationality-vm'
+import { NationalityDropdownVM } from 'src/app/features/nationalities/classes/view-models/nationality-autocomplete-vm'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 import { ValidationService } from 'src/app/shared/services/validation.service'
@@ -22,7 +22,7 @@ import { ValidationService } from 'src/app/shared/services/validation.service'
 @Component({
     selector: 'check-in-passenger-form',
     templateUrl: './check-in-passenger-form.component.html',
-    styleUrls: [ './check-in-passenger-form.component.css']
+    styleUrls: ['./check-in-passenger-form.component.css']
 })
 
 export class CheckInPassengerFormComponent {
@@ -45,7 +45,7 @@ export class CheckInPassengerFormComponent {
     public arrowIcon = new BehaviorSubject('arrow_drop_down')
 
     public dropdownGenders: Observable<SimpleEntity[]>
-    public dropdownNationalities: Observable<NationalityVM[]>
+    public dropdownNationalities: Observable<NationalityDropdownVM[]>
 
     //#endregion
 
@@ -112,7 +112,7 @@ export class CheckInPassengerFormComponent {
         this.closeDialog()
     }
 
-    public updateFieldsAfterNationalitySelection(value: NationalityVM): void {
+    public updateFieldsAfterNationalitySelection(value: NationalityDropdownVM): void {
         this.form.patchValue({
             nationality: {
                 'id': value.id,
@@ -183,7 +183,7 @@ export class CheckInPassengerFormComponent {
                     }
                 })
             } catch {
-                // 
+                //
             }
         }
     }
