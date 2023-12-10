@@ -26,6 +26,7 @@
 @import url("../material/mat-input.css");
 @import url("../material/mat-menu.css");
 @import url("../material/mat-radio.css");
+@import url("../material/mat-stepper.css");
 @import url("../material/mat-tooltip.css");
 @import url("../prime/prime-checkbox.css");
 @import url("../prime/prime-filter-input.css");
@@ -135,8 +136,4 @@ p {
     font-family: var(--font-family-ubuntu);
     font-size: 1rem;
     margin: 0;
-}
-
-.mat-vertical-content {
-    padding: 24px 0 24px 24px !important;
 }

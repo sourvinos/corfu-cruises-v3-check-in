@@ -7,8 +7,8 @@
                     <span class="lastname">{{ passenger.lastname }}</span>
                     <span class="firstname">{{ passenger.firstname }}</span>
                 </div>
-                <span (click)="editRecord(passenger)" class="clickable edit-icon material-icons">edit</span>
-                <span (click)="deleteRecord(passenger)" class="clickable delete-icon material-icons">delete</span>
+                <mat-icon (click)="editRecord(passenger)" class="clickable material-icons-outlined">editRecord</mat-icon>
+                <mat-icon (click)="deleteRecord(passenger)" class="clickable material-icons-outlined">delete</mat-icon>
             </div>
         </div>
     </div>
@@ -18,9 +18,10 @@
             <mat-icon class="material-icons-outlined">group</mat-icon>
             <span class="passenger-count">{{ passengers != null ? passengers.length : 0 }}</span>
         </div>
-        <button [disabled]="passengers.length >= initialPassengerCount" (click)="newRow()" class="transparent" mat-mini-fab>
+        <mat-icon (click)="newRow()" class="clickable material-icons-outlined">add</mat-icon>
+        <!-- <button [disabled]="passengers.length >= initialPassengerCount" (click)="newRow()" mat-mini-fab>
             <mat-icon class="material-icons-outlined">add</mat-icon>
-        </button>
+        </button> -->
     </div>
 
 </div>

@@ -139,5 +139,14 @@
                 "description": "Next"
             }
         ]
+    },
+    {
+        "feature": "passengerForm",
+        "labels": [
+            {
+                "id": "lastname",
+                "description": "Lastname"
+            }
+        ]
     }
 ]

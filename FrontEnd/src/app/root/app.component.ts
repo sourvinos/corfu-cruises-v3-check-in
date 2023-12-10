@@ -5,6 +5,8 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
 import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
+import { ModalDialogService } from '../shared/services/modal-dialog.service'
+import { MessageDialogService } from '../shared/services/message-dialog.service'
 
 @Component({
     selector: 'root',
@@ -21,7 +23,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(@Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private loadingSpinnerService: LoadingSpinnerService, private router: Router) {
+    constructor(private messageSnackbarService: MessageDialogService, private dialogService: ModalDialogService, @Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private loadingSpinnerService: LoadingSpinnerService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -66,6 +68,10 @@ export class AppComponent {
 
     private setUserSelect(): void {
         document.getElementById('main').style.userSelect = environment.cssUserSelect
+    }
+
+    public showHelpDialog(): void {
+        this.dialogService.open(this.messageSnackbarService.helpDialog(), 'info', ['ok'])
     }
 
     //#endregion

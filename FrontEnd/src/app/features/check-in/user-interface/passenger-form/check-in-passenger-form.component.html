@@ -4,7 +4,9 @@
         <form id="form" [formGroup]="form" autocomplete="off">
             <!-- Lastname -->
             <mat-form-field>
-                <input [inputTabStop]="input" [placeholder]="getLabel('lastname')" data-tabindex="1" formControlName="lastname" matInput>
+                <mat-label>{{ getLabel('lastname') }}</mat-label>
+                <input [inputTabStop]="input" data-tabindex="1" formControlName="lastname" matInput>
+                <mat-hint>{{ getLabel("lastname-hint") }}</mat-hint>
                 <mat-error *ngIf="lastname.hasError('required')">{{ getHint("required") }}</mat-error>
                 <mat-error *ngIf="lastname.hasError('maxlength')">{{ getHint("maxLength", lastname.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>

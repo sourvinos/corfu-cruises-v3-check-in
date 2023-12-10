@@ -1,3 +1,7 @@
+:host {
+    height: 100%;
+}
+
 #wrapper {
     background-color: var(--color-background);
     background-position: left;
@@ -7,34 +11,26 @@
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    max-width: 500px;
+    min-width: 347px;
     overflow: hidden;
     transition: background-color var(--theme-delay);
 }
 
-#leftbar, #rightbar {
-    display: flex;
-    flex-direction: column;
-    min-width: 4rem;
-    padding: 0 0.5rem 4rem 0.5rem;
-}
-
-#topbar {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    padding: 0.8125rem 6rem 0.8125rem 6rem;
-}
-
-#center {
-    display: flex;
+#outer-content {
     height: 100%;
-    flex-direction: row;
 }
 
-#main {
+#topbar, #bottombar {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0 0 0 auto;
+    padding: 8px 8px 8px 8px;
     width: 100%;
 }
 
-#outer-content {
-    height: 100%;
+#bottombar span:hover {
+    cursor: pointer;
 }

@@ -2,9 +2,9 @@
 
 export const environment = {
     apiUrl: 'http://checkindemo-001-site1.htempurl.com/api',
-    url: 'checkindemo-001-site1.htempurl.com',
+    url: 'http://checkindemo-001-site1.htempurl.com',
     appName: 'Corfu Cruises',
-    clientUrl: 'checkindemo-001-site1.htempurl.com',
+    clientUrl: 'http://checkindemo-001-site1.htempurl.com',
     defaultLanguage: 'en-GB',
     defaultTheme: 'light',
     emailFooter: {
