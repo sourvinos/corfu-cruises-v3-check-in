@@ -1,27 +1,15 @@
 [
     {
         "id": "reservations-reservations",
-        "description": "Reservierung"
+        "description": "Reservations"
     },
     {
         "id": "reservations-availability",
-        "description": "Verfügbarkeit"
+        "description": "Availability"
     },
     {
-        "id": "reservations-ledgers",
+        "id": "reservations-my-ledger",
         "description": "Mein Hauptbuch"
-    },
-    {
-        "id": "tasks-embarkation",
-        "description": "Einschiffung"
-    },
-    {
-        "id": "tasks-manifest",
-        "description": "Schiffsmanifest"
-    },
-    {
-        "id": "tasks-ledgers",
-        "description": "Kundenbücher"
     },
     {
         "id": "tables-coachRoutes",
@@ -80,15 +68,23 @@
         "description": "Benutzer"
     },
     {
-        "id": "user-account",
-        "description": "Mein Konto"
+        "id": "tasks-boarding",
+        "description": "Boarding"
     },
     {
-        "id": "user-logout",
-        "description": "Ausloggen"
+        "id": "tasks-manifest",
+        "description": "Schiffsmanifest"
     },
     {
-        "id": "settings-general-settings",
+        "id": "tasks-ledgers",
+        "description": "Kundenbücher"
+    },
+    {
+        "id": "tasks-statistics",
+        "description": "Statistiken"
+    },
+    {
+        "id": "parameters-parameters",
         "description": "Einstellungen"
     }
 ]

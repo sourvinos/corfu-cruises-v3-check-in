@@ -8,20 +8,8 @@
         "description": "Availability"
     },
     {
-        "id": "reservations-ledgers",
+        "id": "reservations-my-ledger",
         "description": "My ledger"
-    },
-    {
-        "id": "tasks-embarkation",
-        "description": "Embarkation"
-    },
-    {
-        "id": "tasks-manifest",
-        "description": "Passengers manifest"
-    },
-    {
-        "id": "tasks-ledgers",
-        "description": "Customer Ledgers"
     },
     {
         "id": "tables-coachRoutes",
@@ -80,15 +68,23 @@
         "description": "Users"
     },
     {
-        "id": "user-account",
-        "description": "My account"
+        "id": "tasks-boarding",
+        "description": "Boarding"
     },
     {
-        "id": "user-logout",
-        "description": "Logout"
+        "id": "tasks-manifest",
+        "description": "Ship manifest"
     },
     {
-        "id": "settings-general-settings",
+        "id": "tasks-ledgers",
+        "description": "Customer ledgers"
+    },
+    {
+        "id": "tasks-statistics",
+        "description": "Statistics"
+    },
+    {
+        "id": "parameters-parameters",
         "description": "Settings"
     }
 ]

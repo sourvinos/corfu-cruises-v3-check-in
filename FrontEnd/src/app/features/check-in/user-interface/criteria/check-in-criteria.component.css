@@ -1,3 +1,29 @@
+:host {
+    display: flex;
+    height: 100%;
+}
+
+#content {
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto 0 auto;
+    min-width: 347px;
+    padding: 1rem 1rem 1rem 0;
+    overflow-y: scroll;
+}
+
+#stepper > .mat-stepper-vertical {
+    background-color: #efefef;
+}
+
+#complex-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem 0;
+}
+
 #list {
     display: flex;
     flex-direction: column;
@@ -10,12 +36,6 @@
     display: flex;
     justify-content: space-between;
     padding: 0 4rem 1rem 4rem !important;
-}
-
-#content {
-    height: 100%;
-    margin: 0 2rem 0 2rem;
-    overflow-y: scroll;
 }
 
 #footer {
@@ -50,8 +70,9 @@
 
 .buttons {
     display: flex;
-    flex-direction: row;
     gap: 0.5rem;
+    justify-content: flex-end;
+    margin: 0 0.5rem 0 0;
 }
 
 .text {
@@ -70,23 +91,22 @@
 
 .reservation-item-title {
     color: var(--color-yellow);
-    font-family: var(--font-family-asty);
-    font-size: 0.8rem;
+    font-family: var(--font-family-segoe-ui);
+    font-size: 15px;
     font-weight: 300;
     width: 40%;
 }
 
 .reservation-item-value {
     color: var(--color-green);
-    font-family: var(--font-family-asty);
-    font-size: 0.8rem;
+    font-family: var(--font-family-segoe-ui);
+    font-size: 15px;
     font-weight: 300;
 }
 
 .instructions {
     display: flex;
     margin: 0 0.5rem 0 0.5rem;
-    padding: 0.5rem;
 }
 
 .instructions.last {
@@ -100,10 +120,9 @@
 
 .instructions .text {
     color: var(--color-text);
-    font-family: var(--font-family-asty);
-    font-size: 0.8125rem;
+    font-family: var(--font-family-segoe-ui);
+    font-size: 15px;
     font-weight: 300;
-    margin: 0.3125rem 0 0 0.5rem;
 }
 
 .instructions.transparent {

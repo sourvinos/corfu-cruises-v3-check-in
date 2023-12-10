@@ -8,20 +8,8 @@
         "description": "Διαθεσιμότητα"
     },
     {
-        "id": "reservations-ledgers",
+        "id": "reservations-my-ledger",
         "description": "Η καρτέλα μου"
-    },
-    {
-        "id": "tasks-embarkation",
-        "description": "Επιβίβαση"
-    },
-    {
-        "id": "tasks-manifest",
-        "description": "Κατάσταση επιβαινόντων"
-    },
-    {
-        "id": "tasks-ledgers",
-        "description": "Καρτέλες πελατών"
     },
     {
         "id": "tables-coachRoutes",
@@ -80,15 +68,23 @@
         "description": "Χρήστες"
     },
     {
-        "id": "user-account",
-        "description": "Ο λογαριασμός μου"
+        "id": "tasks-boarding",
+        "description": "Επιβίβαση"
     },
     {
-        "id": "user-logout",
-        "description": "Αποσύνδεση"
+        "id": "tasks-manifest",
+        "description": "Κατάσταση πλοίου"
     },
     {
-        "id": "settings-general-settings",
+        "id": "tasks-ledgers",
+        "description": "Καρτέλες πελατών"
+    },
+    {
+        "id": "tasks-statistics",
+        "description": "Στατιστικά"
+    },
+    {
+        "id": "parameters-parameters",
         "description": "Ρυθμίσεις"
     }
 ]

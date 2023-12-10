@@ -22,6 +22,9 @@ import { MessageLabelService } from 'src/app/shared/services/message-label.servi
 import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { DexieService } from 'src/app/shared/services/dexie.service'
+import { NationalityService } from 'src/app/features/nationalities/classes/services/nationality.service'
+import { GenderService } from 'src/app/features/genders/classes/services/gender-http.service'
+import { DestinationService } from 'src/app/features/destinations/classes/services/destination.service'
 
 @Component({
     selector: 'check-in-criteria',
@@ -54,6 +57,10 @@ export class CheckInCriteriaComponent {
     //#endregion
 
     constructor(
+        private genderService: GenderService,
+        private destinationService: DestinationService,
+        private nationalityService: NationalityService,
+
         private dexieService: DexieService,
         private checkInService: CheckInHttpService,
         private dateAdapter: DateAdapter<any>,
@@ -75,9 +82,10 @@ export class CheckInCriteriaComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
+        this.populateDexieFromAPI()
+        this.populateDropdowns()
         this.initSearchForm()
         this.initReservationForm()
-        this.populateDropdowns()
         this.setLocale()
         this.subscribeToInteractionService()
         this.setTabTitle()
@@ -102,6 +110,14 @@ export class CheckInCriteriaComponent {
                 response == true ? stepper.next() : null
             })
         }
+    }
+
+    public doTodayTasks(): void {
+        this.searchForm.patchValue({
+            complexGroup: {
+                date: this.dateHelperService.formatDateToIso(new Date())
+            }
+        })
     }
 
     public getEmoji(emoji: string): string {
@@ -273,7 +289,9 @@ export class CheckInCriteriaComponent {
     }
 
     private populateDropdowns(): void {
-        this.populateDropdownFromDexieDB('destinations', 'dropdownDestinations', 'destination', 'description', 'description')
+        setTimeout(() => {
+            this.populateDropdownFromDexieDB('destinations', 'dropdownDestinations', 'destination', 'description', 'description')
+        }, 5000)
     }
 
     private setLocale(): void {
@@ -342,6 +360,12 @@ export class CheckInCriteriaComponent {
                 this.dialogService.open(this.messageSnackbarService.reservationNotFound(), 'error', ['ok'])
                 break
         }
+    }
+
+    private populateDexieFromAPI(): void {
+        this.dexieService.populateTable('destinations', this.destinationService)
+        this.dexieService.populateTable('genders', this.genderService)
+        this.dexieService.populateTable('nationalities', this.nationalityService)
     }
 
     //#endregion

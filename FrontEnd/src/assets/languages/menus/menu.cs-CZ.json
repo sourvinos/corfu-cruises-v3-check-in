@@ -1,27 +1,15 @@
 [
     {
-        "id": "reservations-reservations",
-        "description": "Rezervace"
+        "id": "reservations-calendar",
+        "description": "Reservations"
     },
     {
         "id": "reservations-availability",
         "description": "Dostupnost"
     },
     {
-        "id": "reservations-ledgers",
-        "description": "Moje kniha"
-    },
-    {
-        "id": "tasks-embarkation",
-        "description": "Nalodění"
-    },
-    {
-        "id": "tasks-manifest",
-        "description": "Seznam cestujících"
-    },
-    {
-        "id": "tasks-ledgers",
-        "description": "Knihy zákazníků"
+        "id": "reservations-my-ledger",
+        "description": "Moje účetní kniha"
     },
     {
         "id": "tables-coachRoutes",
@@ -80,15 +68,23 @@
         "description": "Uživatelé"
     },
     {
-        "id": "user-account",
-        "description": "Můj účet"
+        "id": "tasks-boarding",
+        "description": "Boarding"
     },
     {
-        "id": "user-logout",
-        "description": "Odhlásit set"
+        "id": "tasks-manifest",
+        "description": "Lodní manifest"
     },
     {
-        "id": "settings-general-settings",
+        "id": "tasks-ledgers",
+        "description": "Knihy zákazníků"
+    },
+    {
+        "id": "tasks-statistics",
+        "description": "Statistiky"
+    },
+    {
+        "id": "parameters-parameters",
         "description": "Nastavení"
     }
 ]

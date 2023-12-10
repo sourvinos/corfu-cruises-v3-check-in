@@ -1,9 +1,13 @@
 * {
-    --color-background: #ffffff;
-    --color-border: #d9d9d9;
-    --color-content-background: #f7f7f78f;
-    --color-hover: #e9e9e9;
-    --color-shadow: 0;
-    --color-table-headers: #fafafa;
+    --color-background: #fefefe;
+    --color-calendar-day: #dbdbdb;
+    --color-dialog-areas-seperator: #ebebeb;
+    --color-dialog-background: #fefefe;
+    --color-flag-border: #000000;
+    --color-input-background: #F9F9F9;
+    --color-input-error: #ff8a82;
+    --color-secondary: #7BB7DD;
+    --color-table-row-percentage: #ffcdb2;
     --color-text: #000000;
+    --color-transparent-button: #000000;
 }

@@ -3,18 +3,6 @@
         "feature": "loginForm",
         "labels": [
             {
-                "id": "title-top",
-                "description": "Bienvenue à"
-            },
-            {
-                "id": "title-middle",
-                "description": "CORFU CRUISES"
-            },
-            {
-                "id": "title-bottom",
-                "description": "Croisière avec nous!"
-            },
-            {
                 "id": "header",
                 "description": "Connexion"
             },
@@ -105,6 +93,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -157,6 +153,14 @@
             {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "deleteButton",
@@ -213,6 +217,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -236,6 +248,10 @@
             {
                 "id": "headerRouteAbbreviation",
                 "description": "Route"
+            },
+            {
+                "id": "headerPortAbbreviation",
+                "description": "Port"
             },
             {
                 "id": "headerDescription",
@@ -271,6 +287,10 @@
                 "description": "Route"
             },
             {
+                "id": "port",
+                "description": "Port"
+            },
+            {
                 "id": "description",
                 "description": "Description"
             },
@@ -289,6 +309,14 @@
             {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "deleteButton",
@@ -333,12 +361,12 @@
                 "description": "Port"
             },
             {
-                "id": "description",
-                "description": "Description"
-            },
-            {
                 "id": "abbreviation",
                 "description": "Abr."
+            },
+            {
+                "id": "description",
+                "description": "Description"
             },
             {
                 "id": "stopOrder",
@@ -347,6 +375,14 @@
             {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "deleteButton",
@@ -407,12 +443,20 @@
                 "description": "Port"
             },
             {
-                "id": "hasTransfer",
-                "description": "A transfer"
-            },
-            {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
+                "id": "hasTransfer",
+                "description": "A transfer"
             },
             {
                 "id": "deleteButton",
@@ -454,10 +498,6 @@
             {
                 "id": "newRecord",
                 "description": "Nouveau record"
-            },
-            {
-                "id": "showConnectedUsers",
-                "description": "UTILISATEURS CONNECTÉS"
             }
         ]
     },
@@ -469,11 +509,7 @@
                 "description": "Utilisateur"
             },
             {
-                "id": "my-header",
-                "description": "Mon compte"
-            },
-            {
-                "id": "userName",
+                "id": "username",
                 "description": "Nom"
             },
             {
@@ -482,11 +518,15 @@
             },
             {
                 "id": "customer",
-                "description": "Client en connection"
+                "description": "Client connecté"
             },
             {
                 "id": "email",
                 "description": "Email"
+            },
+            {
+                "id": "isFirstFieldFocused",
+                "description": "Mise au point automatique sur le premier champ du formulaire"
             },
             {
                 "id": "isAdmin",
@@ -497,12 +537,20 @@
                 "description": "Actif"
             },
             {
-                "id": "deleteButton",
-                "description": "Supprimer"
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "changePasswordButton",
                 "description": "Modifier le mot de passe"
+            },
+            {
+                "id": "emailUserDetails",
+                "description": "Envoi de données par e-mail"
             },
             {
                 "id": "saveButton",
@@ -518,7 +566,7 @@
                 "description": "Utilisateur"
             },
             {
-                "id": "userName",
+                "id": "username",
                 "description": "Utilisateur"
             },
             {
@@ -542,16 +590,16 @@
                 "description": "Client en connection"
             },
             {
+                "id": "isFirstFieldFocused",
+                "description": "Mise au point automatique sur le premier champ du formulaire"
+            },
+            {
                 "id": "isAdmin",
                 "description": "Administrateur"
             },
             {
                 "id": "isActive",
                 "description": "Actif"
-            },
-            {
-                "id": "sendLoginCredentials",
-                "description": "ENVOYER A L' EMAIL"
             },
             {
                 "id": "saveButton",
@@ -592,36 +640,12 @@
                 "description": "Rapport quotidien sur les réservations"
             },
             {
-                "id": "date",
-                "description": "Date"
-            },
-            {
-                "id": "summaryHeaderDestinations",
-                "description": "Destinations"
-            },
-            {
-                "id": "summaryHeaderCustomers",
-                "description": "Clients"
-            },
-            {
-                "id": "summaryHeaderRoutes",
-                "description": "Itineraires"
-            },
-            {
-                "id": "summaryHeaderDrivers",
-                "description": "conducteurs"
-            },
-            {
-                "id": "summaryHeaderPorts",
-                "description": "Des ports"
-            },
-            {
-                "id": "summaryHeaderShips",
-                "description": "Bateaux"
-            },
-            {
                 "id": "assignToDriverButton",
                 "description": "Affectation des passagers a un conducteur"
+            },
+            {
+                "id": "assignToPortButton",
+                "description": "Changer de port de départ"
             },
             {
                 "id": "assignToShipButton",
@@ -632,24 +656,12 @@
                 "description": "Creation du fichier PDF des conducteurs"
             },
             {
+                "id": "rangeDelete",
+                "description": "Suppression des enregistrements sélectionnés"
+            },
+            {
                 "id": "newButton",
                 "description": "Nouvelle"
-            },
-            {
-                "id": "total",
-                "description": "Total"
-            },
-            {
-                "id": "displayed",
-                "description": "Montrées"
-            },
-            {
-                "id": "selected",
-                "description": "sélectionnées"
-            },
-            {
-                "id": "headerSelected",
-                "description": "C"
             },
             {
                 "id": "headerRefNo",
@@ -721,22 +733,6 @@
                 "description": "Réservation"
             },
             {
-                "id": "tabGeneral",
-                "description": "Aperçu"
-            },
-            {
-                "id": "tabPassengers",
-                "description": "Passagers"
-            },
-            {
-                "id": "tabMisc",
-                "description": "Détails"
-            },
-            {
-                "id": "refNo",
-                "description": "RefNo"
-            },
-            {
                 "id": "date",
                 "description": "Date"
             },
@@ -805,20 +801,36 @@
                 "description": "Remarques"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
+                "id": "printBoardingPass",
+                "description": "Imprimer la carte d'embarquement"
+            },
+            {
+                "id": "emailBoardingPass",
+                "description": "Envoyer la carte d'embarquement par e-mail"
+            },
+            {
+                "id": "toggle-button-general",
+                "description": "Générales"
+            },
+            {
+                "id": "toggle-button-passengers",
+                "description": "Passagers"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
             {
                 "id": "saveButton",
                 "description": "Enregistrer"
-            },
-            {
-                "id": "createVoucherOnServer",
-                "description": "Envoyer un bon d'achat par e-mail"
-            },
-            {
-                "id": "createVoucherOnClient",
-                "description": "Imprimer le bon d'achat"
             }
         ]
     },
@@ -834,12 +846,8 @@
                 "description": "Email"
             },
             {
-                "id": "saveButton",
-                "description": "CONTINUER"
-            },
-            {
-                "id": "weNeedYourEmail",
-                "description": "Donner l'adresse email et on donnera des instructions pour creer un mot de passe de nouvel utilisateur"
+                "id": "submitButton",
+                "description": "Continuer"
             }
         ]
     },
@@ -872,7 +880,7 @@
                 "description": "OK"
             },
             {
-                "id": "noButton",
+                "id": "cancelButton",
                 "description": "Annuler"
             }
         ]
@@ -893,7 +901,28 @@
                 "description": "OK"
             },
             {
-                "id": "noButton",
+                "id": "cancelButton",
+                "description": "Annuler"
+            }
+        ]
+    },
+    {
+        "feature": "assignToPort",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Changer de port de départ"
+            },
+            {
+                "id": "subHeader",
+                "description": "Sélectionner le nouveau port de départ"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "cancelButton",
                 "description": "Annuler"
             }
         ]
@@ -914,7 +943,7 @@
                 "description": "OK"
             },
             {
-                "id": "noButton",
+                "id": "cancelButton",
                 "description": "Annuler"
             }
         ]
@@ -950,6 +979,10 @@
             {
                 "id": "header",
                 "description": "Navire"
+            },
+            {
+                "id": "abbreviation",
+                "description": "Abr."
             },
             {
                 "id": "description",
@@ -988,6 +1021,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -1003,10 +1044,6 @@
             {
                 "id": "header",
                 "description": "Horaire"
-            },
-            {
-                "id": "date",
-                "description": "Plage de dates"
             },
             {
                 "id": "destination",
@@ -1029,6 +1066,10 @@
                 "description": "Jours"
             },
             {
+                "id": "filterPlaceholder",
+                "description": "Écrivez quelque chose..."
+            },
+            {
                 "id": "selected",
                 "description": "Sélectionné"
             },
@@ -1041,10 +1082,6 @@
     {
         "feature": "passengerList",
         "labels": [
-            {
-                "id": "headerId",
-                "description": "Id"
-            },
             {
                 "id": "headerLastname",
                 "description": "Nom de famille"
@@ -1099,6 +1136,10 @@
                 "description": "Remarques"
             },
             {
+                "id": "isBoarded",
+                "description": "Embarque"
+            },
+            {
                 "id": "cancelButton",
                 "description": "Annuler"
             },
@@ -1145,6 +1186,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -1155,11 +1204,11 @@
         ]
     },
     {
-        "feature": "embarkationCriteria",
+        "feature": "boardingCriteria",
         "labels": [
             {
                 "id": "header",
-                "description": "Critères d'embarquement"
+                "description": "Embarquement"
             },
             {
                 "id": "filterPlaceholder",
@@ -1192,15 +1241,15 @@
         ]
     },
     {
-        "feature": "embarkationList",
+        "feature": "boardingList",
         "labels": [
             {
                 "id": "header",
                 "description": "Embarquement"
             },
             {
-                "id": "headerEmbarkationStatus",
-                "description": ""
+                "id": "headerBoardingStatus",
+                "description": "S"
             },
             {
                 "id": "headerRefNo",
@@ -1255,24 +1304,8 @@
                 "description": "Pays"
             },
             {
-                "id": "headerStatus",
-                "description": "Embarquement"
-            },
-            {
-                "id": "criteria-destinations",
-                "description": "Destinations"
-            },
-            {
-                "id": "criteria-ports",
-                "description": "Ports"
-            },
-            {
-                "id": "criteria-ships",
-                "description": "Navires"
-            },
-            {
                 "id": "boardedFilter",
-                "description": "EMBARQUER"
+                "description": "EMBARQUÉ"
             },
             {
                 "id": "indeterminateFilter",
@@ -1309,56 +1342,10 @@
             {
                 "id": "okButton",
                 "description": "OK"
-            }
-        ]
-    },
-    {
-        "feature": "nationalityList",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Nationalites"
             },
             {
-                "id": "newButton",
-                "description": "Nouvelle"
-            },
-            {
-                "id": "headerDescription",
-                "description": "Description"
-            },
-            {
-                "id": "headerFlag",
-                "description": "Drapeau"
-            }
-        ]
-    },
-    {
-        "feature": "nationalityForm",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Nationalite"
-            },
-            {
-                "id": "description",
-                "description": "Description"
-            },
-            {
-                "id": "code",
-                "description": "Code"
-            },
-            {
-                "id": "isActive",
-                "description": "Actif"
-            },
-            {
-                "id": "deleteButton",
-                "description": "Supprimer"
-            },
-            {
-                "id": "saveButton",
-                "description": "Enregistrer"
+                "id": "remarksOnNewLine",
+                "description": "Afficher les commentaires sur une ligne séparée"
             }
         ]
     },
@@ -1372,10 +1359,6 @@
             {
                 "id": "filterPlaceholder",
                 "description": "Écrivez quelque chose..."
-            },
-            {
-                "id": "date",
-                "description": "Plage de dates"
             },
             {
                 "id": "customers",
@@ -1411,16 +1394,16 @@
                 "description": "Registres des clients"
             },
             {
-                "id": "headerCustomer",
-                "description": "Client"
-            },
-            {
                 "id": "headerDate",
                 "description": "Date"
             },
             {
                 "id": "headerDestination",
                 "description": "Destination"
+            },
+            {
+                "id": "headerPickupPoint",
+                "description": "Point de collecte"
             },
             {
                 "id": "headerShip",
@@ -1455,10 +1438,6 @@
                 "description": "L"
             },
             {
-                "id": "headerPax",
-                "description": "Σ"
-            },
-            {
                 "id": "headerNoShow",
                 "description": "N/S"
             },
@@ -1471,24 +1450,8 @@
                 "description": "Créer un PDF"
             },
             {
-                "id": "criteria-customers",
-                "description": "Clients"
-            },
-            {
-                "id": "criteria-destinations",
-                "description": "Destinations"
-            },
-            {
-                "id": "criteria-ports",
-                "description": "Ports"
-            },
-            {
-                "id": "criteria-ships",
-                "description": "Navires"
-            },
-            {
-                "id": "ok-button",
-                "description": "OK"
+                "id": "remarksOnNewLine",
+                "description": "Afficher les commentaires sur une ligne séparée"
             }
         ]
     },
@@ -1497,39 +1460,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Critères pour la création d'un manifeste des passagers"
+                "description": "Manifeste des passagers"
             },
             {
                 "id": "filterPlaceholder",
                 "description": "Écrivez quelque chose..."
             },
             {
-                "id": "headerRouteSelector",
-                "description": "Sélection de l'itinéraire"
-            },
-            {
-                "id": "subHeaderRouteSelector",
-                "description": "Sélectionnez la route que le navire suivra."
-            },
-            {
                 "id": "date",
                 "description": "Date"
             },
             {
-                "id": "destination",
-                "description": "Destination"
+                "id": "destinations",
+                "description": "Destinations"
             },
             {
                 "id": "ports",
                 "description": "Ports"
             },
             {
-                "id": "ship",
-                "description": "Navire"
-            },
-            {
-                "id": "shipRoute",
-                "description": "Route"
+                "id": "ships",
+                "description": "Navires"
             },
             {
                 "id": "selected",
@@ -1557,24 +1508,8 @@
                 "description": "Manifeste des passagers"
             },
             {
-                "id": "criteriaDestination",
-                "description": "Destination"
-            },
-            {
-                "id": "criteriaPorts",
-                "description": "Ports"
-            },
-            {
-                "id": "criteriaShip",
-                "description": "Navire"
-            },
-            {
                 "id": "headerOccupant",
                 "description": "Propriété"
-            },
-            {
-                "id": "headerId",
-                "description": "Id"
             },
             {
                 "id": "headerLastname",
@@ -1594,15 +1529,36 @@
             },
             {
                 "id": "countPassengers",
-                "description": "p"
+                "description": "P"
             },
             {
                 "id": "countCrew",
-                "description": "é"
+                "description": "E"
             },
             {
                 "id": "createPdf",
                 "description": "Créer un PDF"
+            }
+        ]
+    },
+    {
+        "feature": "manifestShipRouteSelector",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Δρομολόγιο πλοίου"
+            },
+            {
+                "id": "subHeader",
+                "description": "Επιλέξτε ποια διαδρομή θα ακολουθήσει το πλοίο"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "cancelButton",
+                "description": "Ακυρο"
             }
         ]
     },
@@ -1673,6 +1629,14 @@
             {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "deleteButton",
@@ -1753,6 +1717,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -1829,6 +1801,14 @@
             {
                 "id": "isActive",
                 "description": "Actif"
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
             },
             {
                 "id": "deleteButton",
@@ -1909,6 +1889,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -1983,6 +1971,14 @@
                 "description": "Actif"
             },
             {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
                 "id": "deleteButton",
                 "description": "Supprimer"
             },
@@ -2010,7 +2006,7 @@
         "labels": [
             {
                 "id": "placeholder",
-                "description": "Rechercher par RefNo"
+                "description": "RefNo"
             }
         ]
     },
@@ -2028,31 +2024,6 @@
         ]
     },
     {
-        "feature": "connectedUserList",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Utilisateurs connectés"
-            },
-            {
-                "id": "okButton",
-                "description": "OK"
-            },
-            {
-                "id": "headerId",
-                "description": "Id"
-            },
-            {
-                "id": "headerCreatedDate",
-                "description": "Connexion"
-            },
-            {
-                "id": "headerExpiryDate",
-                "description": "Déconnexion auto"
-            }
-        ]
-    },
-    {
         "feature": "cachedReservationDialog",
         "labels": [
             {
@@ -2061,11 +2032,7 @@
             },
             {
                 "id": "subHeader",
-                "description": "Nous avons trouvé une réservation en cache."
-            },
-            {
-                "id": "actionMessage",
-                "description": "Que devons-nous faire?"
+                "description": "Nous avons constaté que la réservation a été temporairement sauvegardée. Que voulez-vous que nous fassions ?"
             },
             {
                 "id": "option1",
@@ -2098,24 +2065,178 @@
         ]
     },
     {
-        "feature": "cardsMenu",
+        "feature": "honeycombMenu",
         "labels": [
             {
-                "id": "loginTitle",
-                "description": "Connexion"
+                "id": "reservations",
+                "description": "Réservations"
             },
             {
-                "id": "loginSubTitle",
-                "description": "Accès aux utilisateurs autorisés, tels que les administrateurs et les bureaux de voyage"
+                "id": "availability",
+                "description": "Disponibilité"
             },
             {
-                "id": "checkInTitle",
-                "description": "Enregistrement"
+                "id": "boarding",
+                "description": "Embarquement"
             },
             {
-                "id": "checkInSubTitle",
-                "description": "Saisissez vos coordonnées pour que l'embarquement se fasse rapidement et sans délai"
+                "id": "ledgers",
+                "description": "Registres des clients"
             },
+            {
+                "id": "schedules",
+                "description": "Horaires"
+            }
+        ]
+    },
+    {
+        "feature": "parameters",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Paramètres"
+            },
+            {
+                "id": "closingTime",
+                "description": "Démarrer"
+            },
+            {
+                "id": "phones",
+                "description": "Téléphone"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "emailΤooltip",
+                "description": "Il s'agit de l'e-mail qui sera imprimé dans le pied de page des e-mails que nous envoyons."
+            },
+            {
+                "id": "post",
+                "description": "Enregistrer original"
+            },
+            {
+                "id": "put",
+                "description": "Dernière mise à jour"
+            },
+            {
+                "id": "saveButton",
+                "description": "Enregistrer"
+            }
+        ]
+    },
+    {
+        "feature": "date-picker",
+        "labels": [
+            {
+                "id": "hint",
+                "description": "Sélectionner la date"
+            },
+            {
+                "id": "today",
+                "description": "Aujourd'hui"
+            },
+            {
+                "id": "ok",
+                "description": "Ok"
+            }
+        ]
+    },
+    {
+        "feature": "date-range-picker",
+        "labels": [
+            {
+                "id": "date",
+                "description": "Plage de dates"
+            },
+            {
+                "id": "hint",
+                "description": "Sélectionner la plage de dates"
+            },
+            {
+                "id": "today",
+                "description": "Aujourd'hui"
+            },
+            {
+                "id": "ok",
+                "description": "Ok"
+            }
+        ]
+    },
+    {
+        "feature": "statistics",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Statistiques"
+            },
+            {
+                "id": "okButton",
+                "description": "OK"
+            },
+            {
+                "id": "ytd",
+                "description": "YTD"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "customers",
+                "description": "Clients"
+            },
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "drivers",
+                "description": "Conducteurs"
+            },
+            {
+                "id": "ships",
+                "description": "Navires"
+            },
+            {
+                "id": "nationalities",
+                "description": "Nationalités"
+            },
+            {
+                "id": "description",
+                "description": "Description "
+            },
+            {
+                "id": "pax",
+                "description": "Pax"
+            },
+            {
+                "id": "actual-pax",
+                "description": "Actual pax"
+            },
+            {
+                "id": "no-show",
+                "description": "N/S"
+            }
+        ]
+    },
+    {
+        "feature": "search-reservation",
+        "labels": [
+            {
+                "id": "refNo",
+                "description": "Indiquer le refNo"
+            },
+            {
+                "id": "hint",
+                "description": "Appuyer sur ENTER pour lancer la recherche"
+            }
+        ]
+    },
+    {
+        "feature": "cardsMenu",
+        "labels": [
             {
                 "id": "reservationsTitle",
                 "description": "Réservations"
@@ -2133,11 +2254,11 @@
                 "description": "Vérifier les places disponibles pour une excursion et effectuer une nouvelle réservation."
             },
             {
-                "id": "embarkationTitle",
+                "id": "boardingTitle",
                 "description": "Embarquement"
             },
             {
-                "id": "embarkationSubTitle",
+                "id": "boardingSubTitle",
                 "description": "Gérer l'entrée des passagers à bord."
             },
             {
@@ -2151,184 +2272,23 @@
         ]
     },
     {
-        "feature": "checkIn",
+        "feature": "delete-range-reservation",
         "labels": [
             {
-                "id": "header",
-                "description": "Enregistrement"
+                "id": "label",
+                "description": "Code de sécurité"
             },
             {
-                "id": "next",
-                "description": "Suivant"
+                "id": "instructions",
+                "description": "Pour continuer, vous devez copier le code suivant dans le champ 'Code de sécurité'"
             },
             {
-                "id": "previous",
-                "description": "Précédent"
+                "id": "okButton",
+                "description": "OK"
             },
             {
-                "id": "step-1-header",
-                "description": "Trouver une réservation"
-            },
-            {
-                "id": "step-1-haveRefNo",
-                "description": "Avez-vous une réfNo?"
-            },
-            {
-                "id": "step-1-yes",
-                "description": "Oui"
-            },
-            {
-                "id": "step-1-no",
-                "description": "Non"
-            },
-            {
-                "id": "step-1-refNo",
-                "description": "RefNo"
-            },
-            {
-                "id": "step-1-refNo-hint",
-                "description": "Donnez-nous le refNo tel qu'il vous a été donné"
-            },
-            {
-                "id": "step-1-date",
-                "description": "Date"
-            },
-            {
-                "id": "step-1-date-hint",
-                "description": "Quelle est la date de votre voyage?"
-            },
-            {
-                "id": "step-1-destination",
-                "description": "Destination"
-            },
-            {
-                "id": "step-1-destination-hint",
-                "description": "Quelle destination avez-vous choisie?"
-            },
-            {
-                "id": "step-1-lastname",
-                "description": "Nom"
-            },
-            {
-                "id": "step-1-lastname-hint",
-                "description": "Remplissez les noms que vous nous avez donnés"
-            },
-            {
-                "id": "step-1-firstname",
-                "description": "Prénom"
-            },
-            {
-                "id": "step-1-firstname-hint",
-                "description": "Complétez les prénoms que vous nous avez donnés"
-            },
-            {
-                "id": "step-2-header",
-                "description": "Détails de la réservation"
-            },
-            {
-                "id": "step-2-refNo",
-                "description": "RefNo"
-            },
-            {
-                "id": "step-2-date",
-                "description": "Date"
-            },
-            {
-                "id": "step-2-ticket",
-                "description": "Billet"
-            },
-            {
-                "id": "step-2-destination",
-                "description": "Destination"
-            },
-            {
-                "id": "step-2-customer",
-                "description": "Client"
-            },
-            {
-                "id": "step-2-pickupPoint",
-                "description": "Point d'embarquement"
-            },
-            {
-                "id": "step-2-exactPoint",
-                "description": "Point exact"
-            },
-            {
-                "id": "step-2-time",
-                "description": "Heure"
-            },
-            {
-                "id": "step-2-adults",
-                "description": "Adultes"
-            },
-            {
-                "id": "step-2-kids",
-                "description": "Enfant"
-            },
-            {
-                "id": "step-2-free",
-                "description": "Libre"
-            },
-            {
-                "id": "step-2-pax",
-                "description": "Total pax"
-            },
-            {
-                "id": "step-2-remarks",
-                "description": "Remarques"
-            },
-            {
-                "id": "step-2-phones",
-                "description": "Téléphone"
-            },
-            {
-                "id": "step-3-header",
-                "description": "Passagers"
-            },
-            {
-                "id": "step-3-instructions",
-                "description": "Pour continuer, vous devez entrer les détails de tous les passagers."
-            },
-            {
-                "id": "step-4-header",
-                "description": "Envoyer la confirmation"
-            },
-            {
-                "id": "step-4-email",
-                "description": "Email"
-            },
-            {
-                "id": "step-4-instructions",
-                "description": "Donnez-nous un email auquel nous vous enverrons la confirmation."
-            },
-            {
-                "id": "step-5-header",
-                "description": "Fait"
-            },
-            {
-                "id": "step-5-finish",
-                "description": "Nous vous avons envoyé un e-mail que vous devez nous montrer à l'embarquement."
-            },
-            {
-                "id": "needHelp",
-                "description": "Avez-vous besoin d'aide?"
-            }
-        ]
-    },
-    {
-        "feature": "settings",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Paramètres"
-            },
-            {
-                "id": "closingTime",
-                "description": "Démarrer"
-            },
-            {
-                "id": "saveButton",
-                "description": "Enregistrer"
+                "id": "cancelButton",
+                "description": "Annuler"
             }
         ]
     }

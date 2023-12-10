@@ -1,43 +1,39 @@
 @import url("https://fonts.cdnfonts.com/css/asty-cf-std");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Material+Icons+Outlined");
+@import url("https://fonts.googleapis.com/css?family=Material+Symbols+Outlined");
+@import url('https://fonts.cdnfonts.com/css/fira-sans-extra-condensed');
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 
 @import url("../custom/common-colors.css");
 
+@import url("../../themes/base.css");
 @import url("../custom/cube-loader.css");
-@import url("../custom/dropdown-menu.css");
-@import url("../custom/fieldset.css");
 @import url("../custom/filter-pill.css");
 @import url("../custom/headers.css");
 @import url("../custom/skeleton.css");
-@import url("../custom/variables-narrow.css");
-@import url("../custom/variables-wide.css");
 @import url("../custom/variables.css");
 @import url("../material/mat-autocomplete.css");
-@import url("../material/mat-buttons.css");
+@import url("../material/mat-button-toggle.css");
+@import url("../material/mat-button.css");
 @import url("../material/mat-card.css");
 @import url("../material/mat-checkbox.css");
 @import url("../material/mat-date-picker.css");
-@import url("../material/mat-dialog.css");
+@import url("../material/mat-date-range-picker.css");
+@import url("../material/mat-divider.css");
 @import url("../material/mat-expansion-panel");
-@import url("../material/mat-icons.css");
-@import url("../material/mat-input-error.css");
-@import url("../material/mat-input-focused-not-error.css");
-@import url("../material/mat-input-focused-readonly.css");
-@import url("../material/mat-input-not-focused-not-error.css");
 @import url("../material/mat-input.css");
 @import url("../material/mat-menu.css");
 @import url("../material/mat-radio.css");
-@import url("../material/mat-select.css");
-@import url("../material/mat-stepper.css");
+@import url("../material/mat-tooltip.css");
 @import url("../prime/prime-checkbox.css");
 @import url("../prime/prime-filter-input.css");
 @import url("../prime/prime-radio.css");
 @import url("../prime/prime-table-filters.css");
+@import url("../prime/prime-table-widths.css");
 @import url("../prime/prime-table.css");
+@import url("../prime/prime-tabview.css");
 
 @font-face {
     font-family: Aka-Acid-CanterBold;
@@ -70,15 +66,18 @@ ul {
 }
 
 .center {
+    justify-content: center !important;
+    padding: 0 0 0 0 !important;
     text-align: center !important;
 }
 
 .right {
-    text-align: right !important;
+    justify-content: flex-end !important;
+    text-align: end !important;
 }
 
-.center-buttons {
-    margin: 0 auto;
+.accent {
+    color: var(--color-accent) !important;
 }
 
 .hidden {
@@ -101,28 +100,8 @@ ul {
     cursor: pointer;
 }
 
-.emoji-with-text {
-    margin-left: 0.3rem;
-}
-
 .disabled {
     pointer-events: none;
-}
-
-.green {
-    color: var(--color-green) !important;
-}
-
-.red {
-    color: var(--color-red) !important;
-}
-
-.yellow {
-    color: var(--color-yellow) !important;
-}
-
-.blue {
-    color: var(--color-blue) !important;
 }
 
 .disabled:hover {
@@ -137,16 +116,27 @@ ul {
 
 ::-webkit-scrollbar-thumb {
     background-clip: padding-box;
-    background-color: var(--color-scrollbar-thumb);
+    background-color: var(--color-accent);
     border-radius: 0;
     border-left: 0 solid rgb(0 0 0 /0%);
     min-height: 5rem;
 }
 
+::placeholder {
+    transition: all var(--theme-delay);
+}
+
+::-ms-reveal {
+    display: none;
+}
 
 p {
     color: var(--color-text) !important;
     font-family: var(--font-family-ubuntu);
     font-size: 1rem;
     margin: 0;
+}
+
+.mat-vertical-content {
+    padding: 24px 0 24px 24px !important;
 }

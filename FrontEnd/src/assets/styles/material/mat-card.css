@@ -1,76 +1,39 @@
-.mat-card {
+.mdc-card {
     align-items: flex-start;
-    backdrop-filter: blur(0.25rem);
-    background: transparent;
-    border-radius: 0.3125rem;
-    border: 0.0625rem solid var(--color-border);
-    box-shadow: 3px 3px 0 0 rgb(var(--color-shadow) var(--color-shadow) var(--color-shadow) / var(--color-border-transparency)) !important;
+    backdrop-filter: blur(--blur) !important;
+    background-color: color-mix(in srgb, var(--color-background) 30%, transparent) !important;
+    border-radius: 0.3125rem !important;
     display: flex !important;
-    flex-direction: column;
+    flex-direction: column !important;
     justify-content: flex-start;
-    transition: background-color var(--delay) ease-in !important;
+    padding: 2rem 1rem 2rem 1rem !important;
+    transition: all 0.25s !important;
+    width: 17rem;
 }
 
-.mat-card:hover {
-    background-color: var(--color-hover) !important;
+.mdc-card:hover {
+    background-color: color-mix(in srgb, var(--color-secondary) 30%, transparent) !important;
     cursor: pointer;
 }
 
-.mat-card-title {
+.mat-mdc-card-title {
     color: var(--color-text) !important;
-    font-family: var(--font-family-asty);
-    font-weight: 300;
+    font-family: var(--font-family-asty) !important;
+    font-size: 1.25rem !important;
+    font-weight: 300 !important;
     margin: 0 0 0 0.5rem !important;
+    transition: color var(--theme-delay);
 }
 
-.mat-divider.mat-divider-inset {
-    background-color: var(--color-border);
-    margin: 0.6rem 0 0.6rem 0 !important;
-}
-
-.mat-card-subtitle {
+.mat-mdc-card-subtitle {
     color: var(--color-text) !important;
-    font-family: var(--font-family-asty);
-    font-weight: 300;
-    line-height: 1.25rem;
+    font-family: var(--font-family-asty) !important;
+    font-weight: 300 !important;
+    line-height: 1.25rem !important;
     margin: 0 0 0 0.5rem !important;
-    transition: color var(--delay) ease-in !important;
+    transition: color var(--theme-delay);
 }
 
-.mat-card img {
+.mat-mdc-card img {
     margin: 0 0 1rem 1rem;
-}
-
-@media (width < 800px) {
-    .mat-card {
-        padding: 0.5rem !important;
-        width: 15rem;
-    }
-    .mat-card-title {
-        font-size: 0.8rem;
-    }
-    .mat-card-subtitle {
-        font-size: 0.65rem;
-    }
-    .mat-card img {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-@media (width >=800px) {
-    .mat-card {
-        padding: 1.5rem 1.5rem !important;
-        width: 18rem;
-    }
-    .mat-card-title {
-        font-size: 1.2rem;
-    }
-    .mat-card-subtitle {
-        font-size: 0.85rem;
-    }
-    .mat-card img {
-        width: 100px;
-        height: 100px;
-    }
 }

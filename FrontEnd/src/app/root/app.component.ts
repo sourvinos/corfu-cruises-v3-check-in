@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core'
+import { ChangeDetectorRef, Component, Inject } from '@angular/core'
+import { DOCUMENT } from '@angular/common'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 // Custom
 import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
@@ -20,7 +21,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private changeDetector: ChangeDetectorRef, private loadingSpinnerService: LoadingSpinnerService, private router: Router) {
+    constructor(@Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private loadingSpinnerService: LoadingSpinnerService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -37,11 +38,20 @@ export class AppComponent {
         this.initLoadingSpinner()
         this.setUserSelect()
         this.setBackgroundImage()
+        this.attachStylesheetToHead()
     }
 
     //#endregion
 
     //#region private methods
+
+    private attachStylesheetToHead(): void {
+        const headElement = this.document.getElementsByTagName('head')[0]
+        const newLinkElement = this.document.createElement('link')
+        newLinkElement.rel = 'stylesheet'
+        newLinkElement.href = 'light.css'
+        headElement.appendChild(newLinkElement)
+    }
 
     private initLoadingSpinner(): void {
         this.loadingSpinnerService.getSpinnerObserver().subscribe((status) => {

@@ -6,10 +6,6 @@ import { DateHelperService } from 'src/app/shared/services/date-helper.service'
 import { HelperService } from '../../services/helper.service'
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { Router } from '@angular/router'
-import { DexieService } from '../../services/dexie.service'
-import { NationalityService } from 'src/app/features/nationalities/classes/services/nationality.service'
-import { DestinationService } from 'src/app/features/destinations/classes/services/destination.service'
-import { GenderService } from 'src/app/features/genders/classes/services/gender-http.service'
 
 @Component({
     selector: 'app-home',
@@ -28,10 +24,6 @@ export class HomeComponent {
     //#endregion
 
     constructor(
-        private genderService: GenderService,
-        private destinationService: DestinationService,
-        private nationalityService: NationalityService,
-        private dexieService: DexieService,
         private router: Router,
         private formBuilder: FormBuilder,
         private dateHelperService: DateHelperService,
@@ -43,7 +35,6 @@ export class HomeComponent {
     //#region lifecyle hooks
 
     ngOnInit(): void {
-        this.populateDexieFromAPI()
         this.getAppName()
         this.setWindowTitle()
         this.getNgVersion()
@@ -54,12 +45,6 @@ export class HomeComponent {
 
     public start(): void {
         this.router.navigate(['check-in'])
-    }
-
-    private populateDexieFromAPI(): void {
-        this.dexieService.populateTable('destinations', this.destinationService)
-        this.dexieService.populateTable('genders', this.genderService)
-        this.dexieService.populateTable('nationalities', this.nationalityService)
     }
 
     //#region private methods

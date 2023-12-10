@@ -1,15 +1,13 @@
 <div id="wrapper">
 
     <div id="center">
-        <div id="leftbar">
-            <language-menu></language-menu>
-        </div>
         <div id="main">
+            <div id="top-bar">
+                <span class="material-symbols-outlined">menu</span>
+            </div>
             <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
                 <router-outlet #o="outlet"></router-outlet>
             </div>
-        </div>
-        <div id="rightbar">
         </div>
     </div>
 
