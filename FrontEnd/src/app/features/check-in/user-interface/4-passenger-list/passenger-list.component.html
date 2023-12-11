@@ -1,0 +1,27 @@
+<h1>Passenger List</h1>
+
+<div *ngIf="reservation.passengers" id="passengers">
+    <div *ngFor="let passenger of reservation.passengers">
+        <div class="passenger">
+            <div class="fullname">
+                <span class="lastname">{{ passenger.lastname }}</span>
+                <span class="firstname">{{ passenger.firstname }}</span>
+            </div>
+            <mat-icon (click)="editRecord(passenger)" class="clickable material-icons-outlined">editRecord</mat-icon>
+            <mat-icon (click)="deleteRecord(passenger)" class="clickable material-icons-outlined">delete</mat-icon>
+        </div>
+    </div>
+</div>
+
+
+<button (click)="newRow()" mat-mini-fab>
+    <mat-icon class="material-icons-outlined">add</mat-icon>
+</button>
+
+<button (click)="previous()" class="primary" mat-flat-button>
+    <span>Previous</span>
+</button>
+
+<button (click)="next()" class="primary" mat-flat-button>
+    <span>Next</span>
+</button>

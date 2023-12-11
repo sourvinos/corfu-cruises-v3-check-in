@@ -8,7 +8,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDividerModule } from '@angular/material/divider'
-import { MatExpansionModule } from '@angular/material/expansion'
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
@@ -16,7 +15,6 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select'
-import { MatStepperModule } from '@angular/material/stepper'
 import { MatTooltipModule } from '@angular/material/tooltip'
 // Custom
 import { CustomDateAdapter } from '../adapters/custom-date-adapter'
@@ -30,7 +28,6 @@ import { CustomDateAdapter } from '../adapters/custom-date-adapter'
         MatDatepickerModule,
         MatDialogModule,
         MatDividerModule,
-        MatExpansionModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
@@ -39,7 +36,6 @@ import { CustomDateAdapter } from '../adapters/custom-date-adapter'
         MatNativeDateModule,
         MatRadioModule,
         MatSelectModule,
-        MatStepperModule,
         MatTooltipModule
     ],
     providers: [

@@ -67,7 +67,7 @@ export class AppComponent {
     }
 
     private setUserSelect(): void {
-        document.getElementById('main').style.userSelect = environment.cssUserSelect
+        document.getElementById('wrapper').style.userSelect = environment.cssUserSelect
     }
 
     public showHelpDialog(): void {

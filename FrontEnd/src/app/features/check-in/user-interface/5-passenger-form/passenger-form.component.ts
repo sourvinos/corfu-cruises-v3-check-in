@@ -21,12 +21,12 @@ import { ValidationService } from 'src/app/shared/services/validation.service'
 import { DexieService } from 'src/app/shared/services/dexie.service'
 
 @Component({
-    selector: 'check-in-passenger-form',
-    templateUrl: './check-in-passenger-form.component.html',
-    styleUrls: ['./check-in-passenger-form.component.css']
+    selector: 'passenger-form',
+    templateUrl: './passenger-form.component.html',
+    styleUrls: ['./passenger-form.component.css']
 })
 
-export class CheckInPassengerFormComponent {
+export class PassengerFormComponent {
 
     //#region variables
 
@@ -55,7 +55,7 @@ export class CheckInPassengerFormComponent {
         private dateAdapter: DateAdapter<any>,
         private dateHelperService: DateHelperService,
         private dexieService: DexieService,
-        private dialogRef: MatDialogRef<CheckInPassengerFormComponent>,
+        private dialogRef: MatDialogRef<PassengerFormComponent>,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
         private localStorageService: LocalStorageService,
@@ -205,8 +205,10 @@ export class CheckInPassengerFormComponent {
     }
 
     private populateDropdowns(): void {
-        this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
-        this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
+        setTimeout(() => {
+            this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
+            this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
+        }, 2000)
     }
 
     private populateFields(): void {

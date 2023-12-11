@@ -1,6 +1,6 @@
 [
     {
-        "feature": "checkIn",
+        "feature": "check-in",
         "labels": [
             {
                 "id": "step-1-header",

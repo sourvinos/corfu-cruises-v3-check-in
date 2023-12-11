@@ -123,6 +123,14 @@
                 "description": "If necessary, add or correct the details of the persons travelling with you."
             },
             {
+                "id": "step-6-email",
+                "description": "Email"
+            },
+            {
+                "id": "step-6-email-hint",
+                "description": "Email"
+            },
+            {
                 "id": "today",
                 "description": "Today"
             },
