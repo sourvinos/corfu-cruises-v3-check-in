@@ -4,17 +4,15 @@
 
 #wrapper {
     background-color: var(--color-background);
-    background-position: left;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    max-width: 500px;
-    min-width: 347px;
+    margin: 0 auto 0 auto;
+    max-width: 31rem;
     overflow: hidden;
-    transition: background-color var(--theme-delay);
 }
 
 #outer-content {
@@ -22,12 +20,11 @@
 }
 
 #topbar, #bottombar {
-    background-color: lightblue;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin: 0 0 0 auto;
-    padding: 8px 8px 8px 8px;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     width: 100%;
 }
 

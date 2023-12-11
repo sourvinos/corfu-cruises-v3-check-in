@@ -6,3 +6,7 @@
 .mat-mdc-radio-button .mdc-radio {
     padding: 0 !important;
 }
+
+.mdc-form-field > label {
+    font-size: 1.125rem !important;
+}

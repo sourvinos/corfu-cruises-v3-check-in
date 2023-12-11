@@ -3,63 +3,83 @@
         "feature": "check-in",
         "labels": [
             {
-                "id": "step-1-header",
-                "description": "Αναζήτηση κράτησης"
+                "id": "step-1-logo",
+                "description": "Corfu Cruises"
             },
             {
-                "id": "step-1-instructions",
-                "description": "Εχετε RefNo;"
+                "id": "step-1-sub-header",
+                "description": "Check-in"
             },
             {
-                "id": "step-1-yes",
-                "description": "Ναι"
+                "id": "step-1-description",
+                "description": "Κάντε το check-in από την κινητό ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστέρηση"
             },
             {
-                "id": "step-1-no",
-                "description": "Οχι"
-            },
-            {
-                "id": "step-1-refNo",
-                "description": "RefNo"
-            },
-            {
-                "id": "step-1-refNo-hint",
-                "description": "Συμπληρώστε το RefNo χωρίς κενά"
-            },
-            {
-                "id": "step-1-date",
-                "description": "Ημερομηνία"
-            },
-            {
-                "id": "step-1-date-hint",
-                "description": "Πότε είναι η εκδρομή σας"
-            },
-            {
-                "id": "step-1-destination",
-                "description": "Προορισμός"
-            },
-            {
-                "id": "step-1-destination-hint",
-                "description": "Που έχετε επιλέξει να πάτε"
-            },
-            {
-                "id": "step-1-lastname",
-                "description": "Επώνυμο"
-            },
-            {
-                "id": "step-1-lastname-hint",
-                "description": "Συμπληρώστε ένα από τα επώνυμα που έχετε δώσει"
-            },
-            {
-                "id": "step-1-firstname",
-                "description": "Ονομα"
-            },
-            {
-                "id": "step-1-firstname-hint",
-                "description": "Συμπληρώστε το όνομα του παραπάνω επώνυμου"
+                "id": "step-1-button-next",
+                "description": "Συνεχεια"
             },
             {
                 "id": "step-2-header",
+                "description": "Αναζήτηση κράτησης"
+            },
+            {
+                "id": "step-2-sub-header",
+                "description": "Εχετε RefNo;"
+            },
+            {
+                "id": "step-2-yes",
+                "description": "Ναι"
+            },
+            {
+                "id": "step-2-no",
+                "description": "Οχι"
+            },
+            {
+                "id": "step-2-refNo",
+                "description": "RefNo"
+            },
+            {
+                "id": "step-2-refNo-hint",
+                "description": "Συμπληρώστε το RefNo χωρίς κενά"
+            },
+            {
+                "id": "step-2-date",
+                "description": "Ημερομηνία"
+            },
+            {
+                "id": "step-2-date-hint",
+                "description": "Πότε είναι η εκδρομή σας"
+            },
+            {
+                "id": "step-2-destination",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "step-2-destination-hint",
+                "description": "Που έχετε επιλέξει να πάτε"
+            },
+            {
+                "id": "step-2-lastname",
+                "description": "Επώνυμο"
+            },
+            {
+                "id": "step-2-lastname-hint",
+                "description": "Συμπληρώστε ένα από τα επώνυμα που έχετε δώσει"
+            },
+            {
+                "id": "step-2-firstname",
+                "description": "Ονομα"
+            },
+            {
+                "id": "step-2-firstname-hint",
+                "description": "Συμπληρώστε το όνομα του παραπάνω επώνυμου"
+            },
+            {
+                "id": "step-2-button-next",
+                "description": "Συνεχεια"
+            },
+            {
+                "id": "step-3-header",
                 "description": "Λεπτομέρειες κράτησης"
             },
             {

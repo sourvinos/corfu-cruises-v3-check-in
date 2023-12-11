@@ -6,7 +6,6 @@ export const environment = {
     appName: 'Corfu Cruises',
     clientUrl: 'http://checkindemo-001-site1.htempurl.com',
     defaultLanguage: 'en-GB',
-    defaultTheme: 'light',
     emailFooter: {
         lineA: 'Problems or questions? Call us at +30 26620 61400',
         lineB: 'or email at info@corfucruises.com',
@@ -18,12 +17,5 @@ export const environment = {
     stopOrdersIconDirectory: 'assets/images/stopOrders/',
     nationalitiesIconDirectory: 'assets/images/nationalities/',
     cssUserSelect: 'auto',
-    marginsInPixels: 18,
-    login: {
-        username: '',
-        email: '',
-        password: '',
-        noRobot: false
-    },
     production: true
 }

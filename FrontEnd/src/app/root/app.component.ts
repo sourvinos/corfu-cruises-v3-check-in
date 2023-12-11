@@ -23,7 +23,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private messageSnackbarService: MessageDialogService, private dialogService: ModalDialogService, @Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private loadingSpinnerService: LoadingSpinnerService, private router: Router) {
+    constructor(@Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private dialogService: ModalDialogService, private loadingSpinnerService: LoadingSpinnerService, private messageSnackbarService: MessageDialogService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -63,7 +63,7 @@ export class AppComponent {
     }
 
     private setBackgroundImage(): void {
-        // document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
+        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
     }
 
     private setUserSelect(): void {

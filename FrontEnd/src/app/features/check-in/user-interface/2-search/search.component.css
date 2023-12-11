@@ -1,3 +1,17 @@
-h1 {
-    color: rebeccapurple;
+#content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#header {
+    font-family: var(--font-family-segoe-ui);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#sub-header {
+    font-family: var(--font-family-segoe-ui);
+    font-size: 1.5rem;
+    text-align: center;
 }

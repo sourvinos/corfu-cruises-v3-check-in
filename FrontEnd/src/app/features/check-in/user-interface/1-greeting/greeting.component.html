@@ -1,19 +1,14 @@
 <div id="content">
     <div id="header">
-        <div>Welcome to</div>
-        <div id="logo">Corfu Cruises</div>
-        <div>Check-in</div>
+        <div id="logo">{{ getLabel("step-1-logo")}}</div>
+        <div id="sub-header">{{ getLabel('step-1-sub-header') }}</div>
     </div>
-    <div id="tip">
-        <div>Κάντε το check-in</div>
-        <div>από την κινητή συσκευή σας</div>
-        <div>και επιβιβαστείτε</div>
-        <div>γρήγορα και</div>
-        <div>χωρίς καθυστέρηση</div>
+    <div id="description">
+        <div id="description-text">{{ getLabel("step-1-description") }}</div>
     </div>
     <div id="footer">
-        <button (click)="start()" class="primary" mat-flat-button>
-            <span>ΣΥΝΕΧΕΙΑ</span>
+        <button (click)="next()" class="primary" mat-flat-button>
+            <span>{{ getLabel("step-1-button-next") | uppercase }}</span>
         </button>
     </div>
 </div>
