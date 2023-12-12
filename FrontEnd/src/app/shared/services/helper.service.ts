@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
 import { Title } from '@angular/platform-browser'
 // Custom
 import { MessageLabelService } from './message-label.service'
-import { ModalDialogService } from './modal-dialog.service'
+import { DialogService } from './modal-dialog.service'
 import { SessionStorageService } from './session-storage.service'
 import { environment } from 'src/environments/environment'
 
@@ -35,13 +35,13 @@ export class HelperService {
 
     //#endregion
 
-    constructor(private messageLabelService: MessageLabelService, private modalDialogService: ModalDialogService, private router: Router, private sessionStorageService: SessionStorageService, private titleService: Title) { }
+    constructor(private messageLabelService: MessageLabelService, private dialogService: DialogService, private router: Router, private sessionStorageService: SessionStorageService, private titleService: Title) { }
 
     //#region public methods
 
     public doPostSaveFormTasks(message: string, iconType: string, returnUrl: string, goBack: boolean): Promise<any> {
         const promise = new Promise((resolve) => {
-            this.modalDialogService.open(message, iconType, ['ok']).subscribe(() => {
+            this.dialogService.open(message, iconType, ['ok']).subscribe(() => {
                 goBack ? this.router.navigate([returnUrl]) : null
                 resolve(null)
             })
@@ -159,7 +159,10 @@ export class HelperService {
     }
 
     public openOrCloseAutocomplete(form: FormGroup<any>, element: any, trigger: MatAutocompleteTrigger): void {
-        trigger.panelOpen ? trigger.closePanel() : trigger.openPanel()
+        console.log('1', trigger.panelOpen)
+        // trigger.panelOpen ? trigger.closePanel() : trigger.openPanel()
+        trigger.openPanel()
+        console.log('2', trigger.panelOpen)
     }
 
     public setTabTitle(feature: string): void {

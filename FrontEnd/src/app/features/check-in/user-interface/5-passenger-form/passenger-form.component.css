@@ -1,3 +1,28 @@
+#form-wrapper {
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+#dialog-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+#header {
+    font-size: 18px;
+    font-family: var(--font-family-segoe-ui);
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
 #dialog-footer {
-    margin: 1rem 2rem 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem 1rem 1rem 0;
 }

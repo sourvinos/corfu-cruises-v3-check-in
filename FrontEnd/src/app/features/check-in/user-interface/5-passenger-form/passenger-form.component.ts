@@ -1,24 +1,21 @@
-import { BehaviorSubject, Observable, Subject } from 'rxjs'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component, Inject, NgZone } from '@angular/core'
 import { DateAdapter } from '@angular/material/core'
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Observable, Subject } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
 // Custom
 import { CheckInPassengerReadDto } from '../../classes/dtos/check-in-passenger-read-dto'
-import { ConnectedUser } from 'src/app/shared/classes/connected-user'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
+import { DexieService } from 'src/app/shared/services/dexie.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { NationalityDropdownVM } from 'src/app/features/nationalities/classes/view-models/nationality-autocomplete-vm'
-import { SessionStorageService } from 'src/app/shared/services/session-storage.service'
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 import { ValidationService } from 'src/app/shared/services/validation.service'
-import { DexieService } from 'src/app/shared/services/dexie.service'
 
 @Component({
     selector: 'passenger-form',
@@ -30,9 +27,9 @@ export class PassengerFormComponent {
 
     //#region variables
 
-    private record: CheckInPassengerReadDto
+    public passenger: CheckInPassengerReadDto
     private unsubscribe = new Subject<void>()
-    public feature = 'passengerForm'
+    public feature = 'check-in'
     public featureIcon = ''
     public form: FormGroup
     public icon = 'arrow_back'
@@ -43,28 +40,13 @@ export class PassengerFormComponent {
     public maxBirthDate = new Date()
 
     public isAutoCompleteDisabled = true
-    public arrowIcon = new BehaviorSubject('arrow_drop_down')
-
+    public dropdownNationalities: Observable<SimpleEntity[]>
     public dropdownGenders: Observable<SimpleEntity[]>
-    public dropdownNationalities: Observable<NationalityDropdownVM[]>
 
     //#endregion
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto,
-        private dateAdapter: DateAdapter<any>,
-        private dateHelperService: DateHelperService,
-        private dexieService: DexieService,
-        private dialogRef: MatDialogRef<PassengerFormComponent>,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private localStorageService: LocalStorageService,
-        private messageHintService: MessageInputHintService,
-        private messageLabelService: MessageLabelService,
-        private ngZone: NgZone,
-        private sessionStorageService: SessionStorageService
-    ) {
-        this.record = data
+    constructor(@Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto, private dateAdapter: DateAdapter<any>, private dateHelperService: DateHelperService, private dexieService: DexieService, private dialogRef: MatDialogRef<PassengerFormComponent>, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private ngZone: NgZone,) {
+        this.passenger = data
     }
 
     //#region lifecycle hooks
@@ -76,20 +58,12 @@ export class PassengerFormComponent {
         this.setLocale()
     }
 
-    ngAfterViewInit(): void {
-        this.focusOnField()
-    }
-
-    ngOnDestroy(): void {
-        this.cleanup()
-    }
-
     //#endregion
 
     //#region public methods
 
-    public autocompleteFields(subject: { description: any }): any {
-        return subject ? subject.description : undefined
+    public autocompleteFields(fieldName: any, object: any): any {
+        return object ? object[fieldName] : undefined
     }
 
     public checkForEmptyAutoComplete(event: { target: { value: any } }): void {
@@ -108,10 +82,6 @@ export class PassengerFormComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public isAdmin(): boolean {
-        return ConnectedUser.isAdmin
-    }
-
     public openOrCloseAutoComplete(trigger: MatAutocompleteTrigger, element: any): void {
         this.helperService.openOrCloseAutocomplete(this.form, element, trigger)
     }
@@ -121,17 +91,12 @@ export class PassengerFormComponent {
     }
 
     public onSave(): void {
-        this.storeNationality()
         this.closeDialog()
     }
 
-    public updateFieldsAfterNationalitySelection(value: NationalityDropdownVM): void {
+    public patchFormWithSelectedDate(event: any): void {
         this.form.patchValue({
-            nationality: {
-                'id': value.id,
-                'description': value.description,
-                'code': value.code,
-            }
+            birthdate: this.dateHelperService.gotoPreviousCenturyIfFutureDate(event.value.date)
         })
     }
 
@@ -141,11 +106,6 @@ export class PassengerFormComponent {
 
     private assignTempIdToNewPassenger(): number {
         return Math.round(Math.random() * new Date().getMilliseconds())
-    }
-
-    private cleanup(): void {
-        this.unsubscribe.next()
-        this.unsubscribe.unsubscribe()
     }
 
     private closeDialog(): void {
@@ -179,10 +139,6 @@ export class PassengerFormComponent {
         }
     }
 
-    private focusOnField(): void {
-        this.helperService.focusOnField()
-    }
-
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: this.data.id,
@@ -199,40 +155,34 @@ export class PassengerFormComponent {
 
     private populateDropdownFromDexieDB(dexieTable: string, filteredTable: string, formField: string, modelProperty: string, orderBy: string): void {
         this.dexieService.table(dexieTable).orderBy(orderBy).toArray().then((response) => {
-            this[dexieTable] = this.record.reservationId.toString() == '' ? response.filter(x => x.isActive) : response
+            this[dexieTable] = this.passenger.reservationId.toString() == '' ? response.filter(x => x.isActive) : response
             this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(dexieTable, modelProperty, value)))
         })
     }
 
     private populateDropdowns(): void {
-        setTimeout(() => {
-            this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
-            this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
-        }, 2000)
+        this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
+        this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
     }
 
     private populateFields(): void {
-        if (this.record.id != 0) {
+        if (this.passenger.id != 0) {
             this.form.setValue({
-                id: this.record.id,
-                reservationId: this.record.reservationId,
-                gender: { 'id': this.record.gender.id, 'description': this.record.gender.description },
-                nationality: { 'id': this.record.nationality.id, 'code': this.record.nationality.code, 'description': this.record.nationality.description },
-                lastname: this.record.lastname,
-                firstname: this.record.firstname,
-                birthdate: this.record.birthdate,
-                specialCare: this.record.specialCare,
-                remarks: this.record.remarks
+                id: this.passenger.id,
+                reservationId: this.passenger.reservationId,
+                gender: { 'id': this.passenger.gender.id, 'description': this.passenger.gender.description },
+                nationality: { 'id': this.passenger.nationality.id, 'description': this.passenger.nationality.description },
+                lastname: this.passenger.lastname,
+                firstname: this.passenger.firstname,
+                birthdate: this.passenger.birthdate,
+                specialCare: this.passenger.specialCare,
+                remarks: this.passenger.remarks
             })
         }
     }
 
     private setLocale(): void {
         this.dateAdapter.setLocale(this.localStorageService.getLanguage())
-    }
-
-    private storeNationality(): void {
-        this.sessionStorageService.saveItem('nationality', JSON.stringify(this.form.value.nationality))
     }
 
     //#endregion

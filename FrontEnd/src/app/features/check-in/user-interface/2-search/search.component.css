@@ -1,3 +1,7 @@
+:host {
+    height: 100%;
+}
+
 #content {
     display: flex;
     flex-direction: column;
@@ -6,12 +10,32 @@
 
 #header {
     font-family: var(--font-family-segoe-ui);
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     text-align: center;
 }
 
 #sub-header {
     font-family: var(--font-family-segoe-ui);
-    font-size: 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 32px 0 32px;
+    row-gap: 1rem;
+}
+
+#complex-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
     text-align: center;
 }

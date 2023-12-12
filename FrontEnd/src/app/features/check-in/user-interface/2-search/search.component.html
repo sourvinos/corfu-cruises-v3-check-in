@@ -69,8 +69,8 @@
     </form>
 
     <div id="footer">
-        <button [disabled]="requiredFieldsShouldBeGiven()" (click)="next()" class="primary" mat-flat-button>
-            <span>{{ getLabel("step-2-button-next") | uppercase }}</span>
+        <button [disabled]="requiredFieldsShouldBeGiven()" (click)="onSearch()" class="primary" mat-flat-button>
+            <span>{{ getLabel("next") | uppercase }}</span>
         </button>
     </div>
 

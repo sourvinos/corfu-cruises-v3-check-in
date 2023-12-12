@@ -29,7 +29,7 @@ export class EmailFormComponent {
     }
 
     public previous(): void {
-        this.router.navigate(['reservation'])
+        this.router.navigate(['passenger-list'])
     }
 
     public getLabel(id: string): string {

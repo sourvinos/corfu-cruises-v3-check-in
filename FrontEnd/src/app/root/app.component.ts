@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 // Custom
-import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
+import { MessageDialogService } from '../shared/services/message-dialog.service'
 import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
-import { ModalDialogService } from '../shared/services/modal-dialog.service'
-import { MessageDialogService } from '../shared/services/message-dialog.service'
+import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
+import { DialogService } from '../shared/services/modal-dialog.service'
 
 @Component({
     selector: 'root',
@@ -23,7 +23,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(@Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private dialogService: ModalDialogService, private loadingSpinnerService: LoadingSpinnerService, private messageSnackbarService: MessageDialogService, private router: Router) {
+    constructor(@Inject(DOCUMENT) private document: Document, private changeDetector: ChangeDetectorRef, private dialogService: DialogService, private loadingSpinnerService: LoadingSpinnerService, private messageSnackbarService: MessageDialogService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.isLoading = true
@@ -42,6 +42,14 @@ export class AppComponent {
         this.setBackgroundImage()
         this.attachStylesheetToHead()
     }
+
+    //#region public methods
+
+    public goHome(): void {
+        this.router.navigateByUrl('/')
+    }
+
+    //#endregion
 
     //#endregion
 

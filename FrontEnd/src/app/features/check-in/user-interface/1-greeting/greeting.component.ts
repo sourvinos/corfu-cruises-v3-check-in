@@ -30,7 +30,7 @@ export class GreetingComponent {
     //#region public methods
 
     public next(): void {
-        this.router.navigate(['search'])
+        this.router.navigateByUrl('search')
     }
 
     //#endregion

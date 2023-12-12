@@ -7,10 +7,9 @@
 
 .mdc-button .mdc-button__label {
     color: var(--color-button-text) !important;
-    font-family: var(--font-family-ubuntu) !important;
-    font-size: 1rem !important;
+    font-family: var(--font-family-segoe-ui) !important;
+    font-size: 0.8rem !important;
     font-weight: 300 !important;
-    margin-top: 0.0625rem !important;
     transform: scale(1, 1.4);
 }
 

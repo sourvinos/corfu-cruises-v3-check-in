@@ -1,27 +1,39 @@
-<h1>Passenger List</h1>
+<div id="content">
 
-<div *ngIf="reservation.passengers" id="passengers">
-    <div *ngFor="let passenger of reservation.passengers">
-        <div class="passenger">
-            <div class="fullname">
-                <span class="lastname">{{ passenger.lastname }}</span>
-                <span class="firstname">{{ passenger.firstname }}</span>
-            </div>
-            <mat-icon (click)="editRecord(passenger)" class="clickable material-icons-outlined">editRecord</mat-icon>
-            <mat-icon (click)="deleteRecord(passenger)" class="clickable material-icons-outlined">delete</mat-icon>
+    <div id="header">{{ getLabel("step-4-header") }}</div>
+    <div id="sub-header">{{ getLabel("step-4-sub-header") }}</div>
+
+    <div id="passenger-list">
+        <div id="new-passenger-button">
+            <button (click)="newRow()" [disabled]="checkTotalPaxAgainstPassengerCount()" class="secondary" mat-flat-button>
+                <mat-icon *ngIf="checkTotalPaxAgainstPassengerCount()" class="material-icons-outlined">lock</mat-icon>
+                <span>{{ getLabel("step-4-new-passenger-button") | uppercase }}</span>
+            </button>
+        </div>
+        <div *ngIf="reservation.passengers.length" id="table-wrapper">
+            <p-table #table [scrollable]="true" [value]="reservation.passengers" [virtualScrollItemSize]="32" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple">
+                <ng-template pTemplate="body" let-record>
+                    <tr (click)="highlightRow(record.id)" (dblclick)="editRecord(record)" [attr.id]="record.id" [pSelectableRow]="record" style="height: 32px;">
+                        <td class="width-8"><span>{{ record.lastname }}</span></td>
+                        <td class="width-8"><span>{{ record.firstname }}</span></td>
+                        <td class="width-5">
+                            <span class="center" style="padding: 0.3125rem 0 0 0 !important;">
+                                <span (click)="deleteRow(record)" class="center" style="font-size: 0.75rem;">{{ getEmoji('error') }}</span>
+                            </span>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
     </div>
+
+    <div id="footer">
+        <button (click)="previous()" class="primary" mat-flat-button>
+            <span>{{ getLabel("previous") | uppercase }}</span>
+        </button>
+        <button (click)="next()" class="primary" mat-flat-button>
+            <span>{{ getLabel("next") | uppercase }}</span>
+        </button>
+    </div>
+
 </div>
-
-
-<button (click)="newRow()" mat-mini-fab>
-    <mat-icon class="material-icons-outlined">add</mat-icon>
-</button>
-
-<button (click)="previous()" class="primary" mat-flat-button>
-    <span>Previous</span>
-</button>
-
-<button (click)="next()" class="primary" mat-flat-button>
-    <span>Next</span>
-</button>

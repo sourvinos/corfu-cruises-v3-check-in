@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core'
 // Components
-import { GreetingComponent } from '../../user-interface/1-greeting/greeting.component'
-import { SearchComponent } from '../../user-interface/2-search/search.component'
-import { ReservationComponent } from '../../user-interface/3-reservation/reservation.component'
-import { PassengerListComponent } from '../../user-interface/4-passenger-list/passenger-list.component'
-import { PassengerFormComponent } from '../../user-interface/5-passenger-form/passenger-form.component'
 import { EmailFormComponent } from '../../user-interface/6-email/email-form.component'
-import { ReactiveFormsModule } from '@angular/forms'
-import { MaterialModule } from 'src/app/shared/modules/material.module'
-import { CommonModule } from '@angular/common'
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { GreetingComponent } from '../../user-interface/1-greeting/greeting.component'
+import { PassengerFormComponent } from '../../user-interface/5-passenger-form/passenger-form.component'
+import { PassengerListComponent } from '../../user-interface/4-passenger-list/passenger-list.component'
+import { ReservationComponent } from '../../user-interface/3-reservation/reservation.component'
+import { SearchComponent } from '../../user-interface/2-search/search.component'
+import { SharedModule } from 'src/app/shared/modules/shared.module'
+import { CheckInRoutingModule } from './check-in.routing.module'
 
 @NgModule({
     declarations: [
@@ -18,19 +16,12 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
         ReservationComponent,
         PassengerListComponent,
         PassengerFormComponent,
-        EmailFormComponent,
-        InputTabStopDirective
+        EmailFormComponent
     ],
     imports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule
+        SharedModule,
+        CheckInRoutingModule
     ],
-    exports: [
-        CommonModule,
-        MaterialModule,
-        ReactiveFormsModule
-    ]
 })
 
 export class CheckInModule { }

@@ -1,11 +1,68 @@
-<h1>Reservation</h1>
+<div id="content">
 
-{{ reservation.refNo }}
+    <div id="header">{{ getLabel("step-3-header") }}</div>
+    <div id="sub-header">{{ getLabel("step-3-sub-header") }}</div>
 
-<button (click)="previous()" class="primary" mat-flat-button>
-    <span>Previous</span>
-</button>
+    <div id="form-wrapper">
+        <form [formGroup]="reservationForm" id="reservation-form">
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-date") }}</mat-label>
+                <input formControlName="date" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-refNo") }}</mat-label>
+                <input formControlName="refNo" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-ticketNo") }}</mat-label>
+                <input formControlName="ticketNo" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-destination") }}</mat-label>
+                <input formControlName="destination" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-customer") }}</mat-label>
+                <input formControlName="customer" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-pickupPoint") }}</mat-label>
+                <input formControlName="pickupPoint" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-adults") }}</mat-label>
+                <input formControlName="adults" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-kids") }}</mat-label>
+                <input formControlName="kids" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-free") }}</mat-label>
+                <input formControlName="free" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-totalPax") }}</mat-label>
+                <input formControlName="totalPax" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-phones") }}</mat-label>
+                <input formControlName="phones" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ getLabel("step-3-remarks") }}</mat-label>
+                <input formControlName="remarks" matInput>
+            </mat-form-field>
+        </form>
+    </div>
 
-<button (click)="next()" class="primary" mat-flat-button>
-    <span>Next</span>
-</button>
+    <div id="footer">
+        <button (click)="previous()" class="primary" mat-flat-button>
+            <span>{{ getLabel("previous") | uppercase }}</span>
+        </button>
+        <button (click)="next()" class="primary" mat-flat-button>
+            <span>{{ getLabel("next") | uppercase }}</span>
+        </button>
+    </div>
+
+</div>

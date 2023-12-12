@@ -1,6 +1,7 @@
 <div id="wrapper">
 
     <div id="topbar">
+        <span (click)="goHome()" class="clickable material-symbols-outlined">home</span>
         <span class="material-symbols-outlined">language</span>
     </div>
     <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">

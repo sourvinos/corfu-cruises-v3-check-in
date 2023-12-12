@@ -6,7 +6,7 @@ import { ModalDialogComponent } from '../components/modal-dialog/modal-dialog.co
 
 @Injectable({ providedIn: 'root' })
 
-export class ModalDialogService {
+export class DialogService {
 
     private response: any
 
@@ -24,8 +24,8 @@ export class ModalDialogService {
 
     private openDialog(message: string | object, iconStyle: string, actions: string[]): Observable<boolean> {
         this.response = this.dialog.open(ModalDialogComponent, {
-            height: '30rem',
-            width: '25rem',
+            height: '18.75rem',
+            width: '31.25rem',
             data: {
                 message: message,
                 iconStyle: iconStyle,

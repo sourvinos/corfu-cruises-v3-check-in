@@ -1,3 +1,37 @@
-h1 {
-    color: rebeccapurple;
+:host {
+    height: 100%;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 32px 0 32px;
+}
+
+#header {
+    font-family: var(--font-family-segoe-ui);
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+#sub-header {
+    font-family: var(--font-family-segoe-ui);
+    font-size: 1rem;
+    margin: 0 0 16px 0;
+    text-align: center;
+}
+
+#reservation-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#footer {
+    column-gap: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    text-align: center;
 }

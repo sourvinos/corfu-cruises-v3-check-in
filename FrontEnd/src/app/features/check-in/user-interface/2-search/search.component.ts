@@ -12,8 +12,8 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { ModalDialogService } from 'src/app/shared/services/modal-dialog.service'
 import { indicate } from 'src/app/shared/services/helper.service'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 
 @Component({
     selector: 'search',
@@ -33,7 +33,7 @@ export class SearchComponent {
 
     //#endregion
 
-    constructor(private checkInService: CheckInHttpService, private dateHelperService: DateHelperService, private dexieService: DexieService, private dialogService: ModalDialogService, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageDialogService, private router: Router) { }
+    constructor(private checkInService: CheckInHttpService, private dateHelperService: DateHelperService, private dexieService: DexieService, private dialogService: DialogService, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageDialogService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -70,7 +70,7 @@ export class SearchComponent {
         }
     }
 
-    public doSearch(): void {
+    public onSearch(): void {
         if (this.searchForm.value.hasRefNo == 1) {
             this.searchByRefNo().then((response) => {
                 this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
@@ -78,26 +78,11 @@ export class SearchComponent {
             })
         }
         if (this.searchForm.value.hasRefNo == 2) {
-            this.searchByDate().then((response) => {
+            this.searchByMultipleField().then((response) => {
                 this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
                 this.router.navigate(['reservation'])
             })
         }
-    }
-
-    public searchByDate(): Promise<any> {
-        return new Promise((resolve) => {
-            this.checkInService.getByDate(this.searchForm.value.complexGroup.date, this.searchForm.value.complexGroup.destination, this.searchForm.value.complexGroup.lastname, this.searchForm.value.complexGroup.firstname).pipe(indicate(this.isLoading)).subscribe({
-                next: (response) => {
-                    resolve(response)
-                },
-                error: (errorFromInterceptor) => {
-                    this.showError(errorFromInterceptor)
-                    resolve(false)
-                }
-            })
-            return false
-        })
     }
 
     public getLabel(id: string): string {
@@ -109,25 +94,6 @@ export class SearchComponent {
             complexGroup: {
                 date: this.dateHelperService.formatDateToIso(new Date())
             }
-        })
-    }
-
-    public next(): void {
-        this.router.navigate(['reservation'])
-    }
-
-    public searchByRefNo(): Promise<any> {
-        return new Promise((resolve) => {
-            this.checkInService.getByRefNo(this.searchForm.value.refNo).pipe(indicate(this.isLoading)).subscribe({
-                next: (response) => {
-                    resolve(response)
-                },
-                error: (errorFromInterceptor) => {
-                    this.showError(errorFromInterceptor)
-                    resolve(false)
-                }
-            })
-            return false
         })
     }
 
@@ -171,6 +137,34 @@ export class SearchComponent {
         setTimeout(() => {
             this.populateDropdownFromDexieDB('destinations', 'dropdownDestinations', 'destination', 'description', 'description')
         }, 5000)
+    }
+
+    private searchByMultipleField(): Promise<any> {
+        return new Promise((resolve) => {
+            this.checkInService.getByDate(this.searchForm.value.complexGroup.date, this.searchForm.value.complexGroup.destination, this.searchForm.value.complexGroup.lastname, this.searchForm.value.complexGroup.firstname).pipe(indicate(this.isLoading)).subscribe({
+                next: (response) => {
+                    resolve(response)
+                },
+                error: (errorFromInterceptor) => {
+                    this.showError(errorFromInterceptor)
+                    resolve(false)
+                }
+            })
+        })
+    }
+
+    private searchByRefNo(): Promise<any> {
+        return new Promise((resolve) => {
+            this.checkInService.getByRefNo(this.searchForm.value.refNo).pipe(indicate(this.isLoading)).subscribe({
+                next: (response) => {
+                    resolve(response)
+                },
+                error: (errorFromInterceptor) => {
+                    this.showError(errorFromInterceptor)
+                    resolve(false)
+                }
+            })
+        })
     }
 
     private showError(error: any): void {
