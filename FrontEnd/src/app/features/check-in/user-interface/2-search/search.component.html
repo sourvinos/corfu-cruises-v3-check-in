@@ -1,7 +1,9 @@
 <div id="content">
 
-    <div id="header">{{ getLabel("step-2-header") }}</div>
-    <div id="sub-header">{{ getLabel("step-2-sub-header") }}</div>
+    <div id="dialog-header">
+        <div id="header">{{ getLabel("step-2-header") }}</div>
+        <div id="sub-header">{{ getLabel("step-2-sub-header") }}</div>
+    </div>
 
     <form [formGroup]="searchForm" id="search-form">
         <mat-radio-group formControlName="hasRefNo">
@@ -36,33 +38,35 @@
                                 <button class="primary" mat-flat-button matDatepickerApply>{{ getLabel("ok") | uppercase }}</button>
                             </mat-datepicker-actions>
                         </mat-datepicker>
-                        <mat-error *ngIf="date.hasError('required')">{{ getHint("invalid") }}</mat-error>
                         <mat-hint>{{ getLabel("step-2-date-hint") }}</mat-hint>
+                        <mat-error *ngIf="date.hasError('required')">{{ getHint("invalid") }}</mat-error>
                     </mat-form-field>
                 </div>
                 <!-- Destination -->
                 <mat-form-field>
-                    <mat-label>{{ getLabel("step-2-destination") }}</mat-label>
-                    <mat-select formControlName="destination">
-                        <mat-option *ngFor="let destination of destinations" [value]="destination.id">
-                            {{ destination.description }}
+                    <mat-label>{{ getLabel('step-2-destination') }}</mat-label>
+                    <mat-select [(value)]="selectedDestination" formControlName="destination">
+                        <mat-option *ngFor="let p of destinations" [value]="p">
+                            {{ p.description }}
                         </mat-option>
                     </mat-select>
                     <mat-hint>{{ getLabel("step-2-destination-hint") }}</mat-hint>
+                    <mat-error *ngIf="destination.hasError('required')">{{ getHint("required") }}</mat-error>
+                    <mat-error *ngIf="!destination.hasError('required') && destination.hasError('incorrect')">{{ getHint("invalid") }}</mat-error>
                 </mat-form-field>
                 <!-- Lastname -->
                 <mat-form-field>
                     <mat-label>{{ getLabel("step-2-lastname") }}</mat-label>
                     <input formControlName="lastname" matInput>
-                    <mat-error *ngIf="lastname.hasError('required')">{{ getHint("required") }}</mat-error>
                     <mat-hint>{{ getLabel("step-2-lastname-hint") }}</mat-hint>
+                    <mat-error *ngIf="lastname.hasError('required')">{{ getHint("required") }}</mat-error>
                 </mat-form-field>
                 <!-- Firstname -->
                 <mat-form-field>
                     <mat-label>{{ getLabel("step-2-firstname") }}</mat-label>
                     <input formControlName="firstname" matInput>
-                    <mat-error *ngIf="firstname.hasError('required')">{{ getHint("required") }}</mat-error>
                     <mat-hint>{{ getLabel("step-2-firstname-hint") }}</mat-hint>
+                    <mat-error *ngIf="firstname.hasError('required')">{{ getHint("required") }}</mat-error>
                 </mat-form-field>
             </div>
         </ng-template>
@@ -70,6 +74,7 @@
 
     <div id="footer">
         <button [disabled]="requiredFieldsShouldBeGiven()" (click)="onSearch()" class="primary" mat-flat-button>
+            <mat-icon *ngIf="requiredFieldsShouldBeGiven()" class="material-icons-outlined">lock</mat-icon>
             <span>{{ getLabel("next") | uppercase }}</span>
         </button>
     </div>

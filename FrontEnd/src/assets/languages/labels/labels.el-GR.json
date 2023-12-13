@@ -28,11 +28,11 @@
             },
             {
                 "id": "step-2-yes",
-                "description": "Ναι"
+                "description": "Ναι, έχω"
             },
             {
                 "id": "step-2-no",
-                "description": "Οχι"
+                "description": "Οχι, δεν έχω"
             },
             {
                 "id": "step-2-refNo",
@@ -175,12 +175,28 @@
                 "description": "Ακυρωση"
             },
             {
+                "id": "step-6-header",
+                "description": "Αποστολή email"
+            },
+            {
+                "id": "step-6-sub-header",
+                "description": "Δώστε μας ένα email στο οποίο θα σας στείλουμε την κάρτα επιβίβασης"
+            },
+            {
+                "id": "step-6-email",
+                "description": "Email"
+            },
+            {
                 "id": "today",
                 "description": "Σημερα"
             },
             {
                 "id": "ok",
                 "description": "OK"
+            },
+            {
+                "id": "cancel",
+                "description": "Ακυρο"
             },
             {
                 "id": "previous",

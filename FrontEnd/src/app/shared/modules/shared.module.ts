@@ -6,18 +6,14 @@ import { RouterModule } from '@angular/router'
 import { InputTabStopDirective } from '../directives/input-tabstop.directive'
 import { LanguageMenuComponent } from '../components/language-menu/language-menu.component'
 import { MaterialModule } from './material.module'
-import { PadNumberPipe } from '../pipes/pad-number.pipe'
-import { PrimeNgModule } from './primeng.module'
-import { ReplaceZeroPipe } from '../pipes/replace-zero.pipe'
-import { SafeStylePipe } from '../pipes/safe-style.pipe'
 import { ModalDialogComponent } from '../components/modal-dialog/modal-dialog.component'
+import { PrimeNgModule } from './primeng.module'
+import { SafeStylePipe } from '../pipes/safe-style.pipe'
 
 @NgModule({
     declarations: [
         InputTabStopDirective,
         LanguageMenuComponent,
-        PadNumberPipe,
-        ReplaceZeroPipe,
         ModalDialogComponent,
         SafeStylePipe,
     ],
@@ -34,11 +30,9 @@ import { ModalDialogComponent } from '../components/modal-dialog/modal-dialog.co
         InputTabStopDirective,
         LanguageMenuComponent,
         MaterialModule,
-        PadNumberPipe,
         PrimeNgModule,
         ReactiveFormsModule,
-        ReplaceZeroPipe,
-        RouterModule,
+        RouterModule
     ],
 })
 

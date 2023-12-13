@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 // Custom
 import { HttpDataService } from 'src/app/shared/services/http-data.service'
-import { NationalityDropdownVM } from '../view-models/nationality-autocomplete-vm'
+import { NationalityDropdownVM } from './nationality-dropdown-vm'
 import { environment } from 'src/environments/environment'
 
 @Injectable({ providedIn: 'root' })
 
-export class NationalityService extends HttpDataService {
+export class NationalityHttpService extends HttpDataService {
 
     constructor(httpClient: HttpClient) {
         super(httpClient, environment.apiUrl + '/nationalities')

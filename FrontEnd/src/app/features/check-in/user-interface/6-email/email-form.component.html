@@ -1,18 +1,29 @@
-<h1>Email Form</h1>
+<div id="content">
 
-<form [formGroup]="form" id="search-form">
-    <mat-form-field>
-        <mat-label>{{ getLabel("step-6-email") }}</mat-label>
-        <input formControlName="email" matInput>
-        <mat-error *ngIf="email.hasError('required')">{{ getHint("required") }}</mat-error>
-        <mat-hint>{{ getLabel("step-6-email-hint") }}</mat-hint>
-    </mat-form-field>
-</form>
+    <div id="dialog-header">
+        <div id="header">{{ getLabel("step-6-header") }}</div>
+        <div id="sub-header">{{ getLabel("step-6-sub-header") }}</div>
+    </div>
 
-<button (click)="previous()" class="primary" mat-flat-button>
-    <span>Previous</span>
-</button>
+    <form [formGroup]="form" id="form">
+        <mat-form-field>
+            <mat-label>{{ getLabel("step-6-email") }}</mat-label>
+            <input formControlName="email" matInput>
+            <mat-hint>{{ getLabel("step-6-email-hint") }}</mat-hint>
+            <mat-error *ngIf="email.hasError('required')">{{ getHint("required") }}</mat-error>
+            <mat-error *ngIf="email.hasError('maxlength')">{{ getHint("maxLength", email.errors.maxlength.requiredLength) }}</mat-error>
+            <mat-error *ngIf="!email.hasError('required') && !email.hasError('maxlength') && email.hasError('email')">{{ getHint("invalid") }}</mat-error>
+        </mat-form-field>
+    </form>
 
-<button (click)="onSendEmail()" class="primary" mat-flat-button>
-    <span>Next</span>
-</button>
+    <div id="footer">
+        <button (click)="previous()" class="primary" mat-flat-button>
+            <span>{{ getLabel("previous") | uppercase }}</span>
+        </button>
+        <button (click)="next()" [disabled]="!form.valid" class="primary" mat-flat-button>
+            <mat-icon *ngIf="!form.valid" class="material-icons-outlined">lock</mat-icon>
+            <span>{{ getLabel("next") | uppercase }}</span>
+        </button>
+    </div>
+
+</div>

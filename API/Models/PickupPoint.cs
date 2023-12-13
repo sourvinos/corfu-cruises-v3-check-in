@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using API.Infrastructure.Interfaces;
+﻿using API.Infrastructure.Interfaces;
 
 namespace API.Models {
 
@@ -7,12 +6,10 @@ namespace API.Models {
 
         // PK
         public int Id { get; set; }
-        // FKs
         // Fields
         public string Description { get; set; }
-        // Navigation
-        public Port Port { get; set; }
-
+        public string ExactPoint { get; set; }
+        public string Time { get; set; }
 
     }
 

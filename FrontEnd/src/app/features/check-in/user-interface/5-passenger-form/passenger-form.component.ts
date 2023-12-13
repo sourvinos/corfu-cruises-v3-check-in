@@ -1,20 +1,15 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component, Inject, NgZone } from '@angular/core'
 import { DateAdapter } from '@angular/material/core'
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { Observable, Subject } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
 // Custom
 import { CheckInPassengerReadDto } from '../../classes/dtos/check-in-passenger-read-dto'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
-import { DexieService } from 'src/app/shared/services/dexie.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 import { ValidationService } from 'src/app/shared/services/validation.service'
 
 @Component({
@@ -28,7 +23,6 @@ export class PassengerFormComponent {
     //#region variables
 
     public passenger: CheckInPassengerReadDto
-    private unsubscribe = new Subject<void>()
     public feature = 'check-in'
     public featureIcon = ''
     public form: FormGroup
@@ -40,12 +34,15 @@ export class PassengerFormComponent {
     public maxBirthDate = new Date()
 
     public isAutoCompleteDisabled = true
-    public dropdownNationalities: Observable<SimpleEntity[]>
-    public dropdownGenders: Observable<SimpleEntity[]>
+
+    public genders: any[]
+    public selectedGender: string
+    public nationalities: any[]
+    public selectedNationality: string
 
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto, private dateAdapter: DateAdapter<any>, private dateHelperService: DateHelperService, private dexieService: DexieService, private dialogRef: MatDialogRef<PassengerFormComponent>, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private ngZone: NgZone,) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: CheckInPassengerReadDto, private dateAdapter: DateAdapter<any>, private dateHelperService: DateHelperService, private dialogRef: MatDialogRef<PassengerFormComponent>, private formBuilder: FormBuilder, private helperService: HelperService, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private ngZone: NgZone,) {
         this.passenger = data
     }
 
@@ -53,8 +50,9 @@ export class PassengerFormComponent {
 
     ngOnInit(): void {
         this.initForm()
-        this.populateDropdowns()
         this.populateFields()
+        this.populateDropdowns()
+        this.highlightDropdownSelections()
         this.setLocale()
     }
 
@@ -62,28 +60,12 @@ export class PassengerFormComponent {
 
     //#region public methods
 
-    public autocompleteFields(fieldName: any, object: any): any {
-        return object ? object[fieldName] : undefined
-    }
-
-    public checkForEmptyAutoComplete(event: { target: { value: any } }): void {
-        if (event.target.value == '') this.isAutoCompleteDisabled = true
-    }
-
-    public enableOrDisableAutoComplete(event: any): void {
-        this.isAutoCompleteDisabled = this.helperService.enableOrDisableAutoComplete(event)
-    }
-
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
-    }
-
-    public openOrCloseAutoComplete(trigger: MatAutocompleteTrigger, element: any): void {
-        this.helperService.openOrCloseAutocomplete(this.form, element, trigger)
     }
 
     public onClose(): void {
@@ -114,14 +96,6 @@ export class PassengerFormComponent {
         })
     }
 
-    private filterAutocomplete(array: string, field: string, value: any): any[] {
-        if (typeof value !== 'object') {
-            const filtervalue = value.toLowerCase()
-            return this[array].filter((element: { [x: string]: string }) =>
-                element[field].toLowerCase().startsWith(filtervalue))
-        }
-    }
-
     private flattenForm(): any {
         return {
             'id': this.form.value.id == 0
@@ -139,6 +113,13 @@ export class PassengerFormComponent {
         }
     }
 
+    private highlightDropdownSelections(): void {
+        setTimeout(() => {
+            this.selectedGender = this.genders.find(({ id }) => id == this.form.value.gender.id)
+            this.selectedNationality = this.nationalities.find(({ id }) => id == this.form.value.nationality.id)
+        }, 2000)
+    }
+
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: this.data.id,
@@ -153,16 +134,13 @@ export class PassengerFormComponent {
         })
     }
 
-    private populateDropdownFromDexieDB(dexieTable: string, filteredTable: string, formField: string, modelProperty: string, orderBy: string): void {
-        this.dexieService.table(dexieTable).orderBy(orderBy).toArray().then((response) => {
-            this[dexieTable] = this.passenger.reservationId.toString() == '' ? response.filter(x => x.isActive) : response
-            this[filteredTable] = this.form.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(dexieTable, modelProperty, value)))
-        })
+    private populateDropdownFromLocalStorage(table: string): void {
+        this[table] = JSON.parse(this.localStorageService.getItem(table))
     }
 
     private populateDropdowns(): void {
-        this.populateDropdownFromDexieDB('genders', 'dropdownGenders', 'gender', 'description', 'description')
-        this.populateDropdownFromDexieDB('nationalities', 'dropdownNationalities', 'nationality', 'description', 'description')
+        this.populateDropdownFromLocalStorage('genders')
+        this.populateDropdownFromLocalStorage('nationalities')
     }
 
     private populateFields(): void {

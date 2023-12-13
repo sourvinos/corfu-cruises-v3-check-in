@@ -2,22 +2,22 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 // Custom
-import { DestinationAutoCompleteVM } from '../view-models/destination-autocomplete-vm'
+import { GenderDropdownVM } from './gender-dropdown-vm'
 import { HttpDataService } from 'src/app/shared/services/http-data.service'
 import { environment } from 'src/environments/environment'
 
 @Injectable({ providedIn: 'root' })
 
-export class DestinationService extends HttpDataService {
+export class GenderService extends HttpDataService {
 
     constructor(httpClient: HttpClient) {
-        super(httpClient, environment.apiUrl + '/destinations')
+        super(httpClient, environment.apiUrl + '/genders')
     }
 
     //#region public methods
 
-    public getAutoComplete(): Observable<DestinationAutoCompleteVM[]> {
-        return this.http.get<DestinationAutoCompleteVM[]>(environment.apiUrl + '/destinations/getAutoComplete')
+    public getAutoComplete(): Observable<GenderDropdownVM[]> {
+        return this.http.get<GenderDropdownVM[]>(environment.apiUrl + '/genders/getAutoComplete')
     }
 
     //#endregion

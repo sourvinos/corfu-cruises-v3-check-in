@@ -4,8 +4,12 @@
         <span (click)="goHome()" class="clickable material-symbols-outlined">home</span>
         <span class="material-symbols-outlined">language</span>
     </div>
-    <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
-        <router-outlet #o="outlet"></router-outlet>
+    <div id="center">
+        <div id="main">
+            <div id="outer-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
+                <router-outlet #o="outlet"></router-outlet>
+            </div>
+        </div>
     </div>
     <div id="bottombar">
         <span (click)="showHelpDialog()" class="material-symbols-outlined">help</span>

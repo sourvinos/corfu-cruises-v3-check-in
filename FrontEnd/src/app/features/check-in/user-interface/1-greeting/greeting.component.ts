@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 // Custom
-import { DestinationService } from 'src/app/features/destinations/classes/services/destination.service'
-import { DexieService } from 'src/app/shared/services/dexie.service'
-import { GenderService } from 'src/app/features/genders/classes/services/gender-http.service'
+import { DestinationHttpService } from 'src/app/features/destinations/destination-http.service'
+import { GenderService } from 'src/app/features/genders/gender-http.service'
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { NationalityService } from 'src/app/features/nationalities/classes/services/nationality.service'
+import { NationalityHttpService } from 'src/app/features/nationalities/nationality-http.service'
 
 @Component({
     selector: 'app-greeting',
@@ -17,12 +17,12 @@ export class GreetingComponent {
 
     public feature = 'check-in'
 
-    constructor(private destinationService: DestinationService, private dexieService: DexieService, private genderService: GenderService, private messageLabelService: MessageLabelService, private nationalityService: NationalityService, private router: Router) { }
+    constructor(private destinationService: DestinationHttpService, private genderService: GenderService, private messageLabelService: MessageLabelService, private NationalityHttpService: NationalityHttpService, private localStorageService: LocalStorageService, private router: Router) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.populateDexieFromAPI()
+        this.populateStorageFromAPI()
     }
 
     //#endregion
@@ -41,10 +41,10 @@ export class GreetingComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    private populateDexieFromAPI(): void {
-        this.dexieService.populateTable('destinations', this.destinationService)
-        this.dexieService.populateTable('genders', this.genderService)
-        this.dexieService.populateTable('nationalities', this.nationalityService)
+    private populateStorageFromAPI(): void {
+        this.destinationService.getActive().subscribe(response => { this.localStorageService.saveItem('destinations', JSON.stringify(response)) })
+        this.genderService.getActive().subscribe(response => { this.localStorageService.saveItem('genders', JSON.stringify(response)) })
+        this.NationalityHttpService.getActive().subscribe(response => { this.localStorageService.saveItem('nationalities', JSON.stringify(response)) })
     }
 
     //#endregion

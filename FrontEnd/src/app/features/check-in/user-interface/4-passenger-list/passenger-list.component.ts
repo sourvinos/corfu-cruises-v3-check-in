@@ -4,14 +4,13 @@ import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 import { Table } from 'primeng/table'
 // Custom
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
-import { PassengerFormComponent } from '../5-passenger-form/passenger-form.component'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { ReservationVM } from '../../classes/view-models/reservation-vm'
-import { HelperService } from 'src/app/shared/services/helper.service'
-import { EmojiService } from 'src/app/shared/services/emoji.service'
 import { CheckInPassengerReadDto } from '../../classes/dtos/check-in-passenger-read-dto'
+import { EmojiService } from 'src/app/shared/services/emoji.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
+import { MessageLabelService } from 'src/app/shared/services/message-label.service'
+import { PassengerFormComponent } from '../5-passenger-form/passenger-form.component'
+import { ReservationVM } from '../../classes/view-models/reservation-vm'
 
 @Component({
     selector: 'passenger-list',
@@ -21,19 +20,27 @@ import { CheckInPassengerReadDto } from '../../classes/dtos/check-in-passenger-r
 
 export class PassengerListComponent {
 
-    @ViewChild('table') table: Table | undefined
+    //#region variables
 
     @Input() passengers: CheckInPassengerReadDto[] = []
-
+    @ViewChild('table') table: Table | undefined
     public feature = 'check-in'
     public reservation: ReservationVM
     public reservationForm: FormGroup
 
-    constructor(private emojiService: EmojiService, private helperService: HelperService, private messageLabelService: MessageLabelService, private router: Router, private dialog: MatDialog, private localStorageService: LocalStorageService, private interactionService: InteractionService) { }
+    //#endregion
+
+    constructor(private dialog: MatDialog, private emojiService: EmojiService, private helperService: HelperService, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private router: Router) { }
+
+    //#region lifecycle hooks
 
     ngOnInit(): void {
         this.reservation = JSON.parse(this.localStorageService.getItem('reservation'))
     }
+
+    //#endregion
+
+    //#region public methods
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
@@ -57,46 +64,29 @@ export class PassengerListComponent {
         this.showPassengerForm(record)
     }
 
-    private showPassengerForm(passenger?: any): void {
-        if (passenger == undefined) {
-            this.showEmptyForm()
-        }
-        if (passenger != undefined) {
-            this.sendPassengerToForm(passenger)
-        }
-    }
-
-    private showEmptyForm(): void {
-        const dialog = this.dialog.open(PassengerFormComponent, {
-            width: '400px',
-            data: {
-                id: 0,
-                reservationId: this.reservation.reservationId,
-                lastname: '',
-                firstname: '',
-                nationality: { 'id': 1, 'description': '' },
-                gender: { 'id': 1, 'description': '' },
-                birthdate: '',
-                specialCare: '',
-                remarks: ''
-            }
-        })
-        dialog.afterClosed().subscribe((newPassenger: any) => {
-            if (newPassenger) {
-                this.reservation.passengers.push(newPassenger)
-                // this.reservation.outputPassengerCount.emit(this.reservation.passengers.length)
-                // this.reservation.outputPassengers.emit(this.reservation.passengers)
-                this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
-                console.log(this.reservation)
-            }
-        })
-    }
-
     public getEmoji(emoji: string): string {
         return this.emojiService.getEmoji(emoji)
     }
 
+    //#endregion
 
+    //#region private methods
+
+    public checkTotalPaxAgainstPassengerCount(): boolean {
+        if (this.passengers != null) {
+            return this.reservation.passengers.length >= this.reservation.totalPax ? true : false
+        }
+    }
+
+    public deleteRow(record: any): void {
+        const index = this.reservation.passengers.indexOf(record)
+        this.reservation.passengers.splice(index, 1)
+        this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
+    }
+
+    public newRow(): void {
+        this.showPassengerForm()
+    }
 
     private sendPassengerToForm(passenger: any): void {
         const dialog = this.dialog.open(PassengerFormComponent, {
@@ -126,29 +116,45 @@ export class PassengerListComponent {
                 passenger.remarks = result.remarks
                 this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
                 console.log(this.reservation)
-                // this.interactionService.updateReservation()
             }
         })
     }
 
-    public deleteRow(record: any): void {
-        const index = this.reservation.passengers.indexOf(record)
-        this.reservation.passengers.splice(index, 1)
-        // this.reservation.outputPassengerCount.emit(this.reservation.passengers.length)
-        // this.reservation.outputPassengers.emit(this.reservation.passengers)
-        this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
-        // this.interactionService.updateReservation()
+    private showEmptyForm(): void {
+        const dialog = this.dialog.open(PassengerFormComponent, {
+            width: '400px',
+            data: {
+                id: 0,
+                reservationId: this.reservation.reservationId,
+                lastname: '',
+                firstname: '',
+                nationality: { 'id': 1, 'description': '' },
+                gender: { 'id': 1, 'description': '' },
+                birthdate: '',
+                specialCare: '',
+                remarks: ''
+            }
+        })
+        dialog.afterClosed().subscribe((newPassenger: any) => {
+            if (newPassenger) {
+                this.reservation.passengers.push(newPassenger)
+                // this.reservation.outputPassengerCount.emit(this.reservation.passengers.length)
+                // this.reservation.outputPassengers.emit(this.reservation.passengers)
+                this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
+                console.log(this.reservation)
+            }
+        })
     }
 
-    public newRow(): void {
-        this.showPassengerForm()
-    }
-
-    public checkTotalPaxAgainstPassengerCount(): boolean {
-        if (this.passengers != null) {
-            return this.reservation.passengers.length >= this.reservation.totalPax ? true : false
+    private showPassengerForm(passenger?: any): void {
+        if (passenger == undefined) {
+            this.showEmptyForm()
+        }
+        if (passenger != undefined) {
+            this.sendPassengerToForm(passenger)
         }
     }
 
+    //#endregion
 
 }

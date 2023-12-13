@@ -1,6 +1,7 @@
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 import { PassengerVM } from './passenger-vm'
 import { Guid } from 'guid-typescript'
+import { PickupPointVM } from './pickupPoint-vm'
 
 export interface ReservationVM {
 
@@ -10,7 +11,7 @@ export interface ReservationVM {
     ticketNo: string
     destination: SimpleEntity
     customer: SimpleEntity
-    pickupPoint: SimpleEntity
+    pickupPoint: PickupPointVM
     adults: number
     kids: number
     free: number

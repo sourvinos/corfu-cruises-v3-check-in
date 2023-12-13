@@ -1,6 +1,12 @@
 .mat-mdc-radio-group {
     display: flex !important;
-    justify-content: space-around !important;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.mat-mdc-radio-button {
+    background-color: var(--color-input-background);
+    padding: 1rem 1rem 1rem 1rem;
 }
 
 .mat-mdc-radio-button .mdc-radio {
@@ -8,5 +14,6 @@
 }
 
 .mdc-form-field > label {
-    font-size: 1.125rem !important;
+    font-size: 16px !important;
+    font-family: var(--font-family-segoe-ui) !important;
 }

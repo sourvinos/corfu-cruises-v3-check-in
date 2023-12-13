@@ -15,7 +15,7 @@ namespace API.Controllers {
             this.destinationRepo = destinationRepo;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet()]
         public async Task<IEnumerable<DestinationAutoCompleteVM>> GetAutoCompleteAsync() {
             return await destinationRepo.GetAutoCompleteAsync();
         }

@@ -15,7 +15,7 @@ namespace API.Controllers {
             this.genderRepo = genderRepo;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet()]
         public async Task<IEnumerable<GenderAutoCompleteVM>> GetAutoCompleteAsync() {
             return await genderRepo.GetAutoCompleteAsync();
         }

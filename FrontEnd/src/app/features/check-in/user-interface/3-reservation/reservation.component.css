@@ -22,10 +22,16 @@
     text-align: center;
 }
 
+#form-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 #reservation-form {
     display: flex;
     flex-direction: column;
-
 }
 
 #footer {

@@ -1,6 +1,6 @@
 import { Guid } from 'guid-typescript'
 // Custom
-import { NationalityDropdownVM } from 'src/app/features/nationalities/classes/view-models/nationality-autocomplete-vm'
+import { NationalityDropdownVM } from 'src/app/features/nationalities/nationality-dropdown-vm'
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 
 export interface CheckInPassengerReadDto {

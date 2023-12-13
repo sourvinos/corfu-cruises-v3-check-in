@@ -21,10 +21,8 @@ import { CustomDateAdapter } from '../adapters/custom-date-adapter'
 
 @NgModule({
     exports: [
-        MatAutocompleteModule,
         MatButtonModule,
         MatCardModule,
-        MatCheckboxModule,
         MatDatepickerModule,
         MatDialogModule,
         MatDividerModule,

@@ -48,14 +48,6 @@
     width: 100%;
 }
 
-#dialog-json-content {
-    color: var(--color-text);
-    font-family: monospace !important;
-    font-size: 0.75rem !important;
-    justify-content: left;
-    overflow: scroll;
-}
-
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
     opacity: 0 !important;
 }

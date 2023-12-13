@@ -15,7 +15,7 @@ namespace API.Features.Nationalities {
             this.nationalityRepo = nationalityRepo;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet()]
         public async Task<IEnumerable<NationalityAutoCompleteVM>> GetAutoCompleteAsync() {
             return await nationalityRepo.GetAutoCompleteAsync();
         }

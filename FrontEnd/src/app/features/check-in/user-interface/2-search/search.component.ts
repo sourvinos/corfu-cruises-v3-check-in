@@ -1,19 +1,17 @@
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component } from '@angular/core'
 import { MatDatepickerInputEvent } from '@angular/material/datepicker'
 import { Router } from '@angular/router'
-import { Subject, map, startWith } from 'rxjs'
+import { Subject } from 'rxjs'
 // Custom
 import { CheckInHttpService } from '../../classes/services/check-in.http.service'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
-import { DestinationAutoCompleteVM } from 'src/app/features/destinations/classes/view-models/destination-autocomplete-vm'
-import { DexieService } from 'src/app/shared/services/dexie.service'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 import { indicate } from 'src/app/shared/services/helper.service'
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 
 @Component({
     selector: 'search',
@@ -29,11 +27,12 @@ export class SearchComponent {
     public isLoading = new Subject<boolean>()
     public searchForm: FormGroup
     public options: any[] = [{ 'id': 1, 'description': this.getLabel('step-2-yes') }, { 'id': 2, 'description': this.getLabel('step-2-no') }]
-    public destinations: DestinationAutoCompleteVM[] = []
+    public destinations: any[]
+    public selectedDestination: string
 
     //#endregion
 
-    constructor(private checkInService: CheckInHttpService, private dateHelperService: DateHelperService, private dexieService: DexieService, private dialogService: DialogService, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageDialogService, private router: Router) { }
+    constructor(private checkInService: CheckInHttpService, private dateHelperService: DateHelperService, private dialogService: DialogService, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageDialogService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -46,8 +45,39 @@ export class SearchComponent {
 
     //#region public methods
 
+    public doTodayTasks(): void {
+        this.searchForm.patchValue({
+            complexGroup: {
+                date: this.dateHelperService.formatDateToIso(new Date())
+            }
+        })
+    }
+
     public getHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
+    }
+
+    public getLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public onSearch(): void {
+        if (this.searchForm.value.hasRefNo == 1) {
+            this.searchByRefNo().then((response) => {
+                if (response) {
+                    this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
+                    this.router.navigate(['reservation'])
+                }
+            })
+        }
+        if (this.searchForm.value.hasRefNo == 2) {
+            this.searchByMultipleField().then((response) => {
+                if (response) {
+                    this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
+                    this.router.navigate(['reservation'])
+                }
+            })
+        }
     }
 
     public patchFormWithSelectedDate(event: MatDatepickerInputEvent<Date>): void {
@@ -70,44 +100,9 @@ export class SearchComponent {
         }
     }
 
-    public onSearch(): void {
-        if (this.searchForm.value.hasRefNo == 1) {
-            this.searchByRefNo().then((response) => {
-                this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
-                this.router.navigate(['reservation'])
-            })
-        }
-        if (this.searchForm.value.hasRefNo == 2) {
-            this.searchByMultipleField().then((response) => {
-                this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
-                this.router.navigate(['reservation'])
-            })
-        }
-    }
-
-    public getLabel(id: string): string {
-        return this.messageLabelService.getDescription(this.feature, id)
-    }
-
-    public doTodayTasks(): void {
-        this.searchForm.patchValue({
-            complexGroup: {
-                date: this.dateHelperService.formatDateToIso(new Date())
-            }
-        })
-    }
-
     //#endregion
 
     //#region private methods
-
-    private filterAutocomplete(array: string, field: string, value: any): any[] {
-        if (typeof value !== 'object') {
-            const filtervalue = value.toLowerCase()
-            return this[array].filter((element: { [x: string]: string }) =>
-                element[field].toLowerCase().startsWith(filtervalue))
-        }
-    }
 
     private getToday(): string {
         return (this.dateHelperService.formatDateToIso(new Date()))
@@ -116,32 +111,27 @@ export class SearchComponent {
     private initForm(): void {
         this.searchForm = this.formBuilder.group({
             hasRefNo: '',
-            refNo: 'PA28952',
+            refNo: ['PA28952', Validators.required],
             complexGroup: this.formBuilder.group({
                 date: [this.getToday()],
-                destination: [''],
-                lastname: [''],
-                firstname: ['']
+                destination: ['', Validators.required],
+                lastname: ['Jones', Validators.required],
+                firstname: ['Richard', Validators.required]
             })
         })
     }
 
-    private populateDropdownFromDexieDB(dexieTable: string, filteredTable: string, formField: string, modelProperty: string, orderBy: string): void {
-        this.dexieService.table(dexieTable).orderBy(orderBy).toArray().then((response) => {
-            this[dexieTable] = response.filter(x => x.isActive)
-            this[filteredTable] = this.searchForm.get(formField).valueChanges.pipe(startWith(''), map(value => this.filterAutocomplete(dexieTable, modelProperty, value)))
-        })
+    private populateDropdownFromLocalStorage(table: string): void {
+        this[table] = JSON.parse(this.localStorageService.getItem(table))
     }
 
     private populateDropdowns(): void {
-        setTimeout(() => {
-            this.populateDropdownFromDexieDB('destinations', 'dropdownDestinations', 'destination', 'description', 'description')
-        }, 5000)
+        this.populateDropdownFromLocalStorage('destinations')
     }
 
     private searchByMultipleField(): Promise<any> {
         return new Promise((resolve) => {
-            this.checkInService.getByDate(this.searchForm.value.complexGroup.date, this.searchForm.value.complexGroup.destination, this.searchForm.value.complexGroup.lastname, this.searchForm.value.complexGroup.firstname).pipe(indicate(this.isLoading)).subscribe({
+            this.checkInService.getByDate(this.searchForm.value.complexGroup.date, this.searchForm.value.complexGroup.destination.id, this.searchForm.value.complexGroup.lastname, this.searchForm.value.complexGroup.firstname).pipe(indicate(this.isLoading)).subscribe({
                 next: (response) => {
                     resolve(response)
                 },

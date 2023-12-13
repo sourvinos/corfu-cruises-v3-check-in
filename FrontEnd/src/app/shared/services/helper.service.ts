@@ -8,7 +8,6 @@ import { Title } from '@angular/platform-browser'
 // Custom
 import { MessageLabelService } from './message-label.service'
 import { DialogService } from './modal-dialog.service'
-import { SessionStorageService } from './session-storage.service'
 import { environment } from 'src/environments/environment'
 
 export function prepare<T>(callback: () => void): (source: Observable<T>) => Observable<T> {
@@ -35,7 +34,7 @@ export class HelperService {
 
     //#endregion
 
-    constructor(private messageLabelService: MessageLabelService, private dialogService: DialogService, private router: Router, private sessionStorageService: SessionStorageService, private titleService: Title) { }
+    constructor(private messageLabelService: MessageLabelService, private dialogService: DialogService, private router: Router, private titleService: Title) { }
 
     //#region public methods
 
@@ -66,16 +65,6 @@ export class HelperService {
         }, {})))
         distinctRecords.sort((a, b) => (a[orderField] > b[orderField]) ? 1 : -1)
         return distinctRecords
-    }
-
-    public focusOnField(): void {
-        setTimeout(() => {
-            const input = Array.prototype.slice.apply(document.querySelectorAll('input[dataTabIndex]'))[0]
-            if (input != null && this.sessionStorageService.getItem('isFirstFieldFocused') == 'true') {
-                input.focus()
-                input.select()
-            }
-        }, 500)
     }
 
     public flattenObject(object: any): any {
@@ -135,27 +124,6 @@ export class HelperService {
         })
         const selectedRow = document.getElementById(id)
         selectedRow.classList.add('p-highlight')
-    }
-
-    public highlightSavedRow(feature: string): void {
-        setTimeout(() => {
-            const x = document.getElementById(this.sessionStorageService.getItem(feature + '-' + 'id'))
-            if (x != null) {
-                x.classList.add('p-highlight')
-            }
-        }, 500)
-    }
-
-    public scrollToSavedPosition(virtualElement: any, feature: string): void {
-        if (virtualElement != undefined) {
-            setTimeout(() => {
-                virtualElement.scrollTo({
-                    top: parseInt(this.sessionStorageService.getItem(feature + '-scrollTop')) || 0,
-                    left: 0,
-                    behavior: 'auto'
-                })
-            }, 500)
-        }
     }
 
     public openOrCloseAutocomplete(form: FormGroup<any>, element: any, trigger: MatAutocompleteTrigger): void {

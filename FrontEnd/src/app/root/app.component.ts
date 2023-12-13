@@ -3,7 +3,6 @@ import { DOCUMENT } from '@angular/common'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 // Custom
 import { MessageDialogService } from '../shared/services/message-dialog.service'
-import { environment } from 'src/environments/environment'
 import { routeAnimation } from '../shared/animations/animations'
 import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
 import { DialogService } from '../shared/services/modal-dialog.service'
@@ -38,7 +37,6 @@ export class AppComponent {
 
     ngOnInit(): void {
         this.initLoadingSpinner()
-        this.setUserSelect()
         this.setBackgroundImage()
         this.attachStylesheetToHead()
     }
@@ -72,10 +70,6 @@ export class AppComponent {
 
     private setBackgroundImage(): void {
         document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
-    }
-
-    private setUserSelect(): void {
-        document.getElementById('wrapper').style.userSelect = environment.cssUserSelect
     }
 
     public showHelpDialog(): void {

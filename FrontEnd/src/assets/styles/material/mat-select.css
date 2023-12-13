@@ -1,0 +1,13 @@
+.mat-mdc-select-value {
+    font-family: var(--font-family-segoe-ui);
+}
+
+.mat-mdc-option.mdc-list-item .mdc-list-item__primary-text {
+    color: #000000;
+    font-family: var(--font-family-segoe-ui);
+    font-size: 14px;
+}
+
+.mat-mdc-select-arrow svg {
+    top: 100% !important;
+}

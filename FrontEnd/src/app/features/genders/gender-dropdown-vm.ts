@@ -1,6 +1,6 @@
 import { SimpleEntity } from 'src/app/shared/classes/simple-entity'
 
-export interface DestinationAutoCompleteVM extends SimpleEntity {
+export interface GenderDropdownVM extends SimpleEntity {
 
     isActive: boolean
 

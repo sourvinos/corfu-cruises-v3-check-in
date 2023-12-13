@@ -40,17 +40,22 @@ export class ReservationComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public previous(): void {
-        this.router.navigate(['search'])
-    }
-
     public next(): void {
         this.router.navigate(['passenger-list'])
+    }
+
+    public previous(): void {
+        this.router.navigate(['search'])
     }
 
     //#endregion
 
     //#region private methods
+
+    private getRecord(): void {
+        this.reservation = JSON.parse(this.localStorageService.getItem('reservation')) as ReservationVM
+        console.log(this.reservation)
+    }
 
     private initForm(): void {
         this.reservationForm = this.formBuilder.group({
@@ -69,11 +74,6 @@ export class ReservationComponent {
         })
     }
 
-    private getRecord(): void {
-        this.reservation = JSON.parse(this.localStorageService.getItem('reservation')) as ReservationVM
-        console.log(this.reservation)
-    }
-
     private populateFields(): void {
         this.reservationForm.setValue({
             date: this.reservation.date,
@@ -81,7 +81,7 @@ export class ReservationComponent {
             ticketNo: this.reservation.ticketNo,
             destination: this.reservation.destination.description,
             customer: this.reservation.customer.description,
-            pickupPoint: this.reservation.pickupPoint.description,
+            pickupPoint: this.reservation.pickupPoint.description + ' - ' + this.reservation.pickupPoint.exactPoint,
             adults: this.reservation.adults,
             kids: this.reservation.kids,
             free: this.reservation.free,

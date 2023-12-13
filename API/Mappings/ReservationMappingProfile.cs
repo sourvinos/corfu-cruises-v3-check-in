@@ -3,6 +3,7 @@ using API.Dtos;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Helpers;
 using API.Models;
+using API.ViewModels;
 using AutoMapper;
 
 namespace API.Mappings {
@@ -16,7 +17,12 @@ namespace API.Mappings {
                 .ForMember(x => x.Customer, x => x.MapFrom(x => new SimpleEntity { Id = x.Customer.Id, Description = x.Customer.Description }))
                 .ForMember(x => x.Destination, x => x.MapFrom(x => new SimpleEntity { Id = x.Destination.Id, Description = x.Destination.Description }))
                 .ForMember(x => x.Destination, x => x.MapFrom(x => new SimpleEntity { Id = x.Destination.Id, Description = x.Destination.Description }))
-                .ForMember(x => x.PickupPoint, x => x.MapFrom(x => new SimpleEntity { Id = x.PickupPoint.Id, Description = x.PickupPoint.Description }))
+                .ForMember(x => x.PickupPoint, x => x.MapFrom(x => new PickupPointVM {
+                    Id = x.PickupPoint.Id,
+                    Description = x.PickupPoint.Description,
+                    ExactPoint = x.PickupPoint.ExactPoint,
+                    Time = x.PickupPoint.Time
+                }))
                 .ForMember(x => x.Passengers, x => x.MapFrom(x => x.Passengers.Select(passenger => new PassengerReadDto {
                     Id = passenger.Id,
                     ReservationId = passenger.ReservationId,

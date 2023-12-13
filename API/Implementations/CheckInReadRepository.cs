@@ -21,7 +21,7 @@ namespace API.Implementations {
                .AsNoTracking()
                .Include(x => x.Customer)
                .Include(x => x.Destination)
-               .Include(x => x.PickupPoint).ThenInclude(x => x.Port)
+               .Include(x => x.PickupPoint)
                .Include(x => x.Passengers).ThenInclude(x => x.Nationality)
                .Include(x => x.Passengers).ThenInclude(x => x.Occupant)
                .Include(x => x.Passengers).ThenInclude(x => x.Gender)
