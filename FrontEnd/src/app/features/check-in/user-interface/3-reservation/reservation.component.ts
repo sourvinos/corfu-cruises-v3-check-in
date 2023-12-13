@@ -27,6 +27,7 @@ export class ReservationComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
+        this.setFormHeight()
         this.initForm()
         this.getRecord()
         this.populateFields()
@@ -89,6 +90,12 @@ export class ReservationComponent {
             phones: this.reservation.phones,
             remarks: this.reservation.remarks
         })
+    }
+
+    private setFormHeight(): void {
+        const x = document.body.clientHeight
+        const form = document.getElementById('reservation-form')
+        form.style.height = x - 169 + 'px'
     }
 
     //#endregion

@@ -1,8 +1,7 @@
 <div id="wrapper">
-
     <div id="topbar">
-        <span (click)="goHome()" class="clickable material-symbols-outlined">home</span>
-        <span class="material-symbols-outlined">language</span>
+        <span (click)="goHome()" class="clickable material-symbols-outlined">menu</span>
+        <span (click)="showHelpDialog()" class="material-symbols-outlined">help</span>
     </div>
     <div id="center">
         <div id="main">
@@ -11,10 +10,6 @@
             </div>
         </div>
     </div>
-    <div id="bottombar">
-        <span (click)="showHelpDialog()" class="material-symbols-outlined">help</span>
-    </div>
-
 </div>
 
 <div *ngIf="isLoading">

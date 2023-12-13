@@ -39,6 +39,6 @@
     column-gap: 1rem;
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    margin: auto 0 1rem 0;
     text-align: center;
 }
