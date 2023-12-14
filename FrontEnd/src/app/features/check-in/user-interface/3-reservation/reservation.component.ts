@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
 import { ReservationVM } from '../../classes/view-models/reservation-vm'
+import { DateHelperService } from 'src/app/shared/services/date-helper.service'
 // Custom
 
 @Component({
@@ -22,7 +23,7 @@ export class ReservationComponent {
 
     //#endregion
 
-    constructor(private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private router: Router) { }
+    constructor(private dateHelperService: DateHelperService, private formBuilder: FormBuilder, private localStorageService: LocalStorageService, private messageLabelService: MessageLabelService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -54,7 +55,7 @@ export class ReservationComponent {
     //#region private methods
 
     private getRecord(): void {
-        this.reservation = JSON.parse(this.localStorageService.getItem('reservation')) as ReservationVM
+        this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object')) as ReservationVM
         console.log(this.reservation)
     }
 
@@ -66,6 +67,8 @@ export class ReservationComponent {
             destination: '',
             customer: '',
             pickupPoint: '',
+            exactPoint: '',
+            time: '',
             adults: '',
             kids: '',
             free: '',
@@ -77,12 +80,14 @@ export class ReservationComponent {
 
     private populateFields(): void {
         this.reservationForm.setValue({
-            date: this.reservation.date,
+            date: this.dateHelperService.formatISODateToLocale(this.reservation.date, true, true),
             refNo: this.reservation.refNo,
             ticketNo: this.reservation.ticketNo,
             destination: this.reservation.destination.description,
             customer: this.reservation.customer.description,
-            pickupPoint: this.reservation.pickupPoint.description + ' - ' + this.reservation.pickupPoint.exactPoint,
+            pickupPoint: this.reservation.pickupPoint.description,
+            exactPoint: this.reservation.pickupPoint.exactPoint,
+            time: this.reservation.pickupPoint.time,
             adults: this.reservation.adults,
             kids: this.reservation.kids,
             free: this.reservation.free,

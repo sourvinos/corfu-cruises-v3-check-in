@@ -11,11 +11,11 @@
 
     <div id="dialog-footer">
         <mat-dialog-actions *ngIf="data.actions.length == 1">
-            <button mat-flat-button class="primary" id="ok" tabindex="-1" mat-dialog-close="true">{{ getLabel('ok') | uppercase }}</button>
+            <button mat-flat-button class="primary" id="ok" tabindex="-1" mat-dialog-close="true">{{ getLabel('ok') }}</button>
         </mat-dialog-actions>
         <mat-dialog-actions *ngIf="data.actions.length == 2">
-            <button mat-flat-button class="transparent" id="abort" tabindex="-1" (click)="onClose()">{{ getLabel('cancel') | uppercase }}</button>
-            <button mat-flat-button class="primary" id="ok" tabindex="-1" mat-dialog-close="true">{{ getLabel('ok') | uppercase }}</button>
+            <button mat-flat-button class="transparent" id="abort" tabindex="-1" (click)="onClose()">{{ getLabel('cancel') }}</button>
+            <button mat-flat-button class="primary" id="ok" tabindex="-1" mat-dialog-close="true">{{ getLabel('ok') }}</button>
         </mat-dialog-actions>
     </div>
 

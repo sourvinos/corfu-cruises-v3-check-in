@@ -8,6 +8,10 @@
     font-size: 14px;
 }
 
+.mat-mdc-select-value-text {
+    font-size: 14px !important;
+}
+
 .mat-mdc-select-arrow svg {
     top: 100% !important;
 }

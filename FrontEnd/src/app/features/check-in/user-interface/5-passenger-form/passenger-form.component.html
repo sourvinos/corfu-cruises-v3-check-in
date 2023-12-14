@@ -56,11 +56,11 @@
 
     <div id="dialog-footer">
         <button (click)="onClose()" class="transparent" mat-flat-button tabindex="-1">
-            <span>{{ getLabel("step-5-cancel") | uppercase }}</span>
+            <span>{{ getLabel("step-5-cancel") }}</span>
         </button>
         <button (click)="onSave()" [disabled]="!form.valid" class="primary" mat-flat-button tabindex="-1">
             <mat-icon *ngIf="!form.valid" class="material-icons-outlined">lock</mat-icon>
-            <span>{{ getLabel("step-5-ok") | uppercase }}</span>
+            <span>{{ getLabel("step-5-ok") }}</span>
         </button>
     </div>
 

@@ -3,7 +3,6 @@ import { Component } from '@angular/core'
 import { InteractionService } from '../../services/interaction.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { Menu } from 'src/app/shared/classes/menu'
-import { MessageCalendarService } from '../../services/message-calendar.service'
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
@@ -24,7 +23,7 @@ export class LanguageMenuComponent {
 
     //#endregion
 
-    constructor(private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageCalendarService: MessageCalendarService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private tooltipService: TooltipService) { }
+    constructor(private interactionService: InteractionService, private localStorageService: LocalStorageService, private messageDialogService: MessageDialogService, private messageHintService: MessageInputHintService, private messageLabelService: MessageLabelService, private tooltipService: TooltipService) { }
 
     //#region lifecycle hooks
 
@@ -65,7 +64,6 @@ export class LanguageMenuComponent {
     }
 
     private loadMessages(): void {
-        this.messageCalendarService.getMessages()
         this.messageHintService.getMessages()
         this.messageLabelService.getMessages()
         this.messageDialogService.getMessages()

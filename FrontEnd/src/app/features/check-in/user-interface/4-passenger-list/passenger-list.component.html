@@ -1,16 +1,20 @@
 <div id="content">
 
-    <div id="header">{{ getLabel("step-4-header") }}</div>
-    <div id="sub-header">{{ getLabel("step-4-sub-header") }}</div>
+    <div id="dialog-header">
+        <div id="header">
+            <span class="material-symbols-outlined step-number">counter_3</span>
+            <span>{{ getLabel("step-4-header") }}</span>
+        </div>
+        <div id="sub-header">{{ getLabel("step-4-sub-header") }}</div>
+    </div>
 
     <div id="passenger-list">
-        <div id="new-passenger-button">
-            <button (click)="newRow()" [disabled]="checkTotalPaxAgainstPassengerCount()" class="secondary" mat-flat-button>
-                <mat-icon *ngIf="checkTotalPaxAgainstPassengerCount()" class="material-icons-outlined">lock</mat-icon>
-                <span>{{ getLabel("step-4-new-passenger-button") | uppercase }}</span>
+        <div *ngIf="checkTotalPaxAgainstPassengerCount()" id="new-passenger-button">
+            <button (click)="newRow()" class="secondary" mat-flat-button>
+                <span>{{ getLabel("step-4-new-passenger-button") }}</span>
             </button>
         </div>
-        <div *ngIf="reservation.passengers.length" id="table-wrapper">
+        <div id="table-wrapper">
             <p-table #table [scrollable]="true" [value]="reservation.passengers" [virtualScrollItemSize]="32" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple">
                 <ng-template pTemplate="body" let-record>
                     <tr (click)="highlightRow(record.id)" [attr.id]="record.id" [pSelectableRow]="record" style="height: 32px;">
@@ -34,11 +38,15 @@
 
     <div id="footer">
         <button (click)="previous()" class="primary" mat-flat-button>
-            <span>{{ getLabel("previous") | uppercase }}</span>
+            <span>{{ getLabel("previous") }}</span>
         </button>
-        <button (click)="next()" class="primary" mat-flat-button>
-            <span>{{ getLabel("next") | uppercase }}</span>
+        <button [disabled]="checkTotalPaxAgainstPassengerCount()" (click)="next()" class="primary" mat-flat-button>
+            <mat-icon *ngIf="checkTotalPaxAgainstPassengerCount()" class="material-icons-outlined">lock</mat-icon>
+            <span>{{ getLabel("next") }}</span>
         </button>
+        <!-- <button (click)="next()" class="primary" mat-flat-button>
+            <span>{{ getLabel("next") }}</span>
+        </button> -->
     </div>
 
 </div>

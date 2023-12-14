@@ -2,7 +2,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Component } from '@angular/core'
 import { MatDatepickerInputEvent } from '@angular/material/datepicker'
 import { Router } from '@angular/router'
-import { Subject } from 'rxjs'
 // Custom
 import { CheckInHttpService } from '../../classes/services/check-in.http.service'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
@@ -11,7 +10,6 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { indicate } from 'src/app/shared/services/helper.service'
 
 @Component({
     selector: 'search',
@@ -24,8 +22,7 @@ export class SearchComponent {
     //#region variables
 
     public feature = 'check-in'
-    public isLoading = new Subject<boolean>()
-    public searchForm: FormGroup
+    public form: FormGroup
     public options: any[] = [{ 'id': 1, 'description': this.getLabel('step-2-yes') }, { 'id': 2, 'description': this.getLabel('step-2-no') }]
     public destinations: any[]
     public selectedDestination: string
@@ -39,6 +36,8 @@ export class SearchComponent {
     ngOnInit(): void {
         this.initForm()
         this.populateDropdowns()
+        this.populateFieldsFromLocalStorage()
+        this.highlightDropdownSelections()
     }
 
     //#endregion
@@ -46,7 +45,7 @@ export class SearchComponent {
     //#region public methods
 
     public doTodayTasks(): void {
-        this.searchForm.patchValue({
+        this.form.patchValue({
             complexGroup: {
                 date: this.dateHelperService.formatDateToIso(new Date())
             }
@@ -62,17 +61,19 @@ export class SearchComponent {
     }
 
     public onSearch(): void {
-        if (this.searchForm.value.hasRefNo == 1) {
+        if (this.form.value.hasRefNo == 1) {
             this.searchByRefNo().then((response) => {
                 if (response) {
+                    this.localStorageService.saveItem('criteria', JSON.stringify(this.form.value))
                     this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
                     this.router.navigate(['reservation'])
                 }
             })
         }
-        if (this.searchForm.value.hasRefNo == 2) {
+        if (this.form.value.hasRefNo == 2) {
             this.searchByMultipleField().then((response) => {
                 if (response) {
+                    this.localStorageService.saveItem('criteria', JSON.stringify(this.form.value))
                     this.localStorageService.saveItem('reservation', JSON.stringify(response.body))
                     this.router.navigate(['reservation'])
                 }
@@ -81,7 +82,7 @@ export class SearchComponent {
     }
 
     public patchFormWithSelectedDate(event: MatDatepickerInputEvent<Date>): void {
-        this.searchForm.patchValue({
+        this.form.patchValue({
             complexGroup: {
                 date: this.dateHelperService.formatDateToIso(new Date(event.value))
             }
@@ -89,14 +90,14 @@ export class SearchComponent {
     }
 
     public requiredFieldsShouldBeGiven(): boolean {
-        if (this.searchForm.value.hasRefNo == '') {
+        if (this.form.value.hasRefNo == '') {
             return true
         }
-        if (this.searchForm.value.hasRefNo == 1) {
-            return this.searchForm.value.refNo == ''
+        if (this.form.value.hasRefNo == 1) {
+            return this.form.value.refNo == ''
         }
-        if (this.searchForm.value.hasRefNo == 2) {
-            return (this.searchForm.value.complexGroup.date == '' || this.searchForm.value.complexGroup.destination == '' || this.searchForm.value.complexGroup.lastname == '' || this.searchForm.value.complexGroup.firstname == '')
+        if (this.form.value.hasRefNo == 2) {
+            return (this.form.value.complexGroup.date == '' || this.form.value.complexGroup.destination == '' || this.form.value.complexGroup.lastname == '' || this.form.value.complexGroup.firstname == '')
         }
     }
 
@@ -108,30 +109,55 @@ export class SearchComponent {
         return (this.dateHelperService.formatDateToIso(new Date()))
     }
 
+    private highlightDropdownSelections(): void {
+        setTimeout(() => {
+            this.selectedDestination = this.destinations.find(({ id }) => id == this.form.value.complexGroup.destination.id)
+        }, 2000)
+    }
+
     private initForm(): void {
-        this.searchForm = this.formBuilder.group({
+        this.form = this.formBuilder.group({
             hasRefNo: '',
-            refNo: ['PA28952', Validators.required],
+            refNo: ['', Validators.required],
             complexGroup: this.formBuilder.group({
-                date: [this.getToday()],
+                date: ['', Validators.required],
                 destination: ['', Validators.required],
-                lastname: ['Jones', Validators.required],
-                firstname: ['Richard', Validators.required]
+                lastname: ['', Validators.required],
+                firstname: ['', Validators.required]
             })
         })
     }
 
     private populateDropdownFromLocalStorage(table: string): void {
-        this[table] = JSON.parse(this.localStorageService.getItem(table))
+        this[table] = JSON.parse(this.localStorageService.getItem(table, 'object'))
     }
 
     private populateDropdowns(): void {
         this.populateDropdownFromLocalStorage('destinations')
     }
 
+    private populateFieldsFromLocalStorage(): void {
+        const criteria = JSON.parse(this.localStorageService.getItem('criteria', 'object'))
+        if (criteria != null) {
+            this.form.setValue({
+                hasRefNo: criteria.hasRefNo,
+                refNo: criteria.refNo,
+                complexGroup: {
+                    date: criteria.complexGroup.date,
+                    destination: {
+                        id: criteria.complexGroup.destination.id,
+                        description: criteria.complexGroup.destination.description
+                    },
+                    lastname: criteria.complexGroup.lastname,
+                    firstname: criteria.complexGroup.firstname
+                }
+            })
+        }
+    }
+
     private searchByMultipleField(): Promise<any> {
         return new Promise((resolve) => {
-            this.checkInService.getByDate(this.searchForm.value.complexGroup.date, this.searchForm.value.complexGroup.destination.id, this.searchForm.value.complexGroup.lastname, this.searchForm.value.complexGroup.firstname).pipe(indicate(this.isLoading)).subscribe({
+            this.checkInService.getByDate(this.form.value.complexGroup.date, this.form.value.complexGroup.destination.id, this.form.value.complexGroup.lastname, this.form.value.complexGroup.firstname).subscribe({
                 next: (response) => {
                     resolve(response)
                 },
@@ -145,7 +171,7 @@ export class SearchComponent {
 
     private searchByRefNo(): Promise<any> {
         return new Promise((resolve) => {
-            this.checkInService.getByRefNo(this.searchForm.value.refNo).pipe(indicate(this.isLoading)).subscribe({
+            this.checkInService.getByRefNo(this.form.value.refNo).subscribe({
                 next: (response) => {
                     resolve(response)
                 },
@@ -173,27 +199,27 @@ export class SearchComponent {
     //#region getters
 
     get refNo(): AbstractControl {
-        return this.searchForm.get('refNo')
+        return this.form.get('refNo')
     }
 
     get complexGroup(): AbstractControl {
-        return this.searchForm.get('complexGroup')
+        return this.form.get('complexGroup')
     }
 
     get date(): AbstractControl {
-        return this.searchForm.get('complexGroup.date')
+        return this.form.get('complexGroup.date')
     }
 
     get destination(): AbstractControl {
-        return this.searchForm.get('complexGroup.destination')
+        return this.form.get('complexGroup.destination')
     }
 
     get lastname(): AbstractControl {
-        return this.searchForm.get('complexGroup.lastname')
+        return this.form.get('complexGroup.lastname')
     }
 
     get firstname(): AbstractControl {
-        return this.searchForm.get('complexGroup.firstname')
+        return this.form.get('complexGroup.firstname')
     }
 
     //#endregion

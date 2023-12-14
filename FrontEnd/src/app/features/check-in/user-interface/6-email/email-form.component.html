@@ -1,7 +1,10 @@
 <div id="content">
 
     <div id="dialog-header">
-        <div id="header">{{ getLabel("step-6-header") }}</div>
+        <div id="header">
+            <span class="material-symbols-outlined step-number">counter_4</span>
+            <span>{{ getLabel("step-6-header") }}</span>
+        </div>
         <div id="sub-header">{{ getLabel("step-6-sub-header") }}</div>
     </div>
 
@@ -18,11 +21,11 @@
 
     <div id="footer">
         <button (click)="previous()" class="primary" mat-flat-button>
-            <span>{{ getLabel("previous") | uppercase }}</span>
+            <span>{{ getLabel("previous") }}</span>
         </button>
         <button (click)="next()" [disabled]="!form.valid" class="primary" mat-flat-button>
             <mat-icon *ngIf="!form.valid" class="material-icons-outlined">lock</mat-icon>
-            <span>{{ getLabel("next") | uppercase }}</span>
+            <span>{{ getLabel("next") }}</span>
         </button>
     </div>
 

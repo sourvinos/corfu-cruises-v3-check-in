@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 // Components
 import { CheckInRoutingModule } from './check-in.routing.module'
+import { CompletionComponent } from './../../user-interface/7-completion/completion.component'
 import { EmailFormComponent } from '../../user-interface/6-email/email-form.component'
 import { GreetingComponent } from '../../user-interface/1-greeting/greeting.component'
 import { PassengerFormComponent } from '../../user-interface/5-passenger-form/passenger-form.component'
@@ -16,7 +17,8 @@ import { SharedModule } from 'src/app/shared/modules/shared.module'
         ReservationComponent,
         PassengerListComponent,
         PassengerFormComponent,
-        EmailFormComponent
+        EmailFormComponent,
+        CompletionComponent
     ],
     imports: [
         SharedModule,

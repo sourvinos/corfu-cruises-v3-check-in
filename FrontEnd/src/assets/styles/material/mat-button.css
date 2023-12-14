@@ -7,9 +7,11 @@
 
 .mdc-button .mdc-button__label {
     color: var(--color-button-text) !important;
-    font-family: var(--font-family-segoe-ui) !important;
-    font-size: 0.8rem !important;
+    font-family: var(--font-family-asty) !important;
+    font-size: 0.75rem !important;
+    font-variant: small-caps;
     font-weight: 300 !important;
+    margin: 2px 0 0 0;
     transform: scale(1, 1.4);
 }
 

@@ -49,41 +49,14 @@ body {
     min-height: 100%;
 }
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.accent {
+    color: var(--color-accent) !important;
 }
 
 .center {
     justify-content: center !important;
     padding: 0 0 0 0 !important;
     text-align: center !important;
-}
-
-.right {
-    justify-content: flex-end !important;
-    text-align: end !important;
-}
-
-.accent {
-    color: var(--color-accent) !important;
-}
-
-.hidden {
-    visibility: hidden !important;
-}
-
-.no-display {
-    display: none !important;
-}
-
-.pi {
-    margin-top: 0;
-}
-
-.subscript {
-    font-size: 0.5rem;
 }
 
 .clickable:hover {
@@ -97,6 +70,10 @@ ul {
 .disabled:hover {
     cursor: no-drop;
     pointer-events: all;
+}
+
+.step-number {
+    color: var(--color-primary);
 }
 
 ::-webkit-scrollbar {
@@ -118,11 +95,4 @@ ul {
 
 ::-ms-reveal {
     display: none;
-}
-
-p {
-    color: var(--color-text) !important;
-    font-family: var(--font-family-ubuntu);
-    font-size: 1rem;
-    margin: 0;
 }

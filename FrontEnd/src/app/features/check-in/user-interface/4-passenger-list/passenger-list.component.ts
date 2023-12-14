@@ -35,7 +35,8 @@ export class PassengerListComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.reservation = JSON.parse(this.localStorageService.getItem('reservation'))
+        this.setFormHeight()
+        this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
     }
 
     //#endregion
@@ -73,9 +74,7 @@ export class PassengerListComponent {
     //#region private methods
 
     public checkTotalPaxAgainstPassengerCount(): boolean {
-        if (this.passengers != null) {
-            return this.reservation.passengers.length >= this.reservation.totalPax ? true : false
-        }
+        return this.reservation.passengers.length < this.reservation.totalPax ? true : false
     }
 
     public deleteRow(record: any): void {
@@ -118,6 +117,12 @@ export class PassengerListComponent {
                 console.log(this.reservation)
             }
         })
+    }
+
+    private setFormHeight(): void {
+        const x = document.body.clientHeight
+        const form = document.getElementById('table-wrapper')
+        form.style.height = x - 242 + 'px'
     }
 
     private showEmptyForm(): void {

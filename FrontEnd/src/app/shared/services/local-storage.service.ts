@@ -6,8 +6,12 @@ import { environment } from 'src/environments/environment'
 
 export class LocalStorageService {
 
-    public getItem(item: string): string {
-        return localStorage.getItem(item) || ''
+    public getItem(item: string, itemType: string): any {
+        if (itemType == 'string') {
+            return localStorage.getItem(item) || ''
+        } else {
+            return localStorage.getItem(item) || null
+        }
     }
 
     public getLanguage(): string {

@@ -1,11 +1,14 @@
 <div id="content">
 
     <div id="dialog-header">
-        <div id="header">{{ getLabel("step-2-header") }}</div>
+        <div id="header">
+            <span class="material-symbols-outlined step-number">counter_1</span>
+            <span>{{ getLabel("step-2-header") }}</span>
+        </div>
         <div id="sub-header">{{ getLabel("step-2-sub-header") }}</div>
     </div>
 
-    <form [formGroup]="searchForm" id="search-form">
+    <form [formGroup]="form" id="search-form">
         <mat-radio-group formControlName="hasRefNo">
             <mat-radio-button [value]="options[0].id">
                 {{ getLabel('step-2-yes') }}
@@ -15,7 +18,7 @@
             </mat-radio-button>
         </mat-radio-group>
         <!-- RefNo = Yes -->
-        <ng-template [ngIf]="searchForm.value.hasRefNo == 1">
+        <ng-template [ngIf]="form.value.hasRefNo == 1">
             <mat-form-field>
                 <mat-label>{{ getLabel('step-2-refNo') }}</mat-label>
                 <input formControlName="refNo" matInput>
@@ -24,7 +27,7 @@
             </mat-form-field>
         </ng-template>
         <!-- RefNo = No -->
-        <ng-template [ngIf]="searchForm.value.hasRefNo == 2">
+        <ng-template [ngIf]="form.value.hasRefNo == 2">
             <div id="complex-group" formGroupName="complexGroup">
                 <!-- Date -->
                 <div class="group-field">
@@ -34,8 +37,8 @@
                         <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #picker>
                             <mat-datepicker-actions>
-                                <button (click)="doTodayTasks()" class="accent" mat-flat-button matDatepickerApply>{{ getLabel('today') | uppercase }}</button>
-                                <button class="primary" mat-flat-button matDatepickerApply>{{ getLabel("ok") | uppercase }}</button>
+                                <button (click)="doTodayTasks()" class="accent" mat-flat-button matDatepickerApply>{{ getLabel('today') }}</button>
+                                <button class="primary" mat-flat-button matDatepickerApply>{{ getLabel("ok") }}</button>
                             </mat-datepicker-actions>
                         </mat-datepicker>
                         <mat-hint>{{ getLabel("step-2-date-hint") }}</mat-hint>
@@ -75,7 +78,7 @@
     <div id="footer">
         <button [disabled]="requiredFieldsShouldBeGiven()" (click)="onSearch()" class="primary" mat-flat-button>
             <mat-icon *ngIf="requiredFieldsShouldBeGiven()" class="material-icons-outlined">lock</mat-icon>
-            <span>{{ getLabel("next") | uppercase }}</span>
+            <span>{{ getLabel("next") }}</span>
         </button>
     </div>
 

@@ -10,8 +10,11 @@
 }
 
 #header {
+    column-gap: 0.5rem;
+    display: flex;
     font-family: var(--font-family-segoe-ui);
-    font-size: 1.125rem;
+    font-size: 18px;
+    justify-content: center;
     text-align: center;
 }
 
@@ -33,6 +36,15 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+}
+
+.group-input-field {
+    display: flex;
+    overflow-y: initial;
+}
+
+.group-input-field #time {
+    width: 50%;
 }
 
 #footer {

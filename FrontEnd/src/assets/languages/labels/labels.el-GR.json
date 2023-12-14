@@ -15,10 +15,6 @@
                 "description": "Κάντε το check-in από την κινητό ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστέρηση"
             },
             {
-                "id": "next",
-                "description": "Συνεχεια"
-            },
-            {
                 "id": "step-2-header",
                 "description": "Αναζήτηση κράτησης"
             },
@@ -107,6 +103,14 @@
                 "description": "Σημείο παραλαβής"
             },
             {
+                "id": "step-3-exactPoint",
+                "description": "Ακριβές σημείο"
+            },
+            {
+                "id": "step-3-time",
+                "description": "Ωρα"
+            },
+            {
                 "id": "step-3-adults",
                 "description": "Ενήλικες"
             },
@@ -180,11 +184,19 @@
             },
             {
                 "id": "step-6-sub-header",
-                "description": "Δώστε μας ένα email στο οποίο θα σας στείλουμε την κάρτα επιβίβασης"
+                "description": "Δώστε μας ένα email στο οποίο θα στείλουμε την κάρτα επιβίβασης"
             },
             {
                 "id": "step-6-email",
                 "description": "Email"
+            },
+            {
+                "id": "step-7-header",
+                "description": "Τελειώσαμε!"
+            },
+            {
+                "id": "step-7-sub-header",
+                "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας"
             },
             {
                 "id": "today",
@@ -199,12 +211,12 @@
                 "description": "Ακυρο"
             },
             {
-                "id": "previous",
-                "description": "Επιστροφη"
+                "id": "next",
+                "description": "ΟΚ, επομενο βημα"
             },
             {
-                "id": "next",
-                "description": "Συνεχεια"
+                "id": "previous",
+                "description": "Προηγουμενο βημα"
             }
         ]
     }

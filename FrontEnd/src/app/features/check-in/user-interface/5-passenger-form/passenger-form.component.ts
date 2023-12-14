@@ -135,7 +135,7 @@ export class PassengerFormComponent {
     }
 
     private populateDropdownFromLocalStorage(table: string): void {
-        this[table] = JSON.parse(this.localStorageService.getItem(table))
+        this[table] = JSON.parse(this.localStorageService.getItem(table, 'object'))
     }
 
     private populateDropdowns(): void {

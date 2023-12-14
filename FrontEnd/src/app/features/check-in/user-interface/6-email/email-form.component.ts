@@ -1,13 +1,11 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
-import { Subject } from 'rxjs'
 // Custom
 import { CheckInHttpService } from '../../classes/services/check-in.http.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { indicate } from 'src/app/shared/services/helper.service'
 
 @Component({
     selector: 'email-form',
@@ -20,7 +18,6 @@ export class EmailFormComponent {
     //#region variables
 
     public feature = 'check-in'
-    public isLoading = new Subject<boolean>()
     public form: FormGroup
     public reservation: any
 
@@ -55,19 +52,16 @@ export class EmailFormComponent {
     }
 
     public next(): void {
-        this.router.navigate(['/'])
+        this.router.navigate(['completion'])
     }
 
     public onSendEmail(): void {
-        this.reservation = JSON.parse(this.localStorageService.getItem('reservation'))
+        this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
         this.reservation.email = this.form.value.email
         this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
-        // this.reservationForm.patchValue({
-        //     email: this.searchForm.value.email
-        // })
-        this.checkInHttpService.sendEmail(this.reservation).pipe(indicate(this.isLoading)).subscribe({
+        this.checkInHttpService.sendEmail(this.reservation).subscribe({
             complete: () => {
-                // stepper.next()
+                this.router.navigate(['completion'])
             },
             error: () => {
                 // this.isEmailSent = false

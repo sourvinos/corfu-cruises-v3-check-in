@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 // Custom
 import { LocalStorageService } from './local-storage.service'
-import { MessageCalendarService } from 'src/app/shared/services/message-calendar.service'
+import { MessageCalendarService } from './message-calendar.service'
 
 @Injectable({ providedIn: 'root' })
 
@@ -44,7 +44,7 @@ export class DateHelperService {
     }
 
     /**
-     * Returns the weekday index (0=Sun, 1=Mon, 2=Tue, ..., 6=Sat) of a 'YYYY-MM-DD' string 
+     * Returns the weekday index (0=Sun, 1=Mon, 2=Tue, ..., 6=Sat) of a 'YYYY-MM-DD' string
      * @param date a string representing a date formatted as 'YYYY-MM-DD'
      * @returns an integer representing the weekday index
      */
@@ -118,7 +118,7 @@ export class DateHelperService {
     //#region private methods
 
     /**
-     * 
+     *
      * @param date a string representing a date possibly formatted as 'YYYY-M-D'
      * @param showYear include the year in the return string or not
      * @returns a string representing a date formatted as 'YYYY-MM-DD'

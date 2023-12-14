@@ -25,19 +25,6 @@
     text-align: center;
 }
 
-#search-form {
-    display: flex;
-    flex-direction: column;
-    margin: 32px 32px 0 32px;
-    row-gap: 1rem;
-}
-
-#complex-group {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
 #footer {
     column-gap: 1rem;
     display: flex;

@@ -107,6 +107,10 @@
                 "description": "Pickup point"
             },
             {
+                "id": "step-3-time",
+                "description": "Time"
+            },
+            {
                 "id": "step-3-adults",
                 "description": "Adults"
             },
