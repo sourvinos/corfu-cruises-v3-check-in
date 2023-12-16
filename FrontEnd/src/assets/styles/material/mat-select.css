@@ -3,7 +3,7 @@
 }
 
 .mat-mdc-option.mdc-list-item .mdc-list-item__primary-text {
-    color: #000000;
+    color: var(--color-text);
     font-family: var(--font-family-segoe-ui);
     font-size: 14px;
 }

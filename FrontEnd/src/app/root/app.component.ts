@@ -6,6 +6,7 @@ import { MessageDialogService } from '../shared/services/message-dialog.service'
 import { routeAnimation } from '../shared/animations/animations'
 import { LoadingSpinnerService } from '../shared/services/loading-spinner.service'
 import { DialogService } from '../shared/services/modal-dialog.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'root',
@@ -42,6 +43,10 @@ export class AppComponent {
     }
 
     //#region public methods
+
+    public getHelpIcon(): any {
+        return environment.featuresIconDirectory + '/question.svg'
+    }
 
     public goHome(): void {
         this.router.navigateByUrl('/')

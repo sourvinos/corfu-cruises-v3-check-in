@@ -20,7 +20,7 @@
             },
             {
                 "id": "step-2-sub-header",
-                "description": "Do you have a RefNo;"
+                "description": "Do you have a RefNo?"
             },
             {
                 "id": "step-2-yes",
@@ -140,7 +140,7 @@
             },
             {
                 "id": "step-4-sub-header",
-                "description": "If it's nessecary, add or edit the details of the persons travelling with you"
+                "description": "If it's necessary, add or edit the details of the persons travelling with you"
             },
             {
                 "id": "step-4-new-passenger-button",
@@ -184,7 +184,7 @@
             },
             {
                 "id": "step-6-sub-header",
-                "description": "Give us and email in which we'll send your boarding pass"
+                "description": "Give us an email to which we will send the boarding pass"
             },
             {
                 "id": "step-6-email",
@@ -192,11 +192,11 @@
             },
             {
                 "id": "step-7-header",
-                "description": "Τελειώσαμε!"
+                "description": "All done!"
             },
             {
                 "id": "step-7-sub-header",
-                "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας"
+                "description": "The email we have sent you must be shown to us at the port during boarding"
             },
             {
                 "id": "today",

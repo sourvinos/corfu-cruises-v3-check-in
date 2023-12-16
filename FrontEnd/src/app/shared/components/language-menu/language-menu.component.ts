@@ -35,14 +35,18 @@ export class LanguageMenuComponent {
 
     //#region public methods
 
+    public getFlag(): string {
+        return this.localStorageService.getItem('language', 'string') == ''
+            ? this.doLanguageTasks('en-GB')
+            : this.localStorageService.getItem('language', 'string')
+    }
+
     public getLabel(id: string): string {
         return this.tooltipService.getDescription(this.tooltipItems, id)
     }
 
     public onChangelanguage(language: string): string {
-        this.saveLanguage(language)
-        this.loadMessages()
-        return language
+        return this.doLanguageTasks(language)
     }
 
     //#endregion
@@ -61,6 +65,12 @@ export class LanguageMenuComponent {
         items.forEach(item => {
             this.tooltipItems.push(item)
         })
+    }
+
+    private doLanguageTasks(language: string): string {
+        this.saveLanguage(language)
+        this.loadMessages()
+        return language
     }
 
     private loadMessages(): void {

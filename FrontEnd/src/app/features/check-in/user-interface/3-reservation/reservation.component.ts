@@ -99,7 +99,7 @@ export class ReservationComponent {
     private setFormHeight(): void {
         const x = document.body.clientHeight
         const form = document.getElementById('reservation-form')
-        form.style.height = x - 169 + 'px'
+        form.style.height = x - 176 + 'px'
     }
 
     //#endregion

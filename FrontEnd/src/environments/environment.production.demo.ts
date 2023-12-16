@@ -12,5 +12,6 @@ export const environment = {
         lineC: '© Corfu Cruises 2023, Corfu - Greece'
     },
     dialogShieldsDirectory: 'assets/images/dialog-shields',
+    featuresIconDirectory: 'assets/images/features/',
     production: true
 }
