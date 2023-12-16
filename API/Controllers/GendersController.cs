@@ -16,8 +16,8 @@ namespace API.Controllers {
         }
 
         [HttpGet()]
-        public async Task<IEnumerable<GenderAutoCompleteVM>> GetAutoCompleteAsync() {
-            return await genderRepo.GetAutoCompleteAsync();
+        public async Task<IEnumerable<GenderDropdownVM>> GetDropdown() {
+            return await genderRepo.GetDropdown();
         }
 
     }

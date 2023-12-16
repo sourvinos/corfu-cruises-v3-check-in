@@ -2,10 +2,14 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 // Custom
+import { CheckInHelperService } from '../../classes/services/check-in.helper.service'
 import { CheckInHttpService } from '../../classes/services/check-in.http.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
+import { Subject } from 'rxjs'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
+import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 
 @Component({
     selector: 'email-form',
@@ -20,10 +24,11 @@ export class EmailFormComponent {
     public feature = 'check-in'
     public form: FormGroup
     public reservation: any
+    public isLoading = new Subject<boolean>()
 
     //#endregion
 
-    constructor(private localStorageService: LocalStorageService, private checkInHttpService: CheckInHttpService, private router: Router, private formBuilder: FormBuilder, private messageLabelService: MessageLabelService, private messageHintService: MessageInputHintService) { }
+    constructor(private checkInHelperService: CheckInHelperService, private messageSnackbarService: MessageDialogService, private dialogService: DialogService, private localStorageService: LocalStorageService, private checkInHttpService: CheckInHttpService, private router: Router, private formBuilder: FormBuilder, private messageLabelService: MessageLabelService, private messageHintService: MessageInputHintService) { }
 
     //#region lifecycle hooks
 
@@ -52,10 +57,6 @@ export class EmailFormComponent {
     }
 
     public next(): void {
-        this.router.navigate(['completion'])
-    }
-
-    public onSendEmail(): void {
         this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
         this.reservation.email = this.form.value.email
         this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
@@ -64,7 +65,7 @@ export class EmailFormComponent {
                 this.router.navigate(['completion'])
             },
             error: () => {
-                // this.isEmailSent = false
+                this.dialogService.open(this.messageSnackbarService.emailNotSent(), 'error', ['ok'])
             }
         })
     }

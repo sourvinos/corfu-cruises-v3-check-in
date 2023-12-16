@@ -7,12 +7,15 @@ namespace API.Dtos {
 
         // PK
         public Guid ReservationId { get; set; }
+        // Fks
+        public int DestinationId { get; set; }
+        public int PickupPointId { get; set; }
+        public int PortId { get; set; }
         // Fields
-        public string RefNo { get; set; }
-        public string Email { get; set; }
-        public string Remarks { get; set; }
+        public string Date { get; set; }
         // Navigation
         public List<PassengerWriteDto> Passengers { get; set; }
 
     }
+
 }

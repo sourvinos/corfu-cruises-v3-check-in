@@ -8,21 +8,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Implementations {
 
-    public class CheckInUpdateRepository : ICheckInUpdateRepository {
+    public class ReservationUpdateRepository : IReservationUpdateRepository {
 
         protected readonly AppDbContext context;
 
-        public CheckInUpdateRepository(AppDbContext context) {
+        public ReservationUpdateRepository(AppDbContext context) {
             this.context = context;
         }
 
-        public void Update(Guid reservationId, Reservation reservation) {
+        public Reservation Update(Guid reservationId, Reservation reservation) {
             using var transaction = context.Database.BeginTransaction();
             AddPassengers(reservation.Passengers);
             UpdatePassengers(reservation.Passengers);
             DeletePassengers(reservationId, reservation.Passengers);
             context.SaveChanges();
             transaction.Commit();
+            return reservation;
         }
 
         private void AddPassengers(List<Passenger> passengers) {
@@ -57,7 +58,7 @@ namespace API.Implementations {
                 return x.Id.GetHashCode();
             }
         }
-
+ 
     }
 
 }

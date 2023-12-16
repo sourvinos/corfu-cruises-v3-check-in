@@ -6,7 +6,7 @@ namespace API.Interfaces {
 
     public interface INationalityRepository {
 
-        Task<IEnumerable<NationalityAutoCompleteVM>> GetAutoCompleteAsync();
+        Task<IEnumerable<NationalityDropdownVM>> GetDropdown();
 
     }
 

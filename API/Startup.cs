@@ -1,5 +1,4 @@
 using System;
-using API.Features.Nationalities;
 using API.Implementations;
 using API.Infrastructure.Classes;
 using API.Infrastructure.Extensions;
@@ -55,10 +54,10 @@ namespace API {
             services.AddTransient<IDestinationRepository, DestinationRepository>();
             services.AddTransient<IGenderRepository, GenderRepository>();
             services.AddTransient<INationalityRepository, NationalityRepository>();
-            services.AddTransient<ICheckInReadRepository, CheckInReadRepository>();
-            services.AddTransient<ICheckInReservationValidation, CheckInReservationValidation>();
-            services.AddTransient<ICheckInUpdateRepository, CheckInUpdateRepository>();
-            services.AddTransient<ICheckInEmailSender, CheckInEmailSender>();
+            services.AddTransient<IReservationReadRepository, ReservationReadRepository>();
+            services.AddTransient<IReservationValidation, ReservationValidation>();
+            services.AddTransient<IReservationUpdateRepository, ReservationUpdateRepository>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ResponseMiddleware>();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper(typeof(Startup));

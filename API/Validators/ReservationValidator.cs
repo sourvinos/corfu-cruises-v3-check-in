@@ -7,16 +7,6 @@ namespace API.Validators {
     public class ReservationValidator : AbstractValidator<ReservationWriteDto> {
 
         public ReservationValidator() {
-            // FKs
-            // RuleFor(x => x.CustomerId).NotEmpty();
-            // RuleFor(x => x.DestinationId).NotEmpty();
-            // RuleFor(x => x.PickupPointId).NotEmpty();
-            // Fields
-            // RuleFor(x => x.Date).Must(DateHelpers.BeCorrectFormat);
-            RuleFor(x => x.Email).Must(EmailHelpers.BeEmptyOrValidEmailAddress).MaximumLength(128);
-            // RuleFor(x => x.Phones).MaximumLength(128);
-            RuleFor(x => x.Remarks).MaximumLength(128);
-            // RuleFor(x => x.TicketNo).NotEmpty().MaximumLength(128);
             // Passengers
             RuleForEach(x => x.Passengers).ChildRules(passenger => {
                 passenger.RuleFor(x => x.GenderId).NotEmpty();

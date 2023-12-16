@@ -6,7 +6,7 @@ namespace API.Interfaces {
 
     public interface IDestinationRepository {
 
-        Task<IEnumerable<DestinationAutoCompleteVM>> GetAutoCompleteAsync();
+        Task<IEnumerable<DestinationDropdownVM>> GetDropdown();
 
     }
 

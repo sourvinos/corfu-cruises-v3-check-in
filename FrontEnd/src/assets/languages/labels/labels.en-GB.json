@@ -15,10 +15,6 @@
                 "description": "Check-in from your phone or tablet and board quickly and without delays"
             },
             {
-                "id": "next",
-                "description": "Continue"
-            },
-            {
                 "id": "step-2-header",
                 "description": "Identification"
             },
@@ -107,6 +103,10 @@
                 "description": "Pickup point"
             },
             {
+                "id": "step-3-exactPoint",
+                "description": "Exact point"
+            },
+            {
                 "id": "step-3-time",
                 "description": "Time"
             },
@@ -191,6 +191,14 @@
                 "description": "Email"
             },
             {
+                "id": "step-7-header",
+                "description": "Τελειώσαμε!"
+            },
+            {
+                "id": "step-7-sub-header",
+                "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας"
+            },
+            {
                 "id": "today",
                 "description": "Today"
             },
@@ -203,12 +211,12 @@
                 "description": "Cancel"
             },
             {
-                "id": "previous",
-                "description": "Previous step"
+                "id": "next",
+                "description": "OK, next step"
             },
             {
-                "id": "next",
-                "description": "Next step"
+                "id": "previous",
+                "description": "Previous step"
             }
         ]
     }

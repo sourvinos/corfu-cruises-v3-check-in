@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using API.Infrastructure.Interfaces;
+using API.Interfaces;
 
 namespace API.Models {
 
-    public class Reservation  {
+    public class Reservation : IMetadata {
 
         // PK
         public Guid ReservationId { get; set; }

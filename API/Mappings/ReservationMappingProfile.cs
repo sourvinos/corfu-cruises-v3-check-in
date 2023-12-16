@@ -33,7 +33,6 @@ namespace API.Mappings {
                     SpecialCare = passenger.SpecialCare,
                     Nationality = new NationalityDto {
                         Id = passenger.Nationality.Id,
-                        Code = passenger.Nationality.Code,
                         Description = passenger.Nationality.Description
                     },
                     Gender = new SimpleEntity {
@@ -46,8 +45,7 @@ namespace API.Mappings {
                 .ForMember(x => x.Birthdate, x => x.MapFrom(x => DateHelpers.DateToISOString(x.Birthdate)))
                 .ForMember(x => x.Nationality, x => x.MapFrom(x => new NationalityDto {
                     Id = x.Nationality.Id,
-                    Description = x.Nationality.Description,
-                    Code = x.Nationality.Code
+                    Description = x.Nationality.Description
                 }));
             // Write reservation
             CreateMap<ReservationWriteDto, Reservation>();

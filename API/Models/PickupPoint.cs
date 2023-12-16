@@ -6,6 +6,8 @@ namespace API.Models {
 
         // PK
         public int Id { get; set; }
+        // FK
+        public int PortId { get; set; }
         // Fields
         public string Description { get; set; }
         public string ExactPoint { get; set; }

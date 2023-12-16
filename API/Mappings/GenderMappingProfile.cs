@@ -7,7 +7,7 @@ namespace API.Mappings {
     public class GenderMappingProfile : Profile {
 
         public GenderMappingProfile() {
-            CreateMap<Gender, GenderAutoCompleteVM>();
+            CreateMap<Gender, GenderDropdownVM>();
         }
 
     }

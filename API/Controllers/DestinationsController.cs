@@ -16,8 +16,8 @@ namespace API.Controllers {
         }
 
         [HttpGet()]
-        public async Task<IEnumerable<DestinationAutoCompleteVM>> GetAutoCompleteAsync() {
-            return await destinationRepo.GetAutoCompleteAsync();
+        public async Task<IEnumerable<DestinationDropdownVM>> GetDropdown() {
+            return await destinationRepo.GetDropdown();
         }
 
     }

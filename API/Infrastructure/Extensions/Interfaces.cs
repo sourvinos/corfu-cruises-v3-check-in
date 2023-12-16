@@ -8,12 +8,12 @@ namespace API.Infrastructure.Extensions {
 
         public static void AddInterfaces(IServiceCollection services) {
             services.AddTransient<IDestinationRepository, DestinationRepository>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IGenderRepository, GenderRepository>();
             services.AddTransient<INationalityRepository, NationalityRepository>();
-            services.AddTransient<ICheckInReadRepository, CheckInReadRepository>();
-            services.AddTransient<ICheckInReservationValidation, CheckInReservationValidation>();
-            services.AddTransient<ICheckInUpdateRepository, CheckInUpdateRepository>();
-            services.AddTransient<ICheckInEmailSender, CheckInEmailSender>();
+            services.AddTransient<IReservationReadRepository, ReservationReadRepository>();
+            services.AddTransient<IReservationUpdateRepository, ReservationUpdateRepository>();
+            services.AddTransient<IReservationValidation, ReservationValidation>();
         }
 
     }

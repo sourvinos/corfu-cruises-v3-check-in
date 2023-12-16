@@ -2,7 +2,7 @@ using API.Models;
 
 namespace API.Interfaces {
 
-    public interface ICheckInReservationValidation {
+    public interface IReservationValidation {
 
         int IsValid(Reservation reservation);
 

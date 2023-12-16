@@ -1,14 +1,5 @@
-import { FormGroup } from '@angular/forms'
-import { Injectable, QueryList } from '@angular/core'
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete'
-import { MatExpansionPanel } from '@angular/material/expansion'
+import { Injectable } from '@angular/core'
 import { Observable, Subject, defer, finalize } from 'rxjs'
-import { Router } from '@angular/router'
-import { Title } from '@angular/platform-browser'
-// Custom
-import { MessageLabelService } from './message-label.service'
-import { DialogService } from './modal-dialog.service'
-import { environment } from 'src/environments/environment'
 
 export function prepare<T>(callback: () => void): (source: Observable<T>) => Observable<T> {
     return (source: Observable<T>): Observable<T> => defer(() => {
@@ -28,72 +19,7 @@ export function indicate<T>(indicator: Subject<boolean>): (source: Observable<T>
 
 export class HelperService {
 
-    //#region variables
-
-    private appName = environment.appName
-
-    //#endregion
-
-    constructor(private messageLabelService: MessageLabelService, private dialogService: DialogService, private router: Router, private titleService: Title) { }
-
     //#region public methods
-
-    public doPostSaveFormTasks(message: string, iconType: string, returnUrl: string, goBack: boolean): Promise<any> {
-        const promise = new Promise((resolve) => {
-            this.dialogService.open(message, iconType, ['ok']).subscribe(() => {
-                goBack ? this.router.navigate([returnUrl]) : null
-                resolve(null)
-            })
-        })
-        return promise
-    }
-
-    public enableOrDisableAutoComplete(event: { key: string }): boolean {
-        return (event.key == 'Enter' || event.key == 'ArrowUp' || event.key == 'ArrowDown' || event.key == 'ArrowRight' || event.key == 'ArrowLeft') ? true : false
-    }
-
-    public getApplicationTitle(): any {
-        return this.appName
-    }
-
-    public getDistinctRecords(records: any[], object: string, orderField = 'description'): any[] {
-        const distinctRecords = (Object.values(records.reduce(function (x, item) {
-            if (!x[item[object].id]) {
-                x[item[object].id] = item[object]
-            }
-            return x
-        }, {})))
-        distinctRecords.sort((a, b) => (a[orderField] > b[orderField]) ? 1 : -1)
-        return distinctRecords
-    }
-
-    public flattenObject(object: any): any {
-        const result = {}
-        for (const i in object) {
-            if ((typeof object[i]) === 'object' && !Array.isArray(object[i])) {
-                const temp = this.flattenObject(object[i])
-                for (const j in temp) {
-                    result[i + '.' + j] = temp[j]
-                }
-            }
-            else {
-                result[i] = object[i]
-            }
-        }
-        return result
-    }
-
-    public sortArray(array: any, field: string): any {
-        array.sort((a: any, b: any) => {
-            if (a[field] < b[field]) {
-                return -1
-            }
-            if (a[field] > b[field]) {
-                return 1
-            }
-            return 0
-        })
-    }
 
     public deepEqual(object1: any, object2: any): boolean {
         if (object1 == undefined || object2 == undefined) {
@@ -117,6 +43,22 @@ export class HelperService {
         return true
     }
 
+    public flattenObject(object: any): any {
+        const result = {}
+        for (const i in object) {
+            if ((typeof object[i]) === 'object' && !Array.isArray(object[i])) {
+                const temp = this.flattenObject(object[i])
+                for (const j in temp) {
+                    result[i + '.' + j] = temp[j]
+                }
+            }
+            else {
+                result[i] = object[i]
+            }
+        }
+        return result
+    }
+
     public highlightRow(id: any): void {
         const allRows = document.querySelectorAll('.p-highlight')
         allRows.forEach(row => {
@@ -124,32 +66,6 @@ export class HelperService {
         })
         const selectedRow = document.getElementById(id)
         selectedRow.classList.add('p-highlight')
-    }
-
-    public openOrCloseAutocomplete(form: FormGroup<any>, element: any, trigger: MatAutocompleteTrigger): void {
-        console.log('1', trigger.panelOpen)
-        // trigger.panelOpen ? trigger.closePanel() : trigger.openPanel()
-        trigger.openPanel()
-        console.log('2', trigger.panelOpen)
-    }
-
-    public setTabTitle(feature: string): void {
-        this.titleService.setTitle(environment.appName + ': ' + this.messageLabelService.getDescription(feature, 'header'))
-    }
-
-    public toggleExpansionPanel(panels: QueryList<MatExpansionPanel> | { open: () => any; close: () => any }[], newState: boolean): void {
-        panels.forEach((panel: { open: () => any; close: () => any }) => {
-            setTimeout(() => {
-                newState == true ? panel.open() : panel.close()
-            }, 400)
-        })
-    }
-
-    public setSidebarsTopMargin(margin: string): void {
-        const sidebars = document.getElementsByClassName('sidebar') as HTMLCollectionOf<HTMLElement>
-        for (let i = 0; i < sidebars.length; i++) {
-            sidebars[i].style.marginTop = margin + 'rem'
-        }
     }
 
     //#endregion
@@ -163,4 +79,3 @@ export class HelperService {
     //#endregion
 
 }
-

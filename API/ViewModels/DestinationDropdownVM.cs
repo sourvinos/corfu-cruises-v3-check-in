@@ -2,7 +2,7 @@ using API.Infrastructure.Classes;
 
 namespace API.ViewModels {
 
-    public class GenderAutoCompleteVM : SimpleEntity {
+    public class DestinationDropdownVM : SimpleEntity {
 
         public bool IsActive { get; set; }
 

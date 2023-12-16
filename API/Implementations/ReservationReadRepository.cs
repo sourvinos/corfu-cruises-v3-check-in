@@ -8,15 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Implementations {
 
-    public class CheckInReadRepository : ICheckInReadRepository {
+    public class ReservationReadRepository : IReservationReadRepository {
 
         protected readonly AppDbContext context;
 
-        public CheckInReadRepository(AppDbContext context) {
+        public ReservationReadRepository(AppDbContext context) {
             this.context = context;
         }
 
-        public async Task<Reservation> GetByRefNoAsync(string refNo) {
+        public async Task<Reservation> GetByRefNo(string refNo) {
             var reservation = context.Reservations
                .AsNoTracking()
                .Include(x => x.Customer)
@@ -30,7 +30,7 @@ namespace API.Implementations {
             return await reservation;
         }
 
-        public async Task<Reservation> GetByDateAsync(string date, int destinationId, string lastname, string firstname) {
+        public async Task<Reservation> GetByDate(string date, int destinationId, string lastname, string firstname) {
             var reservation = context.Reservations
                .AsNoTracking()
                .Include(x => x.Customer)
@@ -47,7 +47,7 @@ namespace API.Implementations {
             return await reservation;
         }
 
-        public async Task<Reservation> GetByIdAsync(string reservationId, bool includeTables) {
+        public async Task<Reservation> GetById(string reservationId, bool includeTables) {
             return includeTables
                 ? await context.Reservations
                     .AsNoTracking()

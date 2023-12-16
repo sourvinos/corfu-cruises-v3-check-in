@@ -12,7 +12,6 @@ namespace API.Models {
         public int PortId { get; set; }
         // Fields
         public DateTime Date { get; set; }
-
         public string Time { get; set; }
 
     }

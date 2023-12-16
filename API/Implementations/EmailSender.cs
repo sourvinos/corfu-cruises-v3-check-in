@@ -6,11 +6,11 @@ using MimeKit;
 
 namespace API.Implementations {
 
-    public class CheckInEmailSender : ICheckInEmailSender {
+    public class EmailSender : IEmailSender {
 
         private readonly EmailSettings settings;
 
-        public CheckInEmailSender(IOptions<EmailSettings> settings) {
+        public EmailSender(IOptions<EmailSettings> settings) {
             this.settings = settings.Value;
         }
 

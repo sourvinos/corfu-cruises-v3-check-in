@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using API.Infrastructure.Interfaces;
 
 namespace API.Models {

@@ -20,13 +20,13 @@ namespace API.Implementations {
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<DestinationAutoCompleteVM>> GetAutoCompleteAsync() {
+        public async Task<IEnumerable<DestinationDropdownVM>> GetDropdown() {
             var destinations = await context.Destinations
                 .AsNoTracking()
                 .Where(x => x.IsActive)
                 .OrderBy(x => x.Description)
                 .ToListAsync();
-            return mapper.Map<IEnumerable<Destination>, IEnumerable<DestinationAutoCompleteVM>>(destinations);
+            return mapper.Map<IEnumerable<Destination>, IEnumerable<DestinationDropdownVM>>(destinations);
         }
 
     }

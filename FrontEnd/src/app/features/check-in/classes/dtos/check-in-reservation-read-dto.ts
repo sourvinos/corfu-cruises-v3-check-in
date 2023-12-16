@@ -20,7 +20,7 @@ export interface CheckInReservationReadDto {
     customer: SimpleEntity
     destination: SimpleEntity
     pickupPoint: PickupPointVM
-    passengers: CheckInPassengerReadDto
+    passengers: CheckInPassengerReadDto[]
 
 }
 

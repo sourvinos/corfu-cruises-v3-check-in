@@ -7,7 +7,7 @@ namespace API.Mappings {
     public class DestinationMappingProfile : Profile {
 
         public DestinationMappingProfile() {
-            CreateMap<Destination, DestinationAutoCompleteVM>();
+            CreateMap<Destination, DestinationDropdownVM>();
         }
 
     }

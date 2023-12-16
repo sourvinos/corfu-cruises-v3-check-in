@@ -2,7 +2,7 @@ using API.Infrastructure.Classes;
 
 namespace API.ViewModels {
 
-    public class ScheduleListVM {
+    public class ScheduleVM {
 
         public int Id { get; set; }
         public string Date { get; set; }

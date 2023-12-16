@@ -2,7 +2,7 @@ using API.ViewModels;
 
 namespace API.Interfaces {
 
-    public interface ICheckInEmailSender {
+    public interface IEmailSender {
 
         SendEmailResponse SendEmail(ReservationVM email);
 

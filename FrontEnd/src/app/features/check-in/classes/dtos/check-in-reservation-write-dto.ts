@@ -7,9 +7,10 @@ export interface CheckInReservationWriteDto {
     // PK
     reservationId: Guid
     // Fields
-    refNo: string
-    email: string
-    remarks: string
+    destinationId: number,
+    pickupPointId: number,
+    portId: number,
+    date: string,
     passengers: CheckInPassengerWriteDto[]
 
 }

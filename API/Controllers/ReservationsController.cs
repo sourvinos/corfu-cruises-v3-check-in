@@ -12,31 +12,31 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers {
 
     [Route("api/[controller]")]
-    public class CheckInController : ControllerBase {
+    public class ReservationsController : ControllerBase {
 
         #region variables
 
-        private readonly ICheckInEmailSender checkInEmailSender;
-        private readonly ICheckInReadRepository checkInReadRepo;
-        private readonly ICheckInReservationValidation checkInValidReservation;
-        private readonly ICheckInUpdateRepository checkInUpdateRepo;
+        private readonly IEmailSender emailSender;
+        private readonly IReservationReadRepository reservationReadRepo;
+        private readonly IReservationValidation reservationValidation;
+        private readonly IReservationUpdateRepository reservationUpdateRepo;
         private readonly IMapper mapper;
 
         #endregion
 
-        public CheckInController(ICheckInEmailSender checkInEmailSender, ICheckInReadRepository checkInReadRepo, ICheckInReservationValidation checkInValidReservation, ICheckInUpdateRepository checkInUpdateRepo, IMapper mapper) {
-            this.checkInEmailSender = checkInEmailSender;
-            this.checkInReadRepo = checkInReadRepo;
-            this.checkInUpdateRepo = checkInUpdateRepo;
-            this.checkInValidReservation = checkInValidReservation;
+        public ReservationsController(IEmailSender emailSender, IMapper mapper, IReservationReadRepository reservationReadRepo, IReservationUpdateRepository reservationUpdateRepo, IReservationValidation reservationValidation) {
+            this.emailSender = emailSender;
             this.mapper = mapper;
+            this.reservationReadRepo = reservationReadRepo;
+            this.reservationUpdateRepo = reservationUpdateRepo;
+            this.reservationValidation = reservationValidation;
         }
 
         [HttpGet("refNo/{refNo}")]
-        public async Task<ResponseWithBody> GetByRefNoAsync(string refNo) {
-            var x = await checkInReadRepo.GetByRefNoAsync(refNo);
+        public async Task<ResponseWithBody> GetByRefNo(string refNo) {
+            var x = await reservationReadRepo.GetByRefNo(refNo);
             if (x != null) {
-                var z = checkInValidReservation.IsValid(x);
+                var z = reservationValidation.IsValid(x);
                 if (z == 200) {
                     return new ResponseWithBody {
                         Code = 200,
@@ -57,10 +57,10 @@ namespace API.Controllers {
         }
 
         [HttpGet("date/{date}/destinationId/{destinationId}/lastname/{lastname}/firstname/{firstname}")]
-        public async Task<ResponseWithBody> GetByDateAsync(string date, int destinationId, string lastname, string firstname) {
-            var x = await checkInReadRepo.GetByDateAsync(date, destinationId, lastname, firstname);
+        public async Task<ResponseWithBody> GetByDate(string date, int destinationId, string lastname, string firstname) {
+            var x = await reservationReadRepo.GetByDate(date, destinationId, lastname, firstname);
             if (x != null) {
-                var z = checkInValidReservation.IsValid(x);
+                var z = reservationValidation.IsValid(x);
                 if (z == 200) {
                     return new ResponseWithBody {
                         Code = 200,
@@ -80,19 +80,19 @@ namespace API.Controllers {
             }
         }
 
-        [HttpPatch("reservationId/{reservationId}")]
+        [HttpPut]
         [ServiceFilter(typeof(ModelValidationAttribute))]
-        public async Task<Response> Patch(string reservationId, [FromBody] ReservationWriteDto reservation) {
-            var x = await checkInReadRepo.GetByIdAsync(reservationId.ToString(), false);
+        public async Task<Response> Put([FromBody] ReservationWriteDto reservation) {
+            var x = await reservationReadRepo.GetById(reservation.ReservationId.ToString(), false);
             if (x != null) {
-                var z = checkInValidReservation.IsValid(x);
+                var z = reservationValidation.IsValid(x);
                 if (z == 200) {
-                    checkInUpdateRepo.Update(reservation.ReservationId, mapper.Map<ReservationWriteDto, Reservation>(reservation));
+                    reservationUpdateRepo.Update(reservation.ReservationId, mapper.Map<ReservationWriteDto, Reservation>(reservation));
                     return new Response {
                         Code = 200,
                         Icon = Icons.Success.ToString(),
                         Id = null,
-                        Message = reservation.RefNo
+                        Message = x.RefNo
                     };
                 } else {
                     throw new CustomException() {
@@ -107,8 +107,8 @@ namespace API.Controllers {
         }
 
         [HttpPost("[action]")]
-        public SendEmailResponse SendCheckInReservation([FromBody] ReservationVM reservation) {
-            return checkInEmailSender.SendEmail(reservation);
+        public SendEmailResponse EmailReservation([FromBody] ReservationVM reservation) {
+            return emailSender.SendEmail(reservation);
         }
 
     }

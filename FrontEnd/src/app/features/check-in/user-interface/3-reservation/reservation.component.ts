@@ -56,7 +56,6 @@ export class ReservationComponent {
 
     private getRecord(): void {
         this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object')) as ReservationVM
-        console.log(this.reservation)
     }
 
     private initForm(): void {

@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Implementations {
 
-    public class CheckInReservationValidation : ICheckInReservationValidation {
+    public class ReservationValidation : IReservationValidation {
 
         protected readonly AppDbContext context;
 
-        public CheckInReservationValidation(AppDbContext context) {
+        public ReservationValidation(AppDbContext context) {
             this.context = context;
         }
 
@@ -21,6 +21,15 @@ namespace API.Implementations {
                 var x when x == CheckInNotAllowedAfterDeparture(reservation) => 402,
                 _ => 200,
             };
+        }
+
+        public int GetPortIdFromPickupPointId(Reservation reservation) {
+            PickupPoint pickupPoint = context.PickupPoints
+                .AsNoTracking()
+                .SingleOrDefault(x => x.Id == reservation.PickupPointId);
+            return pickupPoint != null
+                ? (reservation.PortId != 0 && pickupPoint.PortId != reservation.PortId) ? reservation.PortId : pickupPoint.PortId
+                : 0;
         }
 
         private bool CheckInNotAllowedAfterDeparture(Reservation reservation) {
@@ -34,9 +43,10 @@ namespace API.Implementations {
         }
 
         private DateTime GetScheduleDepartureTime(Reservation reservation) {
+            var portId = GetPortIdFromPickupPointId(reservation).ToString();
             var schedule = context.Schedules
                 .AsNoTracking()
-                .Where(x => x.Date == reservation.Date && x.DestinationId == reservation.DestinationId && x.PortId == reservation.PortId)
+                .Where(x => x.Date == reservation.Date && x.DestinationId == reservation.DestinationId && x.PortId.ToString() == portId)
                 .SingleOrDefault();
             var departureTime = schedule.Date.ToString("yyyy-MM-dd") + " " + schedule.Time;
             var departureTimeAsDate = DateTime.Parse(departureTime);

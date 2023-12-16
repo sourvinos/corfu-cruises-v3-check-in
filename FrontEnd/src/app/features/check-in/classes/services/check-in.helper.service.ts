@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core'
 import { CheckInPassengerWriteDto } from '../dtos/check-in-passenger-write-dto'
 import { CheckInReservationWriteDto } from '../dtos/check-in-reservation-write-dto'
 import { DateHelperService } from 'src/app/shared/services/date-helper.service'
+import { CheckInReservationReadDto } from '../dtos/check-in-reservation-read-dto'
 
 @Injectable({ providedIn: 'root' })
 
@@ -12,25 +13,27 @@ export class CheckInHelperService {
 
     //#region public methods
 
-    public flattenForm(form: any): CheckInReservationWriteDto {
-        return {
-            reservationId: form.reservationId != '' ? form.reservationId : null,
-            refNo: form.refNo,
-            email: form.email,
-            remarks: form.remarks,
-            passengers: this.mapPassengers(form)
+    public flattenForm(reservation: CheckInReservationReadDto): CheckInReservationWriteDto {
+        const x: CheckInReservationWriteDto = {
+            reservationId: reservation.reservationId,
+            destinationId: reservation.destination.id,
+            pickupPointId: reservation.pickupPoint.id,
+            portId: 1,
+            date: reservation.date,
+            passengers: this.mapPassengers(reservation)
         }
+        return x
     }
 
     //#endregion
 
     //#region private methods
 
-    private mapPassengers(form: any): CheckInPassengerWriteDto[] {
-        const passengers = []
-        form.passengers.forEach((passenger: any) => {
-            const x: CheckInPassengerWriteDto = {
-                reservationId: form.reservationId,
+    private mapPassengers(reservation: CheckInReservationReadDto): CheckInPassengerWriteDto[] {
+        const x = []
+        reservation.passengers.forEach((passenger: any) => {
+            const z: CheckInPassengerWriteDto = {
+                reservationId: passenger.reservationId,
                 genderId: passenger.gender.id,
                 nationalityId: passenger.nationality.id,
                 occupantId: 2,
@@ -40,9 +43,9 @@ export class CheckInHelperService {
                 specialCare: passenger.specialCare,
                 remarks: passenger.remarks
             }
-            passengers.push(x)
+            x.push(z)
         })
-        return passengers
+        return x
     }
 
     //#endregion

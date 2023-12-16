@@ -2,9 +2,8 @@ using API.Infrastructure.Classes;
 
 namespace API.ViewModels {
 
-    public class NationalityAutoCompleteVM : SimpleEntity {
+    public class GenderDropdownVM : SimpleEntity {
 
-        public string Code { get; set; }
         public bool IsActive { get; set; }
 
     }
