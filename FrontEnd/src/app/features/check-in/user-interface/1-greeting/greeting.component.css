@@ -4,19 +4,25 @@
     height: 100%;
 }
 
-#logo {
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#header-1 {
     font-family: var(--font-family-logo);
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
 }
 
-#sub-header {
+#header-2 {
     font-family: var(--font-family-segoe-ui);
     font-size: 1.5rem;
     text-align: center;
 }
 
-#description-text {
+#header-3 {
     display: flex;
     font-family: var(--font-family-segoe-ui);
     font-size: 1.125rem;

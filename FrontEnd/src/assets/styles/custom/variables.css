@@ -2,7 +2,6 @@
     /* Font names */
     --font-family-asty: "Asty CF Std";
     --font-family-logo: "Aka-Acid-CanterBold";
-    --font-family-roboto: "Roboto";
     --font-family-ubuntu: "Ubuntu Condensed";
     --font-family-segoe-ui: "Segoe UI";
     /* Font weights */
@@ -10,9 +9,8 @@
     --font-weight-logo: 400;
     --font-weight-mat-hint: 300;
     /* Common sizes in all screen resolutions */
-    --font-size-dialog: 1.5rem;
+    --font-size-dialog-text: 15px;
     --font-size-table-header: 0.7rem;
     --font-size-table-row: 0.875rem;
-    /* Misc */
-    --blur: 0.5rem;
+    --font-size-button-text:0.75rem;
 }

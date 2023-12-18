@@ -20,7 +20,11 @@
             },
             {
                 "id": "step-2-sub-header",
-                "description": "Máte číslo RefNo?"
+                "description": "Vaši rezervaci musíme najít v našem systému."
+            },
+            {
+                "id": "step-2-sub-header-1",
+                "description": "Máte RefNo číslo rezervace?"
             },
             {
                 "id": "step-2-yes",

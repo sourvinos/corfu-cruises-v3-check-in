@@ -24,7 +24,7 @@ export class DialogService {
 
     private openDialog(message: string | object, iconStyle: string, actions: string[]): Observable<boolean> {
         this.response = this.dialog.open(ModalDialogComponent, {
-            height: '18rem',
+            height: '20rem',
             width: '25rem',
             data: {
                 message: message,

@@ -74,7 +74,7 @@ export class AppComponent {
     }
 
     private setBackgroundImage(): void {
-        document.getElementById('wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
+        document.getElementById('outer-wrapper').style.backgroundImage = 'url(../../assets/images/themes/background.svg'
     }
 
     public showHelpDialog(): void {

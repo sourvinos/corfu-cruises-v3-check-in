@@ -50,12 +50,6 @@
     margin: 0 0 0 auto;
 }
 
-.group-input-field {
-    display: flex;
-    gap: 0.5rem;
-    overflow-y: initial;
-}
-
 .checkboxes {
     display: flex;
     flex-direction: column;

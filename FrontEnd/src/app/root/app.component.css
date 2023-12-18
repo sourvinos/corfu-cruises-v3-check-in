@@ -1,40 +1,25 @@
-#wrapper {
+#outer-wrapper {
     background-color: var(--color-background);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: center;
-    margin: 0 auto 0 auto;
     max-width: 31rem;
-    overflow: hidden;
 }
 
-#center {
+#router-content {
     display: flex;
     height: 100%;
-    flex-direction: row;
+    justify-content: center;
+    margin: 0 2rem 0 2rem;
+    overflow-y: hidden;
 }
 
-#main {
-    width: 100%;
-}
-
-#outer-content {
-    height: 100%;
-}
-
-#topbar, #bottombar {
+#topbar {
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 0 0 auto;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    width: 100%;
-}
-
-#bottombar span:hover {
-    cursor: pointer;
+    margin: 0.5rem 0.5rem 0 0.5rem;
 }

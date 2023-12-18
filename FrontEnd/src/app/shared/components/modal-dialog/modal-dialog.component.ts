@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 // Custom
 import { MessageLabelService } from '../../services/message-label.service'
-import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'modal-dialog',
@@ -38,10 +37,6 @@ export class ModalDialogComponent {
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
-    }
-
-    public getShieldIcon(): any {
-        return environment.dialogShieldsDirectory + '/shield-' + this.shieldName + '.svg'
     }
 
     public imageIsLoading(): any {

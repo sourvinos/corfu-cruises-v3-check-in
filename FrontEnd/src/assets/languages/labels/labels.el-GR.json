@@ -20,15 +20,19 @@
             },
             {
                 "id": "step-2-sub-header",
-                "description": "Εχετε RefNo;"
+                "description": "Πρέπει να βρούμε την κράτηση στο σύστημά μας."
+            },
+            {
+                "id": "step-2-sub-header-1",
+                "description": "Εχετε το RefNo της κράτησης;"
             },
             {
                 "id": "step-2-yes",
-                "description": "Ναι, έχω"
+                "description": "Ναι, το έχω"
             },
             {
                 "id": "step-2-no",
-                "description": "Οχι, δεν έχω"
+                "description": "Οχι, δεν το έχω"
             },
             {
                 "id": "step-2-refNo",
@@ -212,11 +216,11 @@
             },
             {
                 "id": "next",
-                "description": "ΟΚ, επομενο βημα"
+                "description": "Συνέχεια"
             },
             {
                 "id": "previous",
-                "description": "Προηγουμενο βημα"
+                "description": "Προηγούμενο"
             }
         ]
     }

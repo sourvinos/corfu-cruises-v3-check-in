@@ -20,7 +20,11 @@
             },
             {
                 "id": "step-2-sub-header",
-                "description": "Avez-vous un RefNo?"
+                "description": "Nous devons retrouver votre réservation dans notre système."
+            },
+            {
+                "id": "step-2-sub-header-1",
+                "description": "Avez-vous le RefNo de la réservation?"
             },
             {
                 "id": "step-2-yes",
