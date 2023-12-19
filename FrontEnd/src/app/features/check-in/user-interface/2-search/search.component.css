@@ -3,9 +3,12 @@
     width: 100%;
 }
 
+#form {
+    overflow: hidden;
+}
+
 #complex-group {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
 }
-

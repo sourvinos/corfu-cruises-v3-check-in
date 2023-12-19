@@ -37,7 +37,6 @@ export class PassengerListComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        // this.setFormHeight()
         this.getReservationFromStorage()
     }
 
@@ -119,12 +118,6 @@ export class PassengerListComponent {
 
     private getReservationFromStorage(): void {
         this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
-    }
-
-    private setFormHeight(): void {
-        const x = document.body.clientHeight
-        const form = document.getElementById('table-wrapper')
-        form.style.height = x - 242 + 'px'
     }
 
     public showEmptyPassengerForm(): void {

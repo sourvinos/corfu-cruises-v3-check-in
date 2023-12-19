@@ -23,11 +23,16 @@ export class GreetingComponent {
 
     ngOnInit(): void {
         this.populateStorageFromAPI()
+        this.clearLocalStorage()
     }
 
     //#endregion
 
     //#region public methods
+
+    public getLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
 
     public next(): void {
         this.router.navigateByUrl('search')
@@ -37,8 +42,11 @@ export class GreetingComponent {
 
     //#region private methods
 
-    public getLabel(id: string): string {
-        return this.messageLabelService.getDescription(this.feature, id)
+    private clearLocalStorage(): void {
+        this.localStorageService.deleteItems([
+            { 'item': 'criteria', 'when': 'always' },
+            { 'item': 'reservation', 'when': 'always' }
+        ])
     }
 
     private populateStorageFromAPI(): void {

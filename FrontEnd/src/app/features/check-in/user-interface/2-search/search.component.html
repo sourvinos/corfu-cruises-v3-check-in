@@ -3,7 +3,7 @@
     <div id="header">
         <div id="step-caption">
             <span class="material-symbols-outlined step-number">counter_1</span>
-            <span>{{ getLabel("search-header") }}</span>
+            <span class="step-header">{{ getLabel("search-header") }}</span>
         </div>
         <div class="main-header">{{ getLabel("step-2-sub-step-caption") }}</div>
         <help></help>
@@ -77,7 +77,7 @@
     </form>
 
     <div id="footer">
-        <button [disabled]="requiredFieldsShouldBeGiven()" (click)="onSearch()" class="primary" mat-flat-button>
+        <button [disabled]="requiredFieldsShouldBeGiven()" (click)="onSearch()" class="accent" mat-flat-button>
             <mat-icon *ngIf="requiredFieldsShouldBeGiven()" class="material-icons-outlined">lock</mat-icon>
             <span>{{ getLabel("next") }}</span>
         </button>

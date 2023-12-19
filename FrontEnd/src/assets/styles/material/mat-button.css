@@ -1,4 +1,5 @@
 .mdc-button .mat-icon {
+    color: var(--color-button-text);
     font-size: 0.75rem !important;
     height: 0.75rem !important;
     margin: 0.125rem 0 0 0 !important;
@@ -19,8 +20,8 @@
     width: auto !important;
 }
 
-.mat-icon.gold {
-    color: #e7b53a !important;
+.mat-mdc-icon-button svg, .mat-mdc-icon-button img {
+    width: 1rem !important;
 }
 
 button {
@@ -56,30 +57,18 @@ button.fab-with-no-background {
 
 button.primary {
     background-color: var(--color-button-primary) !important;
-    border-radius: 3.125rem !important;
 }
 
 button.secondary {
     background-color: var(--color-button-secondary) !important;
-    border-radius: 3.125rem !important;
 }
 
 button.accent {
     background-color: var(--color-accent) !important;
-    border-radius: 3.125rem !important;
-}
-
-button.tab {
-    padding-bottom: 0.3125rem;
-}
-
-button.tab:first-child {
-    margin-right: 1rem;
 }
 
 button.transparent {
     background-color: transparent !important;
-    border-radius: 3.125rem !important;
     transition: color var(--theme-delay) !important;
 }
 

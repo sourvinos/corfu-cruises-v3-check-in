@@ -75,6 +75,7 @@ body {
 }
 
 #step-caption {
+    column-gap: 0.25rem;
     display: flex;
     font-family: var(--font-family-segoe-ui);
     font-size: 1rem;
@@ -83,7 +84,14 @@ body {
 }
 
 .step-number {
-    color: var(--color-primary);
+    color: var(--color-accent);
+    font-size: 30px !important;
+}
+
+.step-header {
+    font-size: 22px;
+    font-variant: all-petite-caps;
+    margin: -0.125rem 0 0 0;
 }
 
 #header {

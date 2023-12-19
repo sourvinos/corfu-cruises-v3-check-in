@@ -3,7 +3,7 @@
         "feature": "check-in",
         "labels": [
             {
-                "id": "step-1-logo",
+                "id": "logo",
                 "description": "Corfu Cruises"
             },
             {
@@ -145,10 +145,6 @@
             {
                 "id": "step-4-header",
                 "description": "Passagier-Details"
-            },
-            {
-                "id": "step-4-sub-header",
-                "description": "Wenn nötig, fügen Sie die Details der mit Ihnen reisenden Personen hinzu oder bearbeiten Sie sie"
             },
             {
                 "id": "step-4-new-passenger-button",

@@ -1,16 +1,16 @@
 <div id="content">
 
     <div id="header">
+        <div id="logo">{{ getLabel("logo")}}</div>
         <div id="step-caption">
             <span class="material-symbols-outlined step-number">counter_5</span>
-            <span>{{ getLabel("step-7-header") }}</span>
+            <span class="step-header">{{ getLabel("step-7-header") }}</span>
         </div>
-        <div class="main-header">{{ getLabel("completion-main-header") }}</div>
-        <help></help>
+        <div id="completion-description">{{ getLabel("completion-main-header") }}</div>
     </div>
 
     <div id="footer">
-        <button (click)="ok()" class="primary" mat-flat-button>
+        <button (click)="ok()" class="accent" mat-flat-button>
             <span>{{ getLabel("ok") }}</span>
         </button>
     </div>

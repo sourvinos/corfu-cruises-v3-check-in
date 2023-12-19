@@ -12,7 +12,7 @@
             },
             {
                 "id": "step-1-description",
-                "description": "Κάντε check-in από το τηλέφωνο ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστερήσεις"
+                "description": "Κάντε check-in από το κινητό τηλέφωνο ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστερήσεις"
             },
             {
                 "id": "step-1-begin-button",
@@ -20,11 +20,11 @@
             },
             {
                 "id": "search-header",
-                "description": "Ταυτοποίηση"
+                "description": "Ταυτοποιηση"
             },
             {
                 "id": "step-2-sub-header",
-                "description": "Πρέπει να βρούμε την κράτηση στο σύστημά μας."
+                "description": "Πρέπει να βρούμε την κράτηση στο σύστημά μας"
             },
             {
                 "id": "step-2-sub-step-caption",
@@ -80,7 +80,7 @@
             },
             {
                 "id": "step-3-header",
-                "description": "Λεπτομέρειες κράτησης"
+                "description": "Λεπτομερειες κρατησης"
             },
             {
                 "id": "step-3-sub-header",
@@ -144,11 +144,7 @@
             },
             {
                 "id": "step-4-header",
-                "description": "Στοιχεία επιβατών"
-            },
-            {
-                "id": "step-4-sub-header",
-                "description": "Εάν είναι απαραίτητο, προσθέστε ή διορθώστε τα στοιχεία των ατόμων που ταξιδεύουν μαζί σας"
+                "description": "Στοιχεια επιβατων"
             },
             {
                 "id": "step-4-new-passenger-button",
@@ -188,7 +184,7 @@
             },
             {
                 "id": "step-6-header",
-                "description": "Αποστολή email"
+                "description": "Αποστολη email"
             },
             {
                 "id": "step-6-sub-header",
@@ -200,11 +196,11 @@
             },
             {
                 "id": "step-7-header",
-                "description": "Τελειώσαμε!"
+                "description": "Τελειωσαμε!"
             },
             {
                 "id": "completion-main-header",
-                "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας"
+                "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας."
             },
             {
                 "id": "help",

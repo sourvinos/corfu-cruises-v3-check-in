@@ -1,15 +1,14 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
+import { Subject } from 'rxjs'
 // Custom
-import { CheckInHelperService } from '../../classes/services/check-in.helper.service'
 import { CheckInHttpService } from '../../classes/services/check-in.http.service'
+import { DialogService } from 'src/app/shared/services/modal-dialog.service'
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service'
+import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 import { MessageInputHintService } from 'src/app/shared/services/message-input-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/message-label.service'
-import { Subject } from 'rxjs'
-import { DialogService } from 'src/app/shared/services/modal-dialog.service'
-import { MessageDialogService } from 'src/app/shared/services/message-dialog.service'
 
 @Component({
     selector: 'email-form',
@@ -28,7 +27,7 @@ export class EmailFormComponent {
 
     //#endregion
 
-    constructor(private checkInHelperService: CheckInHelperService, private messageSnackbarService: MessageDialogService, private dialogService: DialogService, private localStorageService: LocalStorageService, private checkInHttpService: CheckInHttpService, private router: Router, private formBuilder: FormBuilder, private messageLabelService: MessageLabelService, private messageHintService: MessageInputHintService) { }
+    constructor(private messageSnackbarService: MessageDialogService, private dialogService: DialogService, private localStorageService: LocalStorageService, private checkInHttpService: CheckInHttpService, private router: Router, private formBuilder: FormBuilder, private messageLabelService: MessageLabelService, private messageHintService: MessageInputHintService) { }
 
     //#region lifecycle hooks
 
@@ -57,18 +56,17 @@ export class EmailFormComponent {
     }
 
     public next(): void {
-        this.router.navigate(['completion'])
-        // this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
-        // this.reservation.email = this.form.value.email
-        // this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
-        // this.checkInHttpService.sendEmail(this.reservation).subscribe({
-        //     complete: () => {
-        //         this.router.navigate(['completion'])
-        //     },
-        //     error: () => {
-        //         this.dialogService.open(this.messageSnackbarService.emailNotSent(), 'error', ['ok'])
-        //     }
-        // })
+        this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
+        this.reservation.email = this.form.value.email
+        this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
+        this.checkInHttpService.sendEmail(this.reservation).subscribe({
+            complete: () => {
+                this.router.navigate(['completion'])
+            },
+            error: () => {
+                this.dialogService.open(this.messageSnackbarService.emailNotSent(), 'error', ['ok'])
+            }
+        })
     }
 
     //#endregion

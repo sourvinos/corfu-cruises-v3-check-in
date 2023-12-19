@@ -147,10 +147,6 @@
                 "description": "Údaje o cestujících"
             },
             {
-                "id": "step-4-sub-header",
-                "description": "V případě potřeby přidejte nebo upravte údaje o osobách, které s vámi cestují"
-            },
-            {
                 "id": "step-4-new-passenger-button",
                 "description": "Nový cestující"
             },

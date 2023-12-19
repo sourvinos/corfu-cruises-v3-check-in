@@ -13,6 +13,14 @@
     padding: 0 !important;
 }
 
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: var(--color-accent) !important;
+}
+
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+    border-color: var(--color-accent) !important;
+}
+
 .mdc-form-field > label {
     font-size: 15px !important;
     font-family: var(--font-family-segoe-ui) !important;

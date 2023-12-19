@@ -38,7 +38,6 @@ export class SearchComponent {
         this.populateDropdowns()
         this.populateFieldsFromLocalStorage()
         this.highlightDropdownSelections()
-        // this.setFormHeight()
     }
 
     //#endregion
@@ -182,12 +181,6 @@ export class SearchComponent {
                 }
             })
         })
-    }
-
-    private setFormHeight(): void {
-        const x = document.body.clientHeight
-        const form = document.getElementById('form')
-        form.style.height = x - 253 + 'px'
     }
 
     private showError(error: any): void {

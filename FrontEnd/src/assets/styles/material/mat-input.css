@@ -141,7 +141,7 @@
 /* Button icon for date picker */
 .mat-datepicker-toggle button {
     color: var(--color-text) !important;
-    margin-right: 0.3125rem;
+    margin-right: 0.1875rem;
     transition: color var(--theme-delay);
 }
 

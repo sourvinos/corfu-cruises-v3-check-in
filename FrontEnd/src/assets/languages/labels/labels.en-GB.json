@@ -3,7 +3,7 @@
         "feature": "check-in",
         "labels": [
             {
-                "id": "step-1-logo",
+                "id": "logo",
                 "description": "Corfu Cruises"
             },
             {
@@ -12,7 +12,7 @@
             },
             {
                 "id": "step-1-description",
-                "description": "Check-in from your phone or tablet and board quickly and without delays"
+                "description": "Check-in from your mobile phone or tablet and board quickly and without delays"
             },
             {
                 "id": "step-1-begin-button",
@@ -147,10 +147,6 @@
                 "description": "Passenger details"
             },
             {
-                "id": "step-4-sub-header",
-                "description": "If it's necessary, add or edit the details of the persons travelling with you"
-            },
-            {
                 "id": "step-4-new-passenger-button",
                 "description": "New passenger"
             },
@@ -204,7 +200,7 @@
             },
             {
                 "id": "completion-main-header",
-                "description": "The email we have sent you must be shown to us at the port during boarding"
+                "description": "The email we have sent you must be shown to us at the port during boarding."
             },
             {
                 "id": "help",
