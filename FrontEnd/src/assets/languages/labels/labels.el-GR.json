@@ -12,7 +12,7 @@
             },
             {
                 "id": "step-1-description",
-                "description": "Κάντε check-in από το κινητό τηλέφωνο ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστερήσεις"
+                "description": "Κάντε check-in από το κινητό τηλέφωνο ή το tablet σας και επιβιβαστείτε γρήγορα χωρίς καθυστερήσεις"
             },
             {
                 "id": "step-1-begin-button",
@@ -28,7 +28,7 @@
             },
             {
                 "id": "step-2-sub-step-caption",
-                "description": "Εχετε το RefNo της κράτησης;"
+                "description": "Έχετε το RefNo της κράτησης;"
             },
             {
                 "id": "step-2-yes",
@@ -36,7 +36,7 @@
             },
             {
                 "id": "step-2-no",
-                "description": "Οχι, δεν το έχω"
+                "description": "Όχι, δεν το έχω"
             },
             {
                 "id": "step-2-refNo",
@@ -116,7 +116,7 @@
             },
             {
                 "id": "step-3-time",
-                "description": "Ωρα"
+                "description": "Ώρα"
             },
             {
                 "id": "step-3-adults",

@@ -22,6 +22,7 @@
 }
 
 .mdc-form-field > label {
-    font-size: 15px !important;
-    font-family: var(--font-family-segoe-ui) !important;
+    font-family: var(--font-family-asty) !important;
+    font-size: 0.875rem !important;
+    font-weight: 300;
 }

@@ -24,7 +24,7 @@
 /* Label */
 .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
     color: var(--color-text) !important;
-    font-family: var(--font-family-segoe-ui) !important;
+    font-family: var(--font-family-asty) !important;
     font-size: 0.75rem !important;
     font-weight: 300;
     margin-top: -1.1875rem;
@@ -37,7 +37,6 @@
 .mat-mdc-form-field-infix {
     display: flex;
     flex-direction: row;
-    margin: -0.25rem 0 0 0;
     padding: 1.25rem 0 0.25rem 0;
 }
 
@@ -107,7 +106,7 @@
 
 /* Button icon */
 .mat-mdc-form-field-icon-suffix {
-    margin-right: -13px !important;
+    margin-right: -0.8125rem !important;
     margin-top: 0.3125rem !important;
 }
 
@@ -149,7 +148,7 @@
 .mat-mdc-form-field-hint {
     color: var(--color-text);
     display: flex;
-    font-family: var(--font-family-segoe-ui);
+    font-family: var(--font-family-asty);
     font-weight: 300;
     justify-content: flex-start;
     margin: 0.2rem 0 0 0.5rem;
@@ -170,7 +169,6 @@
 
 /* Hint with error */
 .mat-mdc-form-field-error {
-    background-color: var(--color-background) !important;
     color: var(--color-input-error) !important;
     font-family: var(--font-family-asty) !important;
     font-weight: 300;

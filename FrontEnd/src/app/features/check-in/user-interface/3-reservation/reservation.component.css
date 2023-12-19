@@ -6,3 +6,8 @@
 #form {
     row-gap: 0.1rem;
 }
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+}

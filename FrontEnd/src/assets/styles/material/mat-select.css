@@ -5,11 +5,11 @@
 .mat-mdc-option.mdc-list-item .mdc-list-item__primary-text {
     color: var(--color-text);
     font-family: var(--font-family-segoe-ui);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .mat-mdc-select-value-text {
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
 }
 
 .mat-mdc-select-arrow svg {

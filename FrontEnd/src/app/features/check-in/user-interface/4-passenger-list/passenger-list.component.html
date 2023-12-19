@@ -15,7 +15,7 @@
         </button>
     </div>
 
-    <div id="scrollable">
+    <div class="blurry" id="scrollable">
         <div id="table-wrapper">
             <p-table #table [scrollable]="true" [value]="reservation.passengers" [virtualScrollItemSize]="32" [virtualScroll]="false" dataKey="id" scrollHeight="flex" selectionMode="single" sortMode="multiple">
                 <ng-template pTemplate="body" let-record>

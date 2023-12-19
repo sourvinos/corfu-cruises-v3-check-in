@@ -6,7 +6,7 @@
     --font-family-segoe-ui: "Segoe UI";
     /* Font weights */
     --font-weight-dialog-content: 300 !important;
-    --font-size-dialog-text: 15px;
+    --font-size-dialog-text: 0.9375rem;
     --font-size-table-header: 0.7rem;
     --font-size-table-row: 0.875rem;
     --font-size-button-text: 0.75rem;
