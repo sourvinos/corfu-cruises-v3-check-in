@@ -57,17 +57,18 @@ export class EmailFormComponent {
     }
 
     public next(): void {
-        this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
-        this.reservation.email = this.form.value.email
-        this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
-        this.checkInHttpService.sendEmail(this.reservation).subscribe({
-            complete: () => {
-                this.router.navigate(['completion'])
-            },
-            error: () => {
-                this.dialogService.open(this.messageSnackbarService.emailNotSent(), 'error', ['ok'])
-            }
-        })
+        this.router.navigate(['completion'])
+        // this.reservation = JSON.parse(this.localStorageService.getItem('reservation', 'object'))
+        // this.reservation.email = this.form.value.email
+        // this.localStorageService.saveItem('reservation', JSON.stringify(this.reservation))
+        // this.checkInHttpService.sendEmail(this.reservation).subscribe({
+        //     complete: () => {
+        //         this.router.navigate(['completion'])
+        //     },
+        //     error: () => {
+        //         this.dialogService.open(this.messageSnackbarService.emailNotSent(), 'error', ['ok'])
+        //     }
+        // })
     }
 
     //#endregion

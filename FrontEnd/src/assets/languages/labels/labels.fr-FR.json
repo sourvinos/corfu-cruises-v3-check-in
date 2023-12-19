@@ -15,7 +15,11 @@
                 "description": "Enregistrez-vous à partir de votre téléphone ou de votre tablette et embarquez rapidement et sans retard."
             },
             {
-                "id": "step-2-header",
+                "id": "step-1-begin-button",
+                "description": "Allons-y!"
+            },
+            {
+                "id": "search-header",
                 "description": "Identification"
             },
             {
@@ -23,7 +27,7 @@
                 "description": "Nous devons retrouver votre réservation dans notre système."
             },
             {
-                "id": "step-2-sub-header-1",
+                "id": "step-2-sub-step-caption",
                 "description": "Avez-vous le RefNo de la réservation?"
             },
             {
@@ -199,8 +203,12 @@
                 "description": "C'est fait!"
             },
             {
-                "id": "step-7-sub-header",
+                "id": "completion-main-header",
                 "description": "L'e-mail que nous vous avons envoyé doit être présenté au port lors de l'embarquement"
+            },
+            {
+                "id": "help",
+                "description": "Cliquez ici pour de l'aide"
             },
             {
                 "id": "today",

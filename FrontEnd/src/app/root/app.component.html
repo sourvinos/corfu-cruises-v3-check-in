@@ -1,8 +1,4 @@
 <div id="outer-wrapper">
-    <div id="topbar">
-        <language-menu></language-menu>
-        <help-icon></help-icon>
-    </div>
     <div id="router-content" [@routeAnimation]="o.isActivated?o.activatedRoute:''">
         <router-outlet #o="outlet"></router-outlet>
     </div>

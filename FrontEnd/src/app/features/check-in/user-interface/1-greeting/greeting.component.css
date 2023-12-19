@@ -1,40 +1,13 @@
-#content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-#header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#header-1 {
+#logo {
     font-family: var(--font-family-logo);
     font-size: 4rem;
     text-align: center;
 }
 
-#header-2 {
-    font-family: var(--font-family-segoe-ui);
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-#header-3 {
-    display: flex;
-    font-family: var(--font-family-segoe-ui);
+#greeting-description {
     font-size: 1.125rem;
     line-height: 1.5rem;
     margin: 1.5rem auto 0 auto;
     text-align: center;
     width: 11rem;
-}
-
-#footer {
-    display: flex;
-    justify-content: center;
-    margin: auto 0 1rem 0;
-    text-align: center;
 }

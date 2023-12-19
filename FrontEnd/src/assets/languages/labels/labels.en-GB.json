@@ -15,7 +15,11 @@
                 "description": "Check-in from your phone or tablet and board quickly and without delays"
             },
             {
-                "id": "step-2-header",
+                "id": "step-1-begin-button",
+                "description": "Let's go!"
+            },
+            {
+                "id": "search-header",
                 "description": "Identification"
             },
             {
@@ -23,7 +27,7 @@
                 "description": "We must find your reservation in our system."
             },
             {
-                "id": "step-2-sub-header-1",
+                "id": "step-2-sub-step-caption",
                 "description": "Do you have the reservation's RefNo?"
             },
             {
@@ -199,8 +203,12 @@
                 "description": "All done!"
             },
             {
-                "id": "step-7-sub-header",
+                "id": "completion-main-header",
                 "description": "The email we have sent you must be shown to us at the port during boarding"
+            },
+            {
+                "id": "help",
+                "description": "Click here for help"
             },
             {
                 "id": "today",

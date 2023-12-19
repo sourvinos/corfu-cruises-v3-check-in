@@ -15,7 +15,11 @@
                 "description": "Checken Sie von Ihrem Handy oder Tablet ein und gehen Sie schnell und ohne Verzögerung an Bord"
             },
             {
-                "id": "step-2-header",
+                "id": "step-1-begin-button",
+                "description": "Los geht's!"
+            },
+            {
+                "id": "search-header",
                 "description": "Identifizierung"
             },
             {
@@ -23,7 +27,7 @@
                 "description": "Wir müssen Ihre Reservierung in unserem System finden."
             },
             {
-                "id": "step-2-sub-header-1",
+                "id": "step-2-sub-step-caption",
                 "description": "Haben Sie die RefNo der Reservierung?"
             },
             {
@@ -199,8 +203,12 @@
                 "description": "Alles fertig!"
             },
             {
-                "id": "step-7-sub-header",
+                "id": "completion-main-header",
                 "description": "Die E-Mail, die wir Ihnen geschickt haben, müssen Sie uns am Hafen beim Boarding vorlegen"
+            },
+            {
+                "id": "help",
+                "description": "Für Hilfe hier klicken"
             },
             {
                 "id": "today",

@@ -3,7 +3,7 @@
         "feature": "check-in",
         "labels": [
             {
-                "id": "step-1-logo",
+                "id": "logo",
                 "description": "Corfu Cruises"
             },
             {
@@ -15,7 +15,11 @@
                 "description": "Κάντε check-in από το τηλέφωνο ή το tablet σας και επιβιβαστείτε γρήγορα και χωρίς καθυστερήσεις"
             },
             {
-                "id": "step-2-header",
+                "id": "step-1-begin-button",
+                "description": "Ας ξεκινήσουμε!"
+            },
+            {
+                "id": "search-header",
                 "description": "Ταυτοποίηση"
             },
             {
@@ -23,7 +27,7 @@
                 "description": "Πρέπει να βρούμε την κράτηση στο σύστημά μας."
             },
             {
-                "id": "step-2-sub-header-1",
+                "id": "step-2-sub-step-caption",
                 "description": "Εχετε το RefNo της κράτησης;"
             },
             {
@@ -199,8 +203,12 @@
                 "description": "Τελειώσαμε!"
             },
             {
-                "id": "step-7-sub-header",
+                "id": "completion-main-header",
                 "description": "Το email που σας στείλαμε πρέπει να μας το δείξετε στο λιμάνι κατά την επιβίβασή σας"
+            },
+            {
+                "id": "help",
+                "description": "Κάντε κλικ εδώ για βοήθεια"
             },
             {
                 "id": "today",

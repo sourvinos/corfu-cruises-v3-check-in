@@ -1,0 +1,16 @@
+* {
+    --color-accent: #ff9800;
+    --color-background-dropdown: #e6e6e6;
+    --color-background: #efefef;
+    --color-button-primary: #005085;
+    --color-button-text: #ffffff;
+    --color-dialog-areas-seperator: #ebebeb;
+    --color-dialog-background: #fefefe;
+    --color-help: #005085;
+    --color-input-background: #F9F9F9;
+    --color-input-error: #ff8a82;
+    --color-scrollbar: #ff9800;
+    --color-secondary: #7BB7DD;
+    --color-text: #000000;
+    --color-transparent-button: #000000;
+}

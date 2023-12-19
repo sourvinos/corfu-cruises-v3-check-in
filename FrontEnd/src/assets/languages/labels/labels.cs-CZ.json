@@ -3,7 +3,7 @@
         "feature": "check-in",
         "labels": [
             {
-                "id": "step-1-logo",
+                "id": "logo",
                 "description": "Corfu Cruises"
             },
             {
@@ -15,7 +15,11 @@
                 "description": "Odbavte se z telefonu nebo tabletu a nastupte rychle a bez zpoždění"
             },
             {
-                "id": "step-2-header",
+                "id": "step-1-begin-button",
+                "description": "Pojďme!"
+            },
+            {
+                "id": "search-header",
                 "description": "Identifikace"
             },
             {
@@ -23,7 +27,7 @@
                 "description": "Vaši rezervaci musíme najít v našem systému."
             },
             {
-                "id": "step-2-sub-header-1",
+                "id": "step-2-sub-step-caption",
                 "description": "Máte RefNo číslo rezervace?"
             },
             {
@@ -199,8 +203,12 @@
                 "description": "Vše je hotovo!"
             },
             {
-                "id": "step-7-sub-header",
+                "id": "completion-main-header",
                 "description": "E-mail, který jsme vám zaslali, nám musíte ukázat v přístavu při nástupu na palubu"
+            },
+            {
+                "id": "help",
+                "description": "Pro nápovědu klikněte zde"
             },
             {
                 "id": "today",

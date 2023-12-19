@@ -44,59 +44,6 @@ export class DateHelperService {
     }
 
     /**
-     * Returns the weekday index (0=Sun, 1=Mon, 2=Tue, ..., 6=Sat) of a 'YYYY-MM-DD' string
-     * @param date a string representing a date formatted as 'YYYY-MM-DD'
-     * @returns an integer representing the weekday index
-     */
-    public getWeekdayIndex(date: string): any {
-        const [year, month, day] = date.split('-')
-        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day)).getDay()
-    }
-
-    /**
-     * @returns a string representing today formatted as 'YYYY-MM-DD'
-     */
-    public getCurrentPeriodBeginDate(): string {
-        const today = new Date()
-        return this.formatDateToIso(new Date(today.setDate(today.getDate() - 1)))
-    }
-
-    /**
-     * @param dayCount an integer representing the days to create into the future based on today
-     * @returns a string representing the future date formatted as 'YYYY-MM-DD'
-     */
-    public getCurrentPeriodEndDate(dayCount: number): string {
-        const today = new Date()
-        return this.formatDateToIso(new Date(today.setDate(today.getDate() + dayCount - 2)))
-    }
-
-    /**
-     * @param fromDate the date object representing the date to begin
-     * @param days how many days to create
-     * @returns a date object representing a future date based on the fromDate and the days count
-     */
-    public getPeriodEndDate(fromDate: Date, days: number): string {
-        const newDate = new Date(fromDate)
-        newDate.setDate(newDate.getDate() + days - 1)
-        return this.formatDateToIso(newDate)
-    }
-
-    /**
-     * Gets a 'YYYY-MM-DD' string and returns a date object formatted as 'Thu Mar 23 2023 00:00:00'
-     * @param date a string representing a date
-     * @returns a date object
-     */
-    public createDateFromString(date: string): Date {
-        const day = date.substring(8, 10)
-        const month = date.substring(5, 7)
-        const year = date.substring(0, 4)
-        return new Date(
-            parseInt(year),
-            parseInt(month) - 1,
-            parseInt(day), 0, 0, 0, 0)
-    }
-
-    /**
      * Subtracts 100 years if the given year is in the future
      * Solves the problem where 1.1.40 becomes 1.1.2040 instead of 1.1.1940
      * @param date a moment.js object

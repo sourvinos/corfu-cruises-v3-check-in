@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 // Custom
-import { HelpIconComponent } from '../components/help-icon/help-icon.component'
+import { HelpComponent } from '../components/help/help.component'
 import { InputTabStopDirective } from '../directives/input-tabstop.directive'
 import { LanguageMenuComponent } from '../components/language-menu/language-menu.component'
 import { MaterialModule } from './material.module'
@@ -13,7 +13,7 @@ import { SafeStylePipe } from '../pipes/safe-style.pipe'
 
 @NgModule({
     declarations: [
-        HelpIconComponent,
+        HelpComponent,
         InputTabStopDirective,
         LanguageMenuComponent,
         ModalDialogComponent,
@@ -29,7 +29,7 @@ import { SafeStylePipe } from '../pipes/safe-style.pipe'
     exports: [
         CommonModule,
         FormsModule,
-        HelpIconComponent,
+        HelpComponent,
         InputTabStopDirective,
         LanguageMenuComponent,
         MaterialModule,

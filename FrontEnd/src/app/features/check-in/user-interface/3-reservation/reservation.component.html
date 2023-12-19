@@ -1,70 +1,71 @@
 <div id="content">
 
     <div id="header">
-        <div id="header-1">
+        <div id="step-caption">
             <span class="material-symbols-outlined step-number">counter_2</span>
             <span>{{ getLabel("step-3-header") }}</span>
         </div>
-        <div id="header-2">{{ getLabel("step-3-sub-header") }}</div>
+        <div class="main-header">{{ getLabel("step-3-sub-header") }}</div>
+        <help></help>
     </div>
 
     <div id="scrollable">
-        <form [formGroup]="reservationForm" id="reservation-form">
+        <form [formGroup]="reservationForm" id="form">
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-date") }}</mat-label>
-                <input formControlName="date" matInput>
+                <input formControlName="date" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-refNo") }}</mat-label>
-                <input formControlName="refNo" matInput>
+                <input formControlName="refNo" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-ticketNo") }}</mat-label>
-                <input formControlName="ticketNo" matInput>
+                <input formControlName="ticketNo" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-destination") }}</mat-label>
-                <input formControlName="destination" matInput>
+                <input formControlName="destination" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-customer") }}</mat-label>
-                <input formControlName="customer" matInput>
+                <input formControlName="customer" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-pickupPoint") }}</mat-label>
-                <input formControlName="pickupPoint" matInput>
+                <input formControlName="pickupPoint" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-exactPoint") }}</mat-label>
-                <input formControlName="exactPoint" matInput>
+                <input formControlName="exactPoint" matInput readonly>
             </mat-form-field>
             <mat-form-field id="time">
                 <mat-label>{{ getLabel("step-3-time") }}</mat-label>
-                <input formControlName="time" matInput>
+                <input formControlName="time" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-adults") }}</mat-label>
-                <input formControlName="adults" matInput>
+                <input formControlName="adults" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-kids") }}</mat-label>
-                <input formControlName="kids" matInput>
+                <input formControlName="kids" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-free") }}</mat-label>
-                <input formControlName="free" matInput>
+                <input formControlName="free" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-totalPax") }}</mat-label>
-                <input formControlName="totalPax" matInput>
+                <input formControlName="totalPax" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-phones") }}</mat-label>
-                <input formControlName="phones" matInput>
+                <input formControlName="phones" matInput readonly>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ getLabel("step-3-remarks") }}</mat-label>
-                <input formControlName="remarks" matInput>
+                <input formControlName="remarks" matInput readonly>
             </mat-form-field>
         </form>
     </div>

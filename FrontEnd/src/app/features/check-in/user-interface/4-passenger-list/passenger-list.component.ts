@@ -37,7 +37,7 @@ export class PassengerListComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.setFormHeight()
+        // this.setFormHeight()
         this.getReservationFromStorage()
     }
 

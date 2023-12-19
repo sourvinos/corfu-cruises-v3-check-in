@@ -54,11 +54,6 @@ button.fab-with-no-background {
     color: var(--color-text) !important;
 }
 
-button.delete {
-    background-color: var(--color-button-delete) !important;
-    border-radius: 3.125rem !important;
-}
-
 button.primary {
     background-color: var(--color-button-primary) !important;
     border-radius: 3.125rem !important;

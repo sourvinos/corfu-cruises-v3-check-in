@@ -16,8 +16,6 @@ export class ModalDialogComponent {
     private feature = 'check-in'
     public content: any
     public shieldName: any
-    public titleColor = ''
-    public imgIsLoaded = false
 
     //#endregion
 
@@ -37,18 +35,6 @@ export class ModalDialogComponent {
 
     public getLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
-    }
-
-    public imageIsLoading(): any {
-        return this.imgIsLoaded ? '' : 'skeleton'
-    }
-
-    public isObject(): boolean {
-        return typeof this.content === 'object'
-    }
-
-    public loadImage(): void {
-        this.imgIsLoaded = true
     }
 
     public onClose(): void {

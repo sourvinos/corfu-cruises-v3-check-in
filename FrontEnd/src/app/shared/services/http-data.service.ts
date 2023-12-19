@@ -9,20 +9,10 @@ export class HttpDataService {
         return this.http.get<any[]>(this.url)
     }
 
-    public getSingle(id: string | number): Observable<any> {
-        if (id != undefined)
-            return this.http.get<any>(this.url + '/' + id)
-    }
-
     public save(formData: any): Observable<any> {
         return formData.id == 0
             ? this.http.post<any>(this.url, formData)
             : this.http.patch<any>(this.url + '/reservationId/' + formData.reservationId, formData)
-    }
-
-    public delete(id: string | number): Observable<any> {
-        if (id != undefined)
-            return this.http.delete<any>(this.url + '/' + id)
     }
 
 }
